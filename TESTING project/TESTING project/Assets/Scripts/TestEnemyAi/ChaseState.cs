@@ -35,7 +35,7 @@ public class ChaseState : EnemyBaseState
         transform.Translate(Vector3.up * Time.deltaTime * drone.aISettings.chaseSpeed);
         //what to do if within attack range
         float distanceToTarget = Vector3.Distance(transform.position, drone.Target.transform.position);
-        if(distanceToTarget <= drone.aISettings.attackRange)
+        if(distanceToTarget <= drone.aISettings.AttackRange)
         {
 
             return typeof(AttackState);

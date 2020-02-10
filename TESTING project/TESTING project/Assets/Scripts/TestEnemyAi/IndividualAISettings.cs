@@ -24,4 +24,5 @@ public class IndividualAISettings : MonoBehaviour
     public LayerMask obstacleLayerMask;
 
     public float BossID { get => bossID; set => bossID = value; }
+    public float AttackRange { get => attackRange; set => attackRange = value; }
 }

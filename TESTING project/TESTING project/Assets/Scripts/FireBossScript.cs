@@ -47,7 +47,6 @@ public class FireBossScript : MonoBehaviour
                         AoeMelee(2);
                     }
                     break;
-
             }
         }
     }
@@ -59,5 +58,9 @@ public class FireBossScript : MonoBehaviour
     private void AttackCooldown()
     {
         readyAttack = true;
+    }
+    public void YouDeadMyNigga()
+    {
+
     }
 }

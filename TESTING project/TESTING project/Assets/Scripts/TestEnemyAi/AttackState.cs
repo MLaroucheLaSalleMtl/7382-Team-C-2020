@@ -31,7 +31,7 @@ public class AttackState : EnemyBaseState
             Debug.Log("test");
             drone.FireLineTest();
         }
-        if (Vector3.Distance(transform.position, drone.Target.position) >= drone.aISettings.attackRange )
+        if (Vector3.Distance(transform.position, drone.Target.position) >= drone.aISettings.AttackRange )
         {
 
             
@@ -41,7 +41,7 @@ public class AttackState : EnemyBaseState
                 //drone.FireWeapon(false);
                 attackReadyTimer = 10.0f;
             }
-            Debug.Log("chase");
+            //Debug.Log("chase");
             return typeof(ChaseState);
         }
         if (Vector3.Distance(transform.position, drone.Target.position) <= 4.0f)

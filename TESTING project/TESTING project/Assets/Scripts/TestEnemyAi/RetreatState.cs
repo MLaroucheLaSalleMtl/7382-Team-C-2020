@@ -17,7 +17,7 @@ public class RetreatState : EnemyBaseState
     public override Type Tick()
     {
         transform.Translate(Vector3.down * Time.deltaTime * drone.aISettings.chaseSpeed);
-        if(Vector3.Distance(transform.position, drone.Target.position) >= drone.aISettings.attackRange)
+        if(Vector3.Distance(transform.position, drone.Target.position) >= drone.aISettings.AttackRange)
         {
             //drone.FireWeapon(false);
             return typeof(ChaseState);

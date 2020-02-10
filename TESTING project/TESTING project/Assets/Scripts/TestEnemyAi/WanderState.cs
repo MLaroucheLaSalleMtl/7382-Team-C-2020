@@ -28,7 +28,7 @@ public class WanderState : EnemyBaseState
         Transform chaseTarget = CheckForTarget();
         if(chaseTarget != null)
         {
-            Debug.Log("chase");
+            //Debug.Log("chase");
             drone.SetTarget(chaseTarget);
             return (typeof(ChaseState));
         }
