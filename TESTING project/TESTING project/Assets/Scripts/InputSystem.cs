@@ -7,26 +7,32 @@ public class InputSystem : MonoBehaviour
 {
     private IsometricPlayerMovementController isoMovement;
     
-    float h = 0;
-    float v = 0;
-    bool dash = false;
+    public float h = 0;
+    public float v = 0;
+    public bool inDashing = false;
     bool attackLight = false;
     bool attackStrong = false;
     bool ranged = false;
     bool isPaused = false;
     bool chargedRanged = false;
 
-
+    private bool dash = false;
     // Start is called before the first frame update
     void Start()
     {
         isoMovement = GetComponent<IsometricPlayerMovementController>();
+        
     }
 
+    private void FixedUpdate()
+    {
+        isoMovement.Move(h, v, dash);
+        dash = false;
+    }
     // Update is called once per frame
     void Update()
     {
-        
+            
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -38,8 +44,13 @@ public class InputSystem : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        dash = context.performed;
-        Debug.Log("DASH!");
+        if (context.started)
+        {
+            //Debug.Log("test");
+            dash = true;
+            //Debug.Log(dash);
+        } 
+        
     }
 
     public void OnAttackL(InputAction.CallbackContext context)

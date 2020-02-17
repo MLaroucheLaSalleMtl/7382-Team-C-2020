@@ -55,7 +55,7 @@ public class IsometricCharacterRenderer : MonoBehaviour
         }
         else
         {
-            Debug.Log("Dashing!");
+            //Debug.Log("Dashing!");
             directionArray = staticDirections;
             lastDirection = DirectionToIndex(direction, 8);
         }

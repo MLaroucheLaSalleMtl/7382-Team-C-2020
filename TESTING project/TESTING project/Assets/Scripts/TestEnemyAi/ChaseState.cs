@@ -22,6 +22,7 @@ public class ChaseState : EnemyBaseState
         }
         if (Input.GetKey(KeyCode.L))
         {
+            
             drone.FireLineTest();
         }
         

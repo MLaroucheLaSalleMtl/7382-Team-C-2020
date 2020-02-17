@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private float maxHp = 10;
+    private float maxHp = 100;
     private float maxLives = 3;
-    private float currentHp;
-    private float currentLives;
-    private float meleeLightAttack = 20;
-    private float meleeStrongAttack = 35;
+    [SerializeField]private float currentHp;
+    [SerializeField]private float currentLives;
+    private float maxStamina = 50;
+    [SerializeField] private float currentStamina;
+    private float meleeAttack = 20;
+    //private float meleeStrongAttack = 35;
     private float typeAdvantage = 1.5f;
     private float typeDisadvantage = 0.5f;
-    private float rangeLightAttack = 15;
-    private float rangeStrongAttack = 20;
-    private float rangeShieldDamage = 10;
-    private float rangeStrongShieldDamage = 20;
+    //private float rangeLightAttack = 15;
+    //private float rangeStrongAttack = 20;
+    //private float rangeShieldDamage = 10;
+    //private float rangeStrongShieldDamage = 20;
 
     public static GameManager instance = null;
 
@@ -76,5 +78,10 @@ public class GameManager : MonoBehaviour
     private void Restart()
     {
         Debug.Log("Scene Restart");
+    }
+    public void GetHit(float damage)
+    {
+        currentHp -= damage;
+
     }
 }
