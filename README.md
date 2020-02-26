@@ -17,6 +17,8 @@ You are Ziae'l, your job is to fight the entities that are challinging the balan
 
 ![](Images/Ziae'lDemo-Final.png)
 
+![](Images/Ziae'l%20scheme%20(controller).jpg)
+
                                                               SOURCES
                                                               
 Music : 
