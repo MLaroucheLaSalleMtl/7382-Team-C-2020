@@ -21,16 +21,16 @@ You are Ziae'l, your job is to fight the entities that are challinging the balan
 
                                                               SOURCES
                                                               
-Music : (to be replaced for not copyrighted music)
-Main menu - Oceiros The Consumed King by Yuka Kitamura (DARK SOULS III)
+Music :
+Main menu - Oceiros The Consumed King by Yuka Kitamura (DARK SOULS III) TO BE CHANGED
 
-Win Screen - https://www.youtube.com/watch?v=_uNNRs19EzQ - ending from evangelion
+Win Screen - https://www.youtube.com/watch?v=_uNNRs19EzQ - ending from evangelion TO BE CHANGED
 
-Loss Screen - Secret Betreyal by Yuka Kitamura (DARK SOULS III)
+Loss Screen - Secret Betreyal by Yuka Kitamura (DARK SOULS III) TO BE CHANGED
 
-Bridge Boss - Nameless King by  Yuka Kitamura (DARK SOULS III)
+Bridge Boss - Nameless King by  Yuka Kitamura (DARK SOULS III) TO BE CHANGED
 
-Chaos Boss - Slave Knight Gael  Yuka Kitamura (DARK SOULS III)
+Chaos Boss - Slave Knight Gael  Yuka Kitamura (DARK SOULS III) TO BE CHANGED
 
 Art:
 Player - https://opengameart.org/content/fumiko-complete-charset
