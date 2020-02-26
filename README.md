@@ -39,5 +39,12 @@ Boss - https://opengameart.org/content/gaia-free-boss-monster
 
 Tiles - https://assetstore.unity.com/packages/3d/environments/2d-pixelart-isometric-blocks-115039 (disable fire tile edited by me)
 
+FireBall - https://opengameart.org/content/fireballs
+
+Meteor - https://opengameart.org/content/meteor-animated-64x64
+
+AOE explosion - https://opengameart.org/content/explosion-animations
+
+
 
 
