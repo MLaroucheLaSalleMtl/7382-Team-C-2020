@@ -21,7 +21,7 @@ You are Ziae'l, your job is to fight the entities that are challinging the balan
 
                                                               SOURCES
                                                               
-Music : 
+Music : (to be replaced for not copyrighted music)
 Main menu - Oceiros The Consumed King by Yuka Kitamura (DARK SOULS III)
 
 Win Screen - https://www.youtube.com/watch?v=_uNNRs19EzQ - ending from evangelion
@@ -37,7 +37,7 @@ Player - https://opengameart.org/content/fumiko-complete-charset
 
 Boss - https://opengameart.org/content/gaia-free-boss-monster
 
-Tiles - https://assetstore.unity.com/packages/3d/environments/2d-pixelart-isometric-blocks-115039 (disable fire tile edited by me)
+Tiles - https://assetstore.unity.com/packages/3d/environments/2d-pixelart-isometric-blocks-115039 (disabled fire tile edited by me)
 
 FireBall - https://opengameart.org/content/fireballs
 
