@@ -5,19 +5,20 @@ using UnityEngine;
 public class AoeMeleeScript : MonoBehaviour
 {
     private GameManager code;
-    private SpriteRenderer sprite;
+    private SpriteRenderer[] sprite;
+    [SerializeField] private float damage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            code.GetHit(1);
+            code.GetHit(damage);
         }
     }
     // Start is called before the first frame update
     void Start()
     {
         code = GameManager.instance;
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponentsInChildren<SpriteRenderer>();
         Invoke("Seppuku", 3f);
         Invoke("Activate", 2f);
     }
@@ -25,7 +26,10 @@ public class AoeMeleeScript : MonoBehaviour
     private void Activate()
     {
         gameObject.GetComponent<CircleCollider2D>().enabled = true;
-        sprite.enabled = true;
+        foreach(SpriteRenderer aaaa in sprite)
+        {
+            aaaa.enabled = true;
+        }
     }
     private void Seppuku()
     {

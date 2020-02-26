@@ -8,7 +8,9 @@ public class IsometricCharacterRenderer : MonoBehaviour
 
     public static readonly string[] staticDirections = { "Static N", "Static NW", "Static W", "Static SW", "Static S", "Static SE", "Static E", "Static NE" };
     public static readonly string[] runDirections = {"Run N", "Run NW", "Run W", "Run SW", "Run S", "Run SE", "Run E", "Run NE"};
-    //public static readonly string[] dashDirections = { "Dash N" };
+    public static readonly string[] dashDirections = { "Dash N", "Dash NW", "Dash W", "Dash SW", "Dash S", "Dash SE", "Dash E", "Dash NE" };
+    public static readonly string[] attackDirections = { "Attack N", "Attack NW", "Attack W", "Attack SW", "Attack S", "Attack SE", "Attack E", "Attack NE" };
+    
 
     Animator animator;
 
@@ -33,13 +35,19 @@ public class IsometricCharacterRenderer : MonoBehaviour
         }
         animator.Play(directionArray[lastDirection]);
     }
-    public void SetDirection(Vector2 direction, bool isDashing){
-
+    public void SetDirection(Vector2 direction, bool isDashing, bool attack){
+        
         //use the Run states by default
         string[] directionArray = null;
 
+
         //measure the magnitude of the input.
-        if (direction.magnitude < .01f) // determine if the player is moving or not
+        if (attack)
+        {
+            directionArray = attackDirections;
+            //lastDirection = DirectionToIndex(direction, 8);
+        }
+        else if (direction.magnitude < .01f) // determine if the player is moving or not
         {
             //if we are basically standing still, we'll use the Static states
             //we won't be able to calculate a direction if the user isn't pressing one, anyway!
@@ -55,8 +63,7 @@ public class IsometricCharacterRenderer : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Dashing!");
-            directionArray = staticDirections;
+            directionArray = dashDirections;
             lastDirection = DirectionToIndex(direction, 8);
         }
 
@@ -92,7 +99,7 @@ public class IsometricCharacterRenderer : MonoBehaviour
         return Mathf.FloorToInt(stepCount);
     }
 
-    
+
 
     //this function converts a string array to a int (animator hash) array.
     public static int[] AnimatorStringArrayToHashArray(string[] animationArray)

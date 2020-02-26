@@ -46,3 +46,7 @@ MonoBehaviour:
   currentHp: 0
   currentLives: 0
   currentStamina: 0
+  attackRadius: 0.5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512

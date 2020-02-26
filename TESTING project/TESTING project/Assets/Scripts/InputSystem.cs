@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class InputSystem : MonoBehaviour
 {
     private IsometricPlayerMovementController isoMovement;
-    
+    private GameManager code;
+    private Vector2 move = new Vector2();
     public float h = 0;
     public float v = 0;
     public bool inDashing = false;
@@ -17,17 +18,25 @@ public class InputSystem : MonoBehaviour
     bool chargedRanged = false;
 
     private bool dash = false;
+    [SerializeField]private bool attack = false;
     // Start is called before the first frame update
     void Start()
     {
         isoMovement = GetComponent<IsometricPlayerMovementController>();
-        
+        code = GameManager.instance;
     }
 
     private void FixedUpdate()
     {
-        isoMovement.Move(h, v, dash);
+        isoMovement.Move(move, dash, attack);
+        
+        
         dash = false;
+    }
+    private IEnumerator Test()
+    {
+        yield return new WaitForSecondsRealtime(0.12f);
+        attack = false;
     }
     // Update is called once per frame
     void Update()
@@ -37,9 +46,9 @@ public class InputSystem : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Vector2 move = context.ReadValue<Vector2>();
-        h = move.x;
-        v = move.y;
+        move = context.ReadValue<Vector2>();
+        //h = move.x;
+        //v = move.y;
     }
 
     public void OnDash(InputAction.CallbackContext context)
@@ -50,13 +59,17 @@ public class InputSystem : MonoBehaviour
             dash = true;
             //Debug.Log(dash);
         } 
-        
     }
 
     public void OnAttackL(InputAction.CallbackContext context)
     {
-        attackLight = context.performed;
-        Debug.Log("Light Attack!");
+        if (context.started && !attack)
+        {
+            attack = true;
+            isoMovement.Attack(move);
+        }
+        
+        StartCoroutine(Test());
     }
 
     public void OnAttackS(InputAction.CallbackContext context)

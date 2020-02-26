@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private float maxHp = 100;
+    private int maxHp = 100;
     private float maxLives = 3;
     [SerializeField]private float currentHp;
     [SerializeField]private float currentLives;
@@ -14,10 +16,16 @@ public class GameManager : MonoBehaviour
     //private float meleeStrongAttack = 35;
     private float typeAdvantage = 1.5f;
     private float typeDisadvantage = 0.5f;
+    public HealthBar healthBar;
+
+    private float time;
+    [SerializeField] private Text text;
+    
     //private float rangeLightAttack = 15;
     //private float rangeStrongAttack = 20;
     //private float rangeShieldDamage = 10;
     //private float rangeStrongShieldDamage = 20;
+
 
     public static GameManager instance = null;
 
@@ -36,7 +44,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentHp = maxHp;
+        //healthBar.SetMaxHealth(maxHp);
         currentLives = maxLives;
+        time = PlayerPrefs.GetFloat("Timer", 0);
+        
     }
 
     // Update is called once per frame
@@ -44,21 +55,20 @@ public class GameManager : MonoBehaviour
     {
         //Attack(); // this is not necessary with the input system now implemented
         HpCheck();
+        time += Time.deltaTime;
+        text.text = GetTime(time);
+        if (Input.GetKeyDown(KeyCode.T)) { time += 60; }
         
     }
-    //private void Attack() // this is not necessary with the input system now implemented
-    //{
-    //    if (Input.GetButtonDown("Fire1"))
-    //    {
-    //        //do light attack
-    //        Debug.Log("Light Melee Attack");
-    //    }
-    //    if (Input.GetButtonDown("Fire2"))
-    //    {
-    //        //do strong attack
-    //        Debug.Log("Strong Melee Attack");
-    //    }
-    //}
+    private static string GetTime(float timeInSeconds)
+    {
+        int minutes = ((int)timeInSeconds) / 60;
+        int seconds = ((int)timeInSeconds) % 60;
+
+        return minutes + ":" + ((seconds < 10) ? "0" + seconds : seconds.ToString());
+    }
+
+
     private void HpCheck()
     {
         if (currentHp <= 0)
@@ -67,7 +77,7 @@ public class GameManager : MonoBehaviour
         }
         if (currentLives <= 0)
         {
-            Restart();
+            //Restart();
         }
     }
     private void HpReset()

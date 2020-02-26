@@ -9,7 +9,7 @@ public class FireRangeScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            code.GetHit(1);
+            //code.GetHit(5);
         }
     }
     // Start is called before the first frame update

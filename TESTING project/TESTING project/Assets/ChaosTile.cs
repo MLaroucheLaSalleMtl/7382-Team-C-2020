@@ -8,13 +8,14 @@ public class ChaosTile : MonoBehaviour
     private bool isTouching = false;
     [SerializeField] private float damageTick = 0.9f;
     [SerializeField] private float damageValue = 3f;
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         isTouching = true;
         code.GetHit(damageValue);
         StartCoroutine(ChaosTileDamage());
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         isTouching = false;
     }

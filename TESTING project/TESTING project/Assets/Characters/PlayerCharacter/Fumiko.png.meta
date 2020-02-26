@@ -7,19 +7,19 @@ TextureImporter:
     second: Fumiko_0
   - first:
       213: 2948790016783854865
-    second: Fumiko_1
+    second: Fumiko_idle_N0
   - first:
       213: 3986944997836677075
     second: Fumiko_2
   - first:
       213: 2807182239480424780
-    second: Fumiko_3
+    second: Fumiko_run_N0
   - first:
       213: -5993450756036028084
-    second: Fumiko_4
+    second: Fumiko_run_N1
   - first:
       213: -1951487983557138016
-    second: Fumiko_5
+    second: Fumiko_run_N2
   - first:
       213: 4573362537388687282
     second: Fumiko_6
@@ -55,19 +55,19 @@ TextureImporter:
     second: Fumiko_16
   - first:
       213: -4703290682841777374
-    second: Fumiko_17
+    second: Fumiko_idle_E0
   - first:
       213: 1154626865603213373
     second: Fumiko_18
   - first:
       213: 1758345463728316329
-    second: Fumiko_19
+    second: Fumiko_run_E0
   - first:
       213: 1069720050888688687
-    second: Fumiko_20
+    second: Fumiko_run_E1
   - first:
       213: -7815992558449841511
-    second: Fumiko_21
+    second: Fumiko_run_E2
   - first:
       213: 4626920354569438321
     second: Fumiko_22
@@ -106,19 +106,19 @@ TextureImporter:
     second: Fumiko_33
   - first:
       213: 1925709418608328035
-    second: Fumiko_34
+    second: Fumiko_idle_S0
   - first:
       213: -8534045837946076090
     second: Fumiko_35
   - first:
       213: 3488574152074400837
-    second: Fumiko_36
+    second: Fumiko_run_S0
   - first:
       213: -3667406427384434209
-    second: Fumiko_37
+    second: Fumiko_run_S1
   - first:
       213: -8379883815836706380
-    second: Fumiko_38
+    second: Fumiko_run_S2
   - first:
       213: -3302478448516477342
     second: Fumiko_39
@@ -157,19 +157,19 @@ TextureImporter:
     second: Fumiko_50
   - first:
       213: 1773713262114721248
-    second: Fumiko_51
+    second: Fumiko_idle_W0
   - first:
       213: 5783534640239147863
     second: Fumiko_52
   - first:
       213: 5490796491733139515
-    second: Fumiko_53
+    second: Fumiko_run_W0
   - first:
       213: 7747876774194057062
-    second: Fumiko_54
+    second: Fumiko_run_W1
   - first:
       213: -1354760704297998837
-    second: Fumiko_55
+    second: Fumiko_run_W2
   - first:
       213: 5742042091335151141
     second: Fumiko_56
@@ -202,19 +202,19 @@ TextureImporter:
     second: Fumiko_65
   - first:
       213: 9099349738062832528
-    second: Fumiko_66
+    second: Fumiko_attack_N0
   - first:
       213: -3365893266979125511
-    second: Fumiko_67
+    second: Fumiko_attack_N1
   - first:
       213: -7866336138876478539
-    second: Fumiko_68
+    second: Fumiko_attack_N2
   - first:
       213: 191402007180173284
-    second: Fumiko_69
+    second: Fumiko_attack_N3
   - first:
       213: 5086364318139838395
-    second: Fumiko_70
+    second: Fumiko_attack_N4
   - first:
       213: 3589118683940700362
     second: Fumiko_71
@@ -226,7 +226,7 @@ TextureImporter:
     second: Fumiko_73
   - first:
       213: 1105013364015331535
-    second: Fumiko_74
+    second: Fumiko_dash_E0
   - first:
       213: 3993706861860841472
     second: Fumiko_75
@@ -250,19 +250,19 @@ TextureImporter:
     second: Fumiko_81
   - first:
       213: -1194480390488184952
-    second: Fumiko_82
+    second: Fumiko_attack_E0
   - first:
       213: 7396009672247968297
-    second: Fumiko_83
+    second: Fumiko_attack_E1
   - first:
       213: 542374452521540944
-    second: Fumiko_84
+    second: Fumiko_attack_E2
   - first:
       213: 486188135212179656
-    second: Fumiko_85
+    second: Fumiko_attack_E3
   - first:
       213: -4430730892903704572
-    second: Fumiko_86
+    second: Fumiko_attack_E4
   - first:
       213: -6677036430463029286
     second: Fumiko_87
@@ -274,7 +274,7 @@ TextureImporter:
     second: Fumiko_89
   - first:
       213: -177383878522928117
-    second: Fumiko_90
+    second: Fumiko_dash_S0
   - first:
       213: 8927659276368141455
     second: Fumiko_91
@@ -298,19 +298,19 @@ TextureImporter:
     second: Fumiko_97
   - first:
       213: -2862067157151381644
-    second: Fumiko_98
+    second: Fumiko_attack_S0
   - first:
       213: 4508992539067112596
-    second: Fumiko_99
+    second: Fumiko_attack_S1
   - first:
       213: -5084626738126876664
-    second: Fumiko_100
+    second: Fumiko_attack_S2
   - first:
       213: 2890143083587743954
-    second: Fumiko_101
+    second: Fumiko_attack_S3
   - first:
       213: -1001292571736973128
-    second: Fumiko_102
+    second: Fumiko_attack_S4
   - first:
       213: 2397108281901214061
     second: Fumiko_103
@@ -346,19 +346,19 @@ TextureImporter:
     second: Fumiko_113
   - first:
       213: 7715426657899543202
-    second: Fumiko_114
+    second: Fumiko_attack_W0
   - first:
       213: 2697719045978857117
-    second: Fumiko_115
+    second: Fumiko_attack_W1
   - first:
       213: 7254611394063297136
-    second: Fumiko_116
+    second: Fumiko_attack_W2
   - first:
       213: 6954589572234023430
-    second: Fumiko_117
+    second: Fumiko_attack_W3
   - first:
       213: -4844952104214978406
-    second: Fumiko_118
+    second: Fumiko_attack_W4
   - first:
       213: -7511480571616692936
     second: Fumiko_119
@@ -370,13 +370,13 @@ TextureImporter:
     second: Fumiko_121
   - first:
       213: 999571845066406968
-    second: Fumiko_122
+    second: Fumiko_dash_W0
   - first:
       213: -5719774612291093870
     second: Fumiko_123
   - first:
       213: -4865297410303257428
-    second: Fumiko_124
+    second: Fumiko_dash_N0
   - first:
       213: 647862747829358199
     second: Fumiko_125
@@ -590,28 +590,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fumiko_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 224
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f6a1026f215ef940800000000000000
-      internalID: 5331788272802834168
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_1
+      name: Fumiko_idle_N0
       rect:
         serializedVersion: 2
         x: 24
@@ -632,28 +611,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 224
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3df531f0a59745730800000000000000
-      internalID: 3986944997836677075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_3
+      name: Fumiko_run_N0
       rect:
         serializedVersion: 2
         x: 72
@@ -674,7 +632,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_4
+      name: Fumiko_run_N1
       rect:
         serializedVersion: 2
         x: 96
@@ -695,7 +653,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_5
+      name: Fumiko_run_N2
       rect:
         serializedVersion: 2
         x: 120
@@ -716,28 +674,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_16
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1606af6058ec64180800000000000000
-      internalID: -9131384123704057759
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_17
+      name: Fumiko_idle_E0
       rect:
         serializedVersion: 2
         x: 24
@@ -758,28 +695,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_18
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 192
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d38f66c440f060010800000000000000
-      internalID: 1154626865603213373
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_19
+      name: Fumiko_run_E0
       rect:
         serializedVersion: 2
         x: 72
@@ -800,7 +716,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_20
+      name: Fumiko_run_E1
       rect:
         serializedVersion: 2
         x: 96
@@ -821,7 +737,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_21
+      name: Fumiko_run_E2
       rect:
         serializedVersion: 2
         x: 120
@@ -842,28 +758,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_33
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 160
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69c3071e789e3fcd0800000000000000
-      internalID: -2525418196212630378
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_34
+      name: Fumiko_idle_S0
       rect:
         serializedVersion: 2
         x: 24
@@ -884,28 +779,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_35
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 160
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 644c254968af09980800000000000000
-      internalID: -8534045837946076090
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_36
+      name: Fumiko_run_S0
       rect:
         serializedVersion: 2
         x: 72
@@ -926,7 +800,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_37
+      name: Fumiko_run_S1
       rect:
         serializedVersion: 2
         x: 96
@@ -947,7 +821,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_38
+      name: Fumiko_run_S2
       rect:
         serializedVersion: 2
         x: 120
@@ -968,28 +842,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_50
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7cfd1a4e7e3f8620800000000000000
-      internalID: 2778508207241165948
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_51
+      name: Fumiko_idle_W0
       rect:
         serializedVersion: 2
         x: 24
@@ -1010,28 +863,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_52
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 128
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75bfe91ec1e334050800000000000000
-      internalID: 5783534640239147863
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_53
+      name: Fumiko_run_W0
       rect:
         serializedVersion: 2
         x: 72
@@ -1052,7 +884,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_54
+      name: Fumiko_run_W1
       rect:
         serializedVersion: 2
         x: 96
@@ -1073,7 +905,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_55
+      name: Fumiko_run_W2
       rect:
         serializedVersion: 2
         x: 120
@@ -1094,7 +926,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_66
+      name: Fumiko_attack_N0
       rect:
         serializedVersion: 2
         x: 0
@@ -1115,7 +947,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_67
+      name: Fumiko_attack_N1
       rect:
         serializedVersion: 2
         x: 24
@@ -1136,7 +968,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_68
+      name: Fumiko_attack_N2
       rect:
         serializedVersion: 2
         x: 48
@@ -1157,7 +989,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_69
+      name: Fumiko_attack_N3
       rect:
         serializedVersion: 2
         x: 72
@@ -1178,7 +1010,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_70
+      name: Fumiko_attack_N4
       rect:
         serializedVersion: 2
         x: 96
@@ -1199,7 +1031,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_74
+      name: Fumiko_dash_E0
       rect:
         serializedVersion: 2
         x: 192
@@ -1220,28 +1052,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_78
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 96
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 346ff0fd97a7de160800000000000000
-      internalID: 7056430855011432003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_82
+      name: Fumiko_attack_E0
       rect:
         serializedVersion: 2
         x: 0
@@ -1262,7 +1073,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_83
+      name: Fumiko_attack_E1
       rect:
         serializedVersion: 2
         x: 24
@@ -1283,7 +1094,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_84
+      name: Fumiko_attack_E2
       rect:
         serializedVersion: 2
         x: 48
@@ -1304,7 +1115,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_85
+      name: Fumiko_attack_E3
       rect:
         serializedVersion: 2
         x: 72
@@ -1325,7 +1136,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_86
+      name: Fumiko_attack_E4
       rect:
         serializedVersion: 2
         x: 96
@@ -1346,7 +1157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_90
+      name: Fumiko_dash_S0
       rect:
         serializedVersion: 2
         x: 192
@@ -1367,49 +1178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_91
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 64
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8cd4a3afca65eb70800000000000000
-      internalID: 8927659276368141455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_93
-      rect:
-        serializedVersion: 2
-        x: 264
-        y: 64
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5336bd30e9aaab2a0800000000000000
-      internalID: -6720871898250779851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_98
+      name: Fumiko_attack_S0
       rect:
         serializedVersion: 2
         x: 0
@@ -1430,7 +1199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_99
+      name: Fumiko_attack_S1
       rect:
         serializedVersion: 2
         x: 24
@@ -1451,7 +1220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_100
+      name: Fumiko_attack_S2
       rect:
         serializedVersion: 2
         x: 48
@@ -1472,7 +1241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_101
+      name: Fumiko_attack_S3
       rect:
         serializedVersion: 2
         x: 72
@@ -1493,7 +1262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_102
+      name: Fumiko_attack_S4
       rect:
         serializedVersion: 2
         x: 96
@@ -1514,28 +1283,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_106
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 32
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d867ce8e786386770800000000000000
-      internalID: 8604187045447628429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_114
+      name: Fumiko_attack_W0
       rect:
         serializedVersion: 2
         x: 0
@@ -1556,7 +1304,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_115
+      name: Fumiko_attack_W1
       rect:
         serializedVersion: 2
         x: 24
@@ -1577,7 +1325,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_116
+      name: Fumiko_attack_W2
       rect:
         serializedVersion: 2
         x: 48
@@ -1598,7 +1346,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_117
+      name: Fumiko_attack_W3
       rect:
         serializedVersion: 2
         x: 72
@@ -1619,7 +1367,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_118
+      name: Fumiko_attack_W4
       rect:
         serializedVersion: 2
         x: 96
@@ -1640,28 +1388,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_121
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 0
-        width: 24
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50b6d7fee486cac10800000000000000
-      internalID: 2066141017290926853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fumiko_122
+      name: Fumiko_dash_W0
       rect:
         serializedVersion: 2
         x: 192
@@ -1682,7 +1409,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fumiko_124
+      name: Fumiko_dash_N0
       rect:
         serializedVersion: 2
         x: 240

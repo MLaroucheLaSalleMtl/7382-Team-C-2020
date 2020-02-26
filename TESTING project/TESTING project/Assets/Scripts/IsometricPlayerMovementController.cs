@@ -24,12 +24,24 @@ public class IsometricPlayerMovementController : MonoBehaviour
     private float verticalInput;
     private Vector2 inputVector = new Vector2();
     private Vector2 currentPos = new Vector2();
+    [SerializeField]private static float s = 0.5f;
+    private static float cornerS = s * Mathf.Sin(45f);
+    private static readonly Vector2[] quadrant = { new Vector2(0, s), new Vector2(-cornerS, cornerS), new Vector2(-s, 0), new Vector2(-cornerS, -cornerS), new Vector2(0, -s), new Vector2(cornerS, -cornerS), new Vector2(s, 0), new Vector2(cornerS, cornerS) };
+    private int direction;
+    [SerializeField] private float attackRadius;
+    [SerializeField] private LayerMask enemyLayer;
+    private GameManager code;
+    [SerializeField] private Transform middle;
     // Update is called once per frame
     private void FixedUpdate()
     {
         //Move();
         //Dash();
-    }   
+    }
+    private void Start()
+    {
+        code = GameManager.instance;
+    }
     private void DashFreeze()
     {
         isDashing = false;
@@ -38,9 +50,9 @@ public class IsometricPlayerMovementController : MonoBehaviour
     {
         dashRecover = true;
     }
-    
 
-    public void Move(float horizontal, float vertical, bool dash)
+
+    public void Move(Vector2 move, bool dash, bool attack)
     {
         //Debug.Log(dash);
         if (dash && !isDashing && dashRecover)
@@ -55,18 +67,46 @@ public class IsometricPlayerMovementController : MonoBehaviour
         }
         else if (!isDashing)
         {
-            inputVector = new Vector2(horizontal, vertical);
+            inputVector = move;
             inputVector = Vector2.ClampMagnitude(inputVector, 1);
             movement = inputVector * movementSpeed;
         }
         currentPos = rbody.position;
-        
-        
+
+
         Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
 
-        
+
         rbody.MovePosition(newPos);
-        isoRenderer.SetDirection(movement);
+        isoRenderer.SetDirection(movement, isDashing, attack);
+    }
+
+    public void Attack(Vector2 move)
+    {
+        
+        direction = isoRenderer.lastDirection;
+        //new Vector2(transform.position.x + move.x, transform.position.y + move.y);
+
+        Collider2D[] hit = Physics2D.OverlapCircleAll(currentPos + new Vector2(0.1f,0.1f) + quadrant[direction], attackRadius, enemyLayer);
+
+
+        foreach (Collider2D enemy in hit)
+        {
+            if (enemy.gameObject.GetComponent<ChaosBossAi>())
+            {
+                Debug.Log("get fucked");
+            }
+            else if(gameObject.GetComponent<LifeBossAI>())
+            {
+                Debug.Log("test");
+            }
+            
+        }
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(currentPos + new Vector2(0, 0.2f) + quadrant[direction], attackRadius);
     }
     //public void Dash()
     //{
