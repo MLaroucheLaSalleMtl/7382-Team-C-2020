@@ -24,7 +24,7 @@ You are Ziae'l, your job is to fight the entities that are challinging the balan
 Music :
 Main menu - Oceiros The Consumed King by Yuka Kitamura (DARK SOULS III) TO BE CHANGED
 
-Win Screen - https://www.youtube.com/watch?v=_uNNRs19EzQ - ending from evangelion TO BE CHANGED
+Win Screen - https://www.youtube.com/watch?v=hf1DkBQRQj4 - ending from neon genesis evangelion TO BE CHANGED
 
 Loss Screen - Secret Betreyal by Yuka Kitamura (DARK SOULS III) TO BE CHANGED
 
@@ -44,6 +44,12 @@ FireBall - https://opengameart.org/content/fireballs
 Meteor - https://opengameart.org/content/meteor-animated-64x64
 
 AOE explosion - https://opengameart.org/content/explosion-animations
+
+Health bar - https://opengameart.org/content/health-orb-11
+
+Stamina bar - https://opengameart.org/content/health-and-breath-bars
+
+Boss health bar - https://opengameart.org/content/enemy-health-bars
 
 
 
