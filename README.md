@@ -53,6 +53,9 @@ Boss health bar - https://opengameart.org/content/enemy-health-bars
 
 Menu background image - https://www.shutterstock.com/image-illustration/woman-standing-on-sea-looking-burning-1095632744 (we did not pay for it we are just using it as a place holder while we make our own image)
 
+SFX:
+All from https://www.zapsplat.com/ 
+
 
 
 
