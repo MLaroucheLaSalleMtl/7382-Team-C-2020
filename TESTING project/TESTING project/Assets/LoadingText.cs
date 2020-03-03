@@ -16,12 +16,16 @@ public static class LoadingText
     private static string chaosTip2 = "The three walls of fire have a hole inside of them that can be used to dodge the attack. Tanking the damage is a costly option.";
     private static string chaosTip3 = "Certain tiles on the ground will damage you, do your best at dodging them.";
     private static string chaosTip4 = "The boss is invincible until you step on all the green patches, be quick to attack him since he will regain his protection.";
+    private static string chaosTip5 = "It's better to take damage from the tiles than the attacks.";
     private static string chaosTipsZ1 = "GLI NLO";
     private static string chaosTipsZ2 = "IK OLC JKOBL";
     private static string chaosTipsZ3 = "IA LM";
     private static string chaosTipsZ4 = "BHPJ MT";
-    public static string[] chaosTips = { chaosTip1, chaosTip2, chaosTip3, chaosTip4 };
-    public static string[] chaosTipsZ = { chaosTipsZ1, chaosTipsZ2, chaosTipsZ3, chaosTipsZ4 };
+    private static string chaosTipsZ5 = "AIEO BHQSP";
+    public static string[] chaosTips = { chaosTip1, chaosTip2, chaosTip3, chaosTip4, chaosTip5 };
+    public static string[] chaosTipsZ = { chaosTipsZ1, chaosTipsZ2, chaosTipsZ3, chaosTipsZ4, chaosTipsZ5 };
+    public static string congratsText = "Congratulations!\nおめでとう！";
+    public static string congratsTextZ = "DPH";
 
     public static string GetTime(float timeInSeconds)
     {

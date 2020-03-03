@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     private float typeDisadvantage = 0.5f;
     //public HealthBar healthBar;
     [SerializeField] private float staminaRegen;
+    [SerializeField] private float damageDelay;
+    private bool damageReady = true;
     //public Image effect;
 
     private AsyncOperation async;
@@ -112,12 +114,19 @@ public class GameManager : MonoBehaviour
     private int test = 0;
     public void GetHit(float damage)
     {
-        currentHp -= damage;
-        ui.PlayerHp(currentHp);
+        if (damageReady)
+        {
+            currentHp -= damage;
+            ui.PlayerHp(currentHp);
+            damageReady = false;
+            Invoke("DamageReady", damageDelay);
+        }
+        
         //++test;
         ////anim.SetInteger("takingDamage", test);
         //Invoke("DisableEffect", 1f);
     }
+    private void DamageReady() { damageReady = true; }
     //private void DisableEffect()
     //{
     //    if (test > 0) --test;

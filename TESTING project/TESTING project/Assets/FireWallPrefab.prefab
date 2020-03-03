@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallSpeed: 2
-  damage: 5
+  damage: 20
 --- !u!70 &7252775839461980995
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

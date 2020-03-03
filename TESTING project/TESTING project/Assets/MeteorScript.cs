@@ -13,7 +13,7 @@ public class MeteorScript : MonoBehaviour
     {
         direction = new Vector2(transform.position.x, transform.position.y - 10f);
         code = GameManager.instance;
-        Invoke("Die", 10f);
+        Invoke("Die", 8f);
     }
     private void Die()
     {
@@ -23,7 +23,7 @@ public class MeteorScript : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, direction, Time.deltaTime * speed);
-        if(direction.y - transform.position.y <= 0.2f)
+        if(direction.y - transform.position.y <= 0.1f)
         {
             GetComponent<CircleCollider2D>().enabled = true;
         }

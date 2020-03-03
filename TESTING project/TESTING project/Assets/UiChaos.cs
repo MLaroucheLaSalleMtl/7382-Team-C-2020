@@ -19,7 +19,7 @@ public class UiChaos : MonoBehaviour
     private float maxHp = 0;
     private float hpPlayer;
     private float maxhpPlayer;
-
+    [SerializeField] private float bloodA;
     private void Awake()
     {
         if (instance == null)
@@ -36,7 +36,8 @@ public class UiChaos : MonoBehaviour
         if (maxhpPlayer == 0) maxhpPlayer = _hp;
         hpPlayer = _hp;
         redPlayer.fillAmount = hpPlayer / maxhpPlayer;
-        blood.color = new Vector4(255, 255, 255, 1 - (hpPlayer / maxhpPlayer));
+        bloodA = Mathf.Clamp(0.9f - (hpPlayer / maxhpPlayer),0,0.7f);
+        blood.color = new Vector4(255, 255, 255, bloodA);
         
     }
     public void HpUpdate(float _hp)
@@ -59,6 +60,7 @@ public class UiChaos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         variables = FixedVariables.instance;
     }
 

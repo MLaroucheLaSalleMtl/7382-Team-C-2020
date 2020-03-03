@@ -9,7 +9,7 @@ public class ChaosBossAi : MonoBehaviour
 
     [Header("General",order = 0)]
     [SerializeField] private Transform target;
-    [SerializeField]private bool attackReady = true;
+    private bool attackReady = false;
     [SerializeField] private float attackChance;
     [SerializeField]private int previousAttack = 0;
     [SerializeField]private int attackToDo = 0;
@@ -58,6 +58,7 @@ public class ChaosBossAi : MonoBehaviour
         hp = maxHp;
         ui = UiChaos.instance;
         ui.HpUpdate(hp);
+        Invoke("AttackCooldown", 1f);
     }
 
     // Update is called once per frame

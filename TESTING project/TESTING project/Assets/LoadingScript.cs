@@ -19,14 +19,18 @@ public class LoadingScript : MonoBehaviour
     
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
         sceneToLoad = PlayerPrefs.GetString("SceneToLoad", "MainMenu");
-        if (sceneToLoad != "MainMenu") Cursor.lockState = CursorLockMode.Locked;
-        else Cursor.lockState = CursorLockMode.None;
+        //if (sceneToLoad != "MainMenu") Cursor.lockState = CursorLockMode.Locked;
+        //else Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
         PlayerPrefs.DeleteKey("SceneToLoad");
         async = SceneManager.LoadSceneAsync(sceneToLoad);
         async.allowSceneActivation = false;
         variables = FixedVariables.instance;
+        lore.text = "";
+        loreZ.text = "";    
         
         ChooseText();
         Invoke("Test", 5f);
@@ -82,8 +86,11 @@ public class LoadingScript : MonoBehaviour
                 lore.text = LoadingText.loreText[2];
                 loreZ.text = LoadingText.loreTextZ[2];
             }
-            
-
+        }
+        if(variables.LastScene == "WinScreen")
+        {
+            lore.text = LoadingText.congratsText;
+            loreZ.text = LoadingText.congratsTextZ;
         }
     }
 }

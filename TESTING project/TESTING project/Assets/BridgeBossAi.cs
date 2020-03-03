@@ -82,10 +82,10 @@ public class BridgeBossAi : MonoBehaviour
         
         Invoke("AttackCooldown", cooldown);
         GameObject aoeUnder;
-        if (Vector2.Distance(transform.position, lockedTarget.position) < 5)
+        if (Vector2.Distance(transform.position, lockedTarget.position) < 4.5f)
         {
             aoeUnder = Instantiate(circle, transform.position, transform.rotation);
-            aoeUnder.transform.localScale *= 3;
+            aoeUnder.transform.localScale *= 3.5f;
         }
         else
         {

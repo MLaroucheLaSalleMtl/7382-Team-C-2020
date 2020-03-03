@@ -13,7 +13,6 @@ public class ChaosTile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isTouching = true;
-        code.GetHit(damageValue);
         StartCoroutine(ChaosTileDamage());
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -25,8 +24,9 @@ public class ChaosTile : MonoBehaviour
     {
         while (isTouching && boss.invincible)
         {
-            yield return new WaitForSecondsRealtime(damageTick);
             code.GetHit(damageValue);
+            yield return new WaitForSecondsRealtime(damageTick);
+            
         }
     }
 

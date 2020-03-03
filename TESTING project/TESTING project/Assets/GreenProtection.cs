@@ -36,7 +36,7 @@ public class GreenProtection : MonoBehaviour
     {
         for (int i = 0; i <greenPatches.Length; ++i)
         {
-            Debug.Log("test");
+
             greenPatches[i].GetComponent<BoxCollider2D>().enabled = true;
             greenPatches[i].GetComponentInChildren<SpriteRenderer>().enabled = false;
         }

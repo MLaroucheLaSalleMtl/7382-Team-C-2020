@@ -47,5 +47,5 @@ MonoBehaviour:
   currentLives: 0
   currentStamina: 0
   meleeAttack: 10
-  healthBar: {fileID: 0}
   staminaRegen: 5
+  damageDelay: 0.3

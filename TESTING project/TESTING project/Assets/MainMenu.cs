@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]private Text timer;
     private AsyncOperation async;
     private FixedVariables variables;
+    public GameObject options;
+    public GameObject menu;
+    public EventSystem eventSystem;
+    public GameObject returnBtn;
+    public GameObject startBtn;
+
     void Start()
     {
         variables = FixedVariables.instance;
+        options.SetActive(false);
+        Cursor.visible = true;
     }
     private void Update()
     {
@@ -31,8 +40,26 @@ public class MainMenu : MonoBehaviour
             async.allowSceneActivation = true;
 
             }
-        }
-        
+    }
+
+    private void OnEnable()
+    {
+        eventSystem = EventSystem.current;
+    }
+
+    public void Options()
+    {
+        options.SetActive(true);
+        menu.SetActive(false);
+        eventSystem.SetSelectedGameObject(returnBtn);
+    }
+
+    public void Return()
+    {
+        options.SetActive(false);
+        menu.SetActive(true);
+        eventSystem.SetSelectedGameObject(startBtn);
+    }
 
     public void ExitGame()
     {
