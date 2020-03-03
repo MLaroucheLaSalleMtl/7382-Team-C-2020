@@ -70,8 +70,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3364639628334241129}
   - component: {fileID: 1251821087019119272}
-  - component: {fileID: 8959780000516449542}
   - component: {fileID: 7608764185019381000}
+  - component: {fileID: 89775282959167271}
   m_Layer: 0
   m_Name: IceShardHoming
   m_TagString: Untagged
@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8389876321553924042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.102, y: 0.114, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 6892032610479881362}
@@ -145,22 +145,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &8959780000516449542
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389876321553924042}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.043153398, y: -0.03983375}
-  m_Size: {x: 0.621577, y: 0.36265635}
-  m_Direction: 1
 --- !u!114 &7608764185019381000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,3 +162,24 @@ MonoBehaviour:
   startVector: {fileID: 3977421905458623760}
   speed: 30
   destination: {x: 0, y: 0, z: 0}
+--- !u!68 &89775282959167271
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8389876321553924042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 1.7491853, y: 3.8600054}
+  - {x: -3.0000737, y: -3.497213}
+  - {x: -0.2504781, y: -1.5099607}
+  - {x: 3.5030956, y: 2.4792423}
+  - {x: 1.6612364, y: 3.9355657}

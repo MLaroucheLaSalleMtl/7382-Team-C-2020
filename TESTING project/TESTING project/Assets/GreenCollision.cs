@@ -5,10 +5,10 @@ using UnityEngine;
 public class GreenCollision : MonoBehaviour
 {
     private GreenProtection green;
-
-
+    [SerializeField] private SpriteRenderer knob;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        knob.enabled = true;
         green.Collision();
         GetComponent<BoxCollider2D>().enabled = false;
     }

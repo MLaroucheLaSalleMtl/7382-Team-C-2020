@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ChaosTile : MonoBehaviour
 {
     private GameManager code;
+    private ChaosBossAi boss;
     private bool isTouching = false;
     [SerializeField] private float damageTick = 0.9f;
     [SerializeField] private float damageValue = 3f;
@@ -22,7 +23,7 @@ public class ChaosTile : MonoBehaviour
 
     private IEnumerator ChaosTileDamage()
     {
-        while (isTouching)
+        while (isTouching && boss.invincible)
         {
             yield return new WaitForSecondsRealtime(damageTick);
             code.GetHit(damageValue);
@@ -33,6 +34,7 @@ public class ChaosTile : MonoBehaviour
     void Start()
     {
         code = GameManager.instance;
+        boss = GameObject.Find("Boss-ChaosStage-1").GetComponent<ChaosBossAi>();
     }
 
     // Update is called once per frame

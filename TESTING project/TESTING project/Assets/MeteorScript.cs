@@ -13,8 +13,12 @@ public class MeteorScript : MonoBehaviour
     {
         direction = new Vector2(transform.position.x, transform.position.y - 10f);
         code = GameManager.instance;
+        Invoke("Die", 10f);
     }
-
+    private void Die()
+    {
+        Destroy(gameObject.transform.parent.gameObject);
+    }
     // Update is called once per frame
     void Update()
     {

@@ -32,6 +32,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     private GameManager code;
     [SerializeField] private Transform middle;
+    private AudioSource audio;
     // Update is called once per frame
     private void FixedUpdate()
     {
@@ -40,6 +41,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
     }
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         code = GameManager.instance;
     }
     private void DashFreeze()
@@ -80,7 +82,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
         rbody.MovePosition(newPos);
         isoRenderer.SetDirection(movement, isDashing, attack);
     }
-
+    
     public void Attack(Vector2 move)
     {
         
@@ -89,16 +91,17 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
         Collider2D[] hit = Physics2D.OverlapCircleAll(currentPos + new Vector2(0.1f,0.1f) + quadrant[direction], attackRadius, enemyLayer);
 
-
+        if(hit.Length == 0) { audio.Play(); }
         foreach (Collider2D enemy in hit)
         {
-            if (enemy.gameObject.GetComponent<ChaosBossAi>())
+            if (enemy.gameObject.GetComponent<BridgeBossAi>())
             {
-                Debug.Log("get fucked");
+                enemy.gameObject.GetComponent<BridgeBossAi>().GetHit(code.MeleeAttack);
             }
-            else if(gameObject.GetComponent<LifeBossAI>())
+            else if(enemy.gameObject.GetComponent<ChaosBossAi>())
             {
-                Debug.Log("test");
+                enemy.gameObject.GetComponent<ChaosBossAi>().GetHit(code.MeleeAttack);
+                
             }
             
         }

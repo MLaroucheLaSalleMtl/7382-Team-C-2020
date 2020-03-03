@@ -7,6 +7,7 @@ public class AoeMeleeScript : MonoBehaviour
     private GameManager code;
     private SpriteRenderer[] sprite;
     [SerializeField] private float damage;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
@@ -19,17 +20,20 @@ public class AoeMeleeScript : MonoBehaviour
     {
         code = GameManager.instance;
         sprite = GetComponentsInChildren<SpriteRenderer>();
-        Invoke("Seppuku", 3f);
-        Invoke("Activate", 2f);
+        Invoke("Seppuku", 1.5f);
+        Invoke("Activate", 0.8f);
     }
 
     private void Activate()
     {
-        gameObject.GetComponent<CircleCollider2D>().enabled = true;
-        foreach(SpriteRenderer aaaa in sprite)
+        
+        gameObject.GetComponent<CircleCollider2D>().enabled = true;       
+        foreach (SpriteRenderer aaaa in sprite)
         {
             aaaa.enabled = true;
         }
+        
+
     }
     private void Seppuku()
     {

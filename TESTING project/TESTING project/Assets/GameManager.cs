@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,20 +11,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]private float currentHp;
     [SerializeField]private float currentLives;
     private float maxStamina = 50;
-    [SerializeField] private float currentStamina;
-    private float meleeAttack = 20;
+    public float currentStamina;
+    [SerializeField] private float meleeAttack = 10;
     //private float meleeStrongAttack = 35;
     private float typeAdvantage = 1.5f;
     private float typeDisadvantage = 0.5f;
-    public HealthBar healthBar;
+    //public HealthBar healthBar;
+    [SerializeField] private float staminaRegen;
+    //public Image effect;
 
-    private float time;
-    [SerializeField] private Text text;
-    
+    private AsyncOperation async;
+    private FixedVariables variables;
+    private UiChaos ui;
     //private float rangeLightAttack = 15;
     //private float rangeStrongAttack = 20;
     //private float rangeShieldDamage = 10;
     //private float rangeStrongShieldDamage = 20;
+    //[SerializeField] private Animator anim;
 
 
     public static GameManager instance = null;
@@ -43,37 +46,54 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ui = UiChaos.instance;
         currentHp = maxHp;
-        //healthBar.SetMaxHealth(maxHp);
+        ui.PlayerHp(currentHp);
         currentLives = maxLives;
-        time = PlayerPrefs.GetFloat("Timer", 0);
-        
+        variables = FixedVariables.instance;
+        currentStamina = maxStamina;
     }
+    private bool isAttacking = false;
 
+    public float MeleeAttack { get => meleeAttack; set => meleeAttack = value; }
+
+    public void Attack()
+    {
+        if(Time.timeScale != 0) { currentStamina -= maxStamina * 0.25f; }
+        
+        isAttacking = true;
+        Invoke("ResetAttack", 1f);
+    }
+    private void ResetAttack()
+    {
+        isAttacking = false;
+    }
     // Update is called once per frame
     void Update()
     {
         //Attack(); // this is not necessary with the input system now implemented
         HpCheck();
-        time += Time.deltaTime;
-        text.text = GetTime(time);
-        if (Input.GetKeyDown(KeyCode.T)) { time += 60; }
-        
+        if(currentStamina <= maxStamina && !isAttacking)
+        {
+            currentStamina += Time.deltaTime * staminaRegen;
+        }
+        ui.Stamina(currentStamina);
+        //if (test == 0) effect.enabled = false;
+        //else effect.enabled = true;
     }
-    private static string GetTime(float timeInSeconds)
-    {
-        int minutes = ((int)timeInSeconds) / 60;
-        int seconds = ((int)timeInSeconds) % 60;
-
-        return minutes + ":" + ((seconds < 10) ? "0" + seconds : seconds.ToString());
-    }
-
-
+    
     private void HpCheck()
     {
         if (currentHp <= 0)
         {
-            HpReset();
+            if(async == null)
+            {
+                if(variables != null) variables.LastScene = SceneManager.GetActiveScene().name;
+                PlayerPrefs.SetString("SceneToLoad", SceneManager.GetActiveScene().name);
+                
+                async = SceneManager.LoadSceneAsync("Loading");
+                async.allowSceneActivation = true;
+            }
         }
         if (currentLives <= 0)
         {
@@ -89,9 +109,18 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Scene Restart");
     }
+    private int test = 0;
     public void GetHit(float damage)
     {
         currentHp -= damage;
-
+        ui.PlayerHp(currentHp);
+        //++test;
+        ////anim.SetInteger("takingDamage", test);
+        //Invoke("DisableEffect", 1f);
     }
+    //private void DisableEffect()
+    //{
+    //    if (test > 0) --test;
+    //    //anim.SetInteger("takingDamage", test);
+    //}
 }

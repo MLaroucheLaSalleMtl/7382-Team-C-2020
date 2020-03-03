@@ -7,7 +7,8 @@ public class GreenProtection : MonoBehaviour
     public static GreenProtection instance = null;
     [SerializeField]private float touched = 0;
     private TileSwap tileSwap;
-    [SerializeField]private BoxCollider2D[] greenPatches;
+    [SerializeField]private GameObject[] greenPatches;
+    private AudioSource audio;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class GreenProtection : MonoBehaviour
     public void Collision()
     {
         ++touched;
+        audio.Play();
         if (touched == 6)
         {
             touched = 0;
@@ -34,12 +36,15 @@ public class GreenProtection : MonoBehaviour
     {
         for (int i = 0; i <greenPatches.Length; ++i)
         {
-            greenPatches[i].enabled = true;
+            Debug.Log("test");
+            greenPatches[i].GetComponent<BoxCollider2D>().enabled = true;
+            greenPatches[i].GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
     }
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         tileSwap = GameObject.Find("Tilemap").GetComponent<TileSwap>();
     }
 

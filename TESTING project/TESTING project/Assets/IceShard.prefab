@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 3364639628334241129}
   - component: {fileID: 1251821087019119272}
   - component: {fileID: 2818389108438846870}
-  - component: {fileID: 8959780000516449542}
+  - component: {fileID: 6725828292547710636}
   m_Layer: 0
   m_Name: IceShard
   m_TagString: Untagged
@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8389876321553924042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.009, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 6892032610479881362}
@@ -157,8 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c080394eecec91c4eadbe72b9fb04238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &8959780000516449542
-CapsuleCollider2D:
+  damage: 10
+--- !u!68 &6725828292547710636
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -170,6 +171,11 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.043153398, y: -0.03983375}
-  m_Size: {x: 0.621577, y: 0.36265635}
-  m_Direction: 1
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 3.639124, y: 2.7500117}
+  - {x: -0.0636892, y: -1.4853418}
+  - {x: -3.2588565, y: -3.8798883}
+  - {x: 1.6734086, y: 3.9353201}
+  - {x: 3.4864216, y: 2.6699524}

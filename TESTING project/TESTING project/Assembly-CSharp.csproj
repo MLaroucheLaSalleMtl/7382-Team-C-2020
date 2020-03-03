@@ -68,9 +68,11 @@
     <Compile Include="Assets\ChaosBossAi.cs" />
     <Compile Include="Assets\ChaosTile.cs" />
     <Compile Include="Assets\ChasePlayer.cs" />
+    <Compile Include="Assets\DamageEffect.cs" />
     <Compile Include="Assets\EnemyAiTest.cs" />
     <Compile Include="Assets\FireRangeScript.cs" />
     <Compile Include="Assets\FireWallScript.cs" />
+    <Compile Include="Assets\FixedVariables.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\GreenCollision.cs" />
     <Compile Include="Assets\GreenProtection.cs" />
@@ -80,8 +82,10 @@
     <Compile Include="Assets\LifeBossAI.cs" />
     <Compile Include="Assets\LoadingInput.cs" />
     <Compile Include="Assets\LoadingScript.cs" />
+    <Compile Include="Assets\LoadingText.cs" />
     <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\MeteorScript.cs" />
+    <Compile Include="Assets\PauseManager.cs" />
     <Compile Include="Assets\ProximityTeleport.cs" />
     <Compile Include="Assets\Scripts\BasicCameraFollow.cs" />
     <Compile Include="Assets\Scripts\DashMove.cs" />
@@ -102,6 +106,9 @@
     <Compile Include="Assets\Scripts\TestEnemyAi\WanderState.cs" />
     <Compile Include="Assets\TestAoeMelee.cs" />
     <Compile Include="Assets\TileSwap.cs" />
+    <Compile Include="Assets\UIBridge.cs" />
+    <Compile Include="Assets\UiChaos.cs" />
+    <Compile Include="Assets\VideoStream.cs" />
     <Compile Include="Assets\VoidTile.cs" />
     <None Include="Assets\Assets_DevilsWorkShop\Low_Poly_Pixel_2D_Blocks_DevilsWorkShop_v04\License.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

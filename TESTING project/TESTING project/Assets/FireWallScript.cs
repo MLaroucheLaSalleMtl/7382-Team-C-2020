@@ -13,7 +13,7 @@ public class FireWallScript : MonoBehaviour
     {
         direction = new Vector2(-1000, transform.position.y);
         code = GameManager.instance;
-        Invoke("Die", 20f);
+        Invoke("Die", 50f);
     }
 
     // Update is called once per frame

@@ -30,7 +30,6 @@ public class InputSystem : MonoBehaviour
     {
         isoMovement.Move(move, dash, attack);
         
-        
         dash = false;
     }
     private IEnumerator Test()
@@ -65,8 +64,15 @@ public class InputSystem : MonoBehaviour
     {
         if (context.started && !attack)
         {
-            attack = true;
-            isoMovement.Attack(move);
+            if(code.currentStamina >= 0)
+            {
+                
+                attack = true;
+                isoMovement.Attack(move);
+                code.Attack();
+
+            }
+            
         }
         
         StartCoroutine(Test());
@@ -95,7 +101,6 @@ public class InputSystem : MonoBehaviour
         if (context.started)
         {
             isPaused = !isPaused;
-            Debug.Log("Pause!");
         }
     }
 }
