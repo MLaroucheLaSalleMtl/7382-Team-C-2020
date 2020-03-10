@@ -6,17 +6,18 @@ public class IceShardHoming : MonoBehaviour
 {
     private GameManager code;
     private LifeBossAI life;
-    [SerializeField]private float angle;
-    [SerializeField] private Transform endVector;
-    [SerializeField] private Transform startVector;
+    //[SerializeField]private float angle;
+    //[SerializeField] private Transform endVector;
+    //[SerializeField] private Transform startVector;
     [SerializeField] private float speed;
+    [SerializeField] private float damage;
     private Transform target = null;
     [SerializeField]private Vector3 destination;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            //code.GetHit(5);
+            code.GetHit(damage);
         }
     }
 
@@ -32,10 +33,7 @@ public class IceShardHoming : MonoBehaviour
         life = GameObject.Find("BossLightStage").GetComponent<LifeBossAI>();
         code = GameManager.instance;
     }
-    private void Seppuku()
-    {
-        Destroy(gameObject);
-    }
+    
     private void Update()
     {
         if(target != null)

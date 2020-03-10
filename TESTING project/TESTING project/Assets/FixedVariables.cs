@@ -9,6 +9,11 @@ public class FixedVariables : MonoBehaviour
     private string lastScene;
     public string LastScene { get => lastScene; set => lastScene = value; }
     public float Timer { get => timer; set => timer = value; }
+    public float StaminaUpgrade { get => staminaUpgrade; set => staminaUpgrade = value; }
+    public float HealthUpgrade { get => healthUpgrade; set => healthUpgrade = value; }
+
+    private float staminaUpgrade = 0;
+    private float healthUpgrade = 0;
 
     private void Awake()
     {
@@ -24,14 +29,13 @@ public class FixedVariables : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StaminaUpgrade = 0;
+        HealthUpgrade = 0;
         DontDestroyOnLoad(this.gameObject);
         StartCoroutine(TimeAdd());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    
     private IEnumerator TimeAdd()
     {
         while (true)

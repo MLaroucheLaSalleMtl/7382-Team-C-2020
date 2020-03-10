@@ -6,6 +6,11 @@ public class ProximityTeleport : MonoBehaviour
 {
     [SerializeField]private float timeSpentClose = 0;
     private bool isInside = false;
+    private LifeBossAI boss;
+    private void Start()
+    {
+        boss = gameObject.transform.parent.gameObject.GetComponent<LifeBossAI>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
@@ -28,7 +33,7 @@ public class ProximityTeleport : MonoBehaviour
             ++timeSpentClose;
             if(timeSpentClose >= 10)
             {
-                gameObject.transform.parent.gameObject.GetComponent<LifeBossAI>().Spawn();
+                if (!boss.AttackReady) boss.Spawn();
             }
         }
     }

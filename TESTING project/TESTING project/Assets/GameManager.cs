@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int maxHp = 100;
+    private float maxHp = 100;
     private float maxLives = 3;
     [SerializeField]private float currentHp;
     [SerializeField]private float currentLives;
-    private float maxStamina = 50;
+    private float maxStamina = 5;
     public float currentStamina;
     [SerializeField] private float meleeAttack = 10;
     //private float meleeStrongAttack = 35;
@@ -48,38 +48,62 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        variables = FixedVariables.instance;
+        maxHp = 100 * Mathf.Pow(1.25f, variables.HealthUpgrade);
+        maxStamina = 5 + variables.StaminaUpgrade;
         ui = UiChaos.instance;
         currentHp = maxHp;
         ui.PlayerHp(currentHp);
         currentLives = maxLives;
-        variables = FixedVariables.instance;
+        
         currentStamina = maxStamina;
+        ui.Stamina(currentStamina);
+        StartCoroutine(StaminaRegen());
     }
-    private bool isAttacking = false;
+    [SerializeField]private int isAttacking = 0;
 
     public float MeleeAttack { get => meleeAttack; set => meleeAttack = value; }
 
+    private IEnumerator StaminaRegen()
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(0.1f + maxStamina / (5 + variables.StaminaUpgrade));
+            if(isAttacking <= 0 && currentStamina < maxStamina)
+            {
+                ++currentStamina;
+                ui.Stamina(currentStamina);
+            }
+
+        }
+        
+    }
     public void Attack()
     {
-        if(Time.timeScale != 0) { currentStamina -= maxStamina * 0.25f; }
+        if(Time.timeScale != 0)
+        {
+            --currentStamina;
+            ++isAttacking;
+            Invoke("ResetAttack", 1f);
+        }
+        ui.Stamina(currentStamina);
         
-        isAttacking = true;
-        Invoke("ResetAttack", 1f);
+        
     }
     private void ResetAttack()
     {
-        isAttacking = false;
+        --isAttacking;
     }
     // Update is called once per frame
     void Update()
     {
         //Attack(); // this is not necessary with the input system now implemented
         HpCheck();
-        if(currentStamina <= maxStamina && !isAttacking)
-        {
-            currentStamina += Time.deltaTime * staminaRegen;
-        }
-        ui.Stamina(currentStamina);
+        //if(currentStamina <= maxStamina && !isAttacking)
+        //{
+        //    currentStamina += Time.deltaTime * staminaRegen;
+        //}
+        //ui.Stamina(currentStamina);
         //if (test == 0) effect.enabled = false;
         //else effect.enabled = true;
     }

@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class LifeBossAI : MonoBehaviour
 {
-    [Header("General",order = 0)]
-	[SerializeField] private Transform target;
+    private UiChaos ui;
+    private AudioSource audio;
+    [Header("General", order = 0)]
+    [SerializeField] private float hp;
+    private static float maxHp = 200;
+    [SerializeField] private Transform target;
     public Transform Target { get => target; set => target = value; }
+    public bool AttackReady { get => attackReady; set => attackReady = value; }
+
     [SerializeField] private Rigidbody2D targetR;
     [SerializeField] private bool attackReady = true;
     [SerializeField] private float attackChance;
     [SerializeField] private int previousAttack = 0;
     [SerializeField] private int attackToDo = 0;
+    [SerializeField] private AudioClip[] clips;
+    private static int nbAttack = 3;
     private bool spawnDelay = false;
     private static float spawnLeft = -23;
     private static float spawnRight = 23;
@@ -21,6 +29,9 @@ public class LifeBossAI : MonoBehaviour
     private float previousPos;
     private float initialRot;
     private bool firstTime = true;
+    private bool invincible = true;
+    private bool stun = false;
+    private int stunCounter = 0;
     public ParticleSystem windParticles;
 
     #region//Line
@@ -65,36 +76,67 @@ public class LifeBossAI : MonoBehaviour
         //make battle cry
         Invoke("Spawn", 5f);
         Invoke("AttackCooldown", 7f);
-        
+        ui = UiChaos.instance;
+        audio = GetComponent<AudioSource>();
+        hp = maxHp;
+        ui.HpUpdate(hp);
     }
 
 	// Update is called once per frame
 	void Update()
 	{
-		if(attackReady && spawnDelay && Random.Range(0,100) > attackChance)
+		if(AttackReady && spawnDelay && !stun && Random.Range(0,100) > attackChance)
         {
             do
             {
-                attackToDo = Random.Range(0, 3);
+                attackToDo = Random.Range(0, nbAttack);
             } while (attackToDo == previousAttack);
             previousAttack = attackToDo;
 
             switch (attackToDo)
             {
                 case 0:
-                    StartCoroutine(Wind(windCooldown));
+                    StartCoroutine(Wind(windCooldown - stunCounter));
                     break;
                 case 1:
-                    StartCoroutine(FireLine(Target, fireLineCooldown));
+                    StartCoroutine(FireLine(Target, fireLineCooldown - stunCounter));
                     break;
                 case 2:
-                    StartCoroutine(IceShardTarget(homingCooldown, Target));
+                    StartCoroutine(IceShardTarget(homingCooldown - stunCounter, Target));
                     break;
             }
-            attackReady = false;
+            audio.PlayOneShot(clips[attackToDo]);
+            AttackReady = false;
         }
 	}
+    
+    public void GetHit(float damage)
+    {
+        if (!invincible)
+        {
+            hp = hp - damage;
+            ui.HpUpdate(hp);
+            HpCheck();
+            //audio.PlayOneShot(clips[nbAttack]);
+        }
+    }
+    private void HpCheck()
+    {
 
+    }
+    public void Stun()
+    {
+        invincible = false;
+        stun = true;
+        Invoke("Free", 8f);
+    }
+    private void Free()
+    {
+        ++stunCounter;
+        invincible = true;
+        if (stunCounter >= 2) invincible = false;
+        stun = false;
+    }
     public void Spawn()
     {
         //make battle cry
@@ -129,7 +171,9 @@ public class LifeBossAI : MonoBehaviour
         }
         
         spawnDelay = true;
+        while (stun) { }
         Teleport(initialPos, initialRot);
+
     }
     private void Teleport(float x, float z)
     {
@@ -209,6 +253,6 @@ public class LifeBossAI : MonoBehaviour
     }
     private void AttackCooldown()
     {
-        attackReady = true;
+        AttackReady = true;
     }
 }

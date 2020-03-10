@@ -18,7 +18,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
         isoRenderer = GetComponentInChildren<IsometricCharacterRenderer>();
         
     }
-    [SerializeField]private bool isDashing = false;
+    public bool isDashing = false;
     [SerializeField]private bool dashRecover = true;
     private float horizontalInput;
     private float verticalInput;
@@ -102,6 +102,10 @@ public class IsometricPlayerMovementController : MonoBehaviour
             {
                 enemy.gameObject.GetComponent<ChaosBossAi>().GetHit(code.MeleeAttack);
                 
+            }
+            else if (enemy.gameObject.GetComponent<LifeBossAI>())
+            {
+                enemy.gameObject.GetComponent<LifeBossAI>().GetHit(code.MeleeAttack);
             }
             
         }

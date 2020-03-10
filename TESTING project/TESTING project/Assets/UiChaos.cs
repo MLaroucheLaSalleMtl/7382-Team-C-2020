@@ -11,10 +11,13 @@ public class UiChaos : MonoBehaviour
     private FixedVariables variables;
     [SerializeField] private Text timer;
     private float hp;
-    [SerializeField]private Image hpRed;
+    [SerializeField] private Image hpRed;
+    [SerializeField] private Image BossHPSmall;
     [SerializeField] private Image redPlayer;
     [SerializeField] private Image stamina;
+    [SerializeField] private Image staminaSmall;
     [SerializeField] private Image blood;
+    [SerializeField] private GameObject panelUpgrade;
     private float maxStamina = 0;
     private float maxHp = 0;
     private float hpPlayer;
@@ -36,7 +39,7 @@ public class UiChaos : MonoBehaviour
         if (maxhpPlayer == 0) maxhpPlayer = _hp;
         hpPlayer = _hp;
         redPlayer.fillAmount = hpPlayer / maxhpPlayer;
-        bloodA = Mathf.Clamp(0.9f - (hpPlayer / maxhpPlayer),0,0.7f);
+        bloodA = Mathf.Clamp(0.5f - (hpPlayer / maxhpPlayer), 0, 0.5f);
         blood.color = new Vector4(255, 255, 255, bloodA);
         
     }
@@ -45,9 +48,21 @@ public class UiChaos : MonoBehaviour
         if (maxHp == 0) maxHp = _hp;
         hp = _hp;
         hpRed.fillAmount = hp / maxHp;
+        BossHPSmall.fillAmount = hp / maxHp;
     }
-    public void Die(string sceneToLoad)
+    public void StaminaUpgrade()
     {
+        ++variables.StaminaUpgrade;
+        ChangeScene(_sceneToLoad);
+    }
+    public void HpUpgrade()
+    {
+        ++variables.HealthUpgrade;
+        ChangeScene(_sceneToLoad);
+    }
+    private void ChangeScene(string sceneToLoad)
+    {
+        panelUpgrade.SetActive(false);
         if (async == null)
         {
             if (variables != null) variables.LastScene = SceneManager.GetActiveScene().name;
@@ -57,10 +72,17 @@ public class UiChaos : MonoBehaviour
             async.allowSceneActivation = true;
         }
     }
+    private string _sceneToLoad = "MainMenu";
+    public void Die(string sceneToLoad)
+    {
+        panelUpgrade.SetActive(true);
+        _sceneToLoad = sceneToLoad;
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         variables = FixedVariables.instance;
     }
 
@@ -74,5 +96,6 @@ public class UiChaos : MonoBehaviour
     {
         if (maxStamina == 0) maxStamina = _stamina;
         stamina.fillAmount = _stamina / maxStamina;
+        staminaSmall.fillAmount = _stamina / maxStamina;
     }
 }

@@ -24,7 +24,7 @@ public class LoadingScript : MonoBehaviour
         //if (sceneToLoad != "MainMenu") Cursor.lockState = CursorLockMode.Locked;
         //else Cursor.lockState = CursorLockMode.None;
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        //Cursor.visible = false;
         PlayerPrefs.DeleteKey("SceneToLoad");
         async = SceneManager.LoadSceneAsync(sceneToLoad);
         async.allowSceneActivation = false;
@@ -33,7 +33,7 @@ public class LoadingScript : MonoBehaviour
         loreZ.text = "";    
         
         ChooseText();
-        Invoke("Test", 5f);
+        Invoke("Test", 0f);
     }
     private bool test = false;
     private void Test()

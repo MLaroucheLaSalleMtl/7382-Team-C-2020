@@ -69,6 +69,7 @@
     <Compile Include="Assets\ChaosTile.cs" />
     <Compile Include="Assets\ChasePlayer.cs" />
     <Compile Include="Assets\DamageEffect.cs" />
+    <Compile Include="Assets\DefenseTile.cs" />
     <Compile Include="Assets\EnemyAiTest.cs" />
     <Compile Include="Assets\FireRangeScript.cs" />
     <Compile Include="Assets\FireWallScript.cs" />
@@ -79,7 +80,9 @@
     <Compile Include="Assets\Gtfo.cs" />
     <Compile Include="Assets\HealthBar.cs" />
     <Compile Include="Assets\IceShardHoming.cs" />
+    <Compile Include="Assets\LevelUp.cs" />
     <Compile Include="Assets\LifeBossAI.cs" />
+    <Compile Include="Assets\LifeTileGone.cs" />
     <Compile Include="Assets\LoadingInput.cs" />
     <Compile Include="Assets\LoadingScript.cs" />
     <Compile Include="Assets\LoadingText.cs" />
@@ -107,6 +110,7 @@
     <Compile Include="Assets\TestAoeMelee.cs" />
     <Compile Include="Assets\TileSwap.cs" />
     <Compile Include="Assets\UIBridge.cs" />
+    <Compile Include="Assets\UIWorldSpace.cs" />
     <Compile Include="Assets\UiChaos.cs" />
     <Compile Include="Assets\VideoStream.cs" />
     <Compile Include="Assets\VoidTile.cs" />

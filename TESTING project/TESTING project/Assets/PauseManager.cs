@@ -51,7 +51,7 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         pauseMenuUI.SetActive(false);
         isPaused = false;
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     public void Menu(string sceneToLoad)

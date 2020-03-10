@@ -8,6 +8,7 @@ public class FireRangeScript : MonoBehaviour
     [SerializeField] private float damage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.tag == "Player")
         {
             code.GetHit(damage);
