@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5331788272802834168
-    second: Fumiko_0
+    second: Fumiko_walk_E0
   - first:
       213: 2948790016783854865
     second: Fumiko_idle_N0
@@ -494,6 +494,39 @@ TextureImporter:
   - first:
       213: 1304330622406537399
     second: Fumiko_163
+  - first:
+      213: -2419601639654283900
+    second: Fumiko_walk_E2
+  - first:
+      213: 5747655827218134032
+    second: Fumiko_walk_S0
+  - first:
+      213: 7905389382661038459
+    second: Fumiko_walk_S2
+  - first:
+      213: 7139803812058443451
+    second: Fumiko_walk_W0
+  - first:
+      213: 6374888380082643412
+    second: Fumiko_walk_W2
+  - first:
+      213: 2467419455942122766
+    second: Fumiko_walk_N0
+  - first:
+      213: -7422875052943370740
+    second: Fumiko_walk_N2
+  - first:
+      213: -4835695595156361116
+    second: Fumiko_walk_E1
+  - first:
+      213: 8645651065110926749
+    second: Fumiko_walk_N1
+  - first:
+      213: -2942485944609937312
+    second: Fumiko_walk_S1
+  - first:
+      213: 1399055913528158093
+    second: Fumiko_walk_W1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -677,10 +710,10 @@ TextureImporter:
       name: Fumiko_idle_E0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 192
-        width: 24
-        height: 32
+        x: 30
+        y: 193
+        width: 12
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1425,6 +1458,258 @@ TextureImporter:
       bones: []
       spriteID: ca41f3468cdfa7cb0800000000000000
       internalID: -4865297410303257428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_E0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 192
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6a1026f215ef940800000000000000
+      internalID: 5331788272802834168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_E2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 193
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 485247ad029db6ed0800000000000000
+      internalID: -2419601639654283900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_S0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 160
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0147a80c586c3cf40800000000000000
+      internalID: 5747655827218134032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_S2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 160
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b71e7ac42c595bd60800000000000000
+      internalID: 7905389382661038459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_W0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 129
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbe29bf1dbda51360800000000000000
+      internalID: 7139803812058443451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_W2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 127
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d16791c437287850800000000000000
+      internalID: 6374888380082643412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_N0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 224
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d51571ce80e3220800000000000000
+      internalID: 2467419455942122766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_N2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 224
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c069339a776acf890800000000000000
+      internalID: -7422875052943370740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_E1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 193
+        width: 12
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 460b8c01a7824ecb0800000000000000
+      internalID: -4835695595156361116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_N1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 224
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d951aeb46d58bf770800000000000000
+      internalID: 8645651065110926749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_S1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 160
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068e1f29f903a27d0800000000000000
+      internalID: -2942485944609937312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fumiko_walk_W1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 128
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8761cad0f17a6310800000000000000
+      internalID: 1399055913528158093
       vertices: []
       indices: 
       edges: []

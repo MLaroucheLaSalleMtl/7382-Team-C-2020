@@ -7,10 +7,12 @@ public class FixedVariables : MonoBehaviour
     public static FixedVariables instance = null;
     private float timer;
     private string lastScene;
+    private string sceneLoad;
     public string LastScene { get => lastScene; set => lastScene = value; }
     public float Timer { get => timer; set => timer = value; }
     public float StaminaUpgrade { get => staminaUpgrade; set => staminaUpgrade = value; }
     public float HealthUpgrade { get => healthUpgrade; set => healthUpgrade = value; }
+    public string SceneLoad { get => sceneLoad; set => sceneLoad = value; }
 
     private float staminaUpgrade = 0;
     private float healthUpgrade = 0;

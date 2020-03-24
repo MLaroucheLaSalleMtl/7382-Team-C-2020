@@ -24,23 +24,31 @@ public class IsometricPlayerMovementController : MonoBehaviour
     private float verticalInput;
     private Vector2 inputVector = new Vector2();
     private Vector2 currentPos = new Vector2();
-    [SerializeField]private static float s = 0.5f;
+    private static float s = 0.5f;
     private static float cornerS = s * Mathf.Sin(45f);
-    private static readonly Vector2[] quadrant = { new Vector2(0, s), new Vector2(-cornerS, cornerS), new Vector2(-s, 0), new Vector2(-cornerS, -cornerS), new Vector2(0, -s), new Vector2(cornerS, -cornerS), new Vector2(s, 0), new Vector2(cornerS, cornerS) };
+    private static readonly Vector3[] quadrant = { new Vector2(0, s), new Vector2(-cornerS, cornerS), new Vector2(-s, 0), new Vector2(-cornerS, -cornerS), new Vector2(0, -s), new Vector2(cornerS, -cornerS), new Vector2(s, 0), new Vector2(cornerS, cornerS) };
+    private static Vector3 offset = new Vector3(0, 0.2f);
     private int direction;
+    [SerializeField] private SpriteRenderer[] arcs;
     [SerializeField] private float attackRadius;
     [SerializeField] private LayerMask enemyLayer;
     private GameManager code;
     [SerializeField] private Transform middle;
     private AudioSource audio;
     // Update is called once per frame
-    private void FixedUpdate()
-    {
-        //Move();
-        //Dash();
-    }
+    //private void FixedUpdate()
+    //{
+    //    //Move();
+    //    //Dash();
+    //}
     private void Start()
     {
+        
+        for(int i = 0; i < quadrant.Length; ++i)
+        {
+            arcs[i].transform.position = transform.position + quadrant[i] + offset;
+        }
+        
         audio = GetComponent<AudioSource>();
         code = GameManager.instance;
     }
@@ -88,9 +96,8 @@ public class IsometricPlayerMovementController : MonoBehaviour
         
         direction = isoRenderer.lastDirection;
         //new Vector2(transform.position.x + move.x, transform.position.y + move.y);
-
-        Collider2D[] hit = Physics2D.OverlapCircleAll(currentPos + new Vector2(0.1f,0.1f) + quadrant[direction], attackRadius, enemyLayer);
-
+        StartCoroutine(Arc(direction));
+        Collider2D[] hit = Physics2D.OverlapCircleAll((Vector3)currentPos + offset + quadrant[direction], attackRadius, enemyLayer);
         if(hit.Length == 0) { audio.Play(); }
         foreach (Collider2D enemy in hit)
         {
@@ -107,13 +114,22 @@ public class IsometricPlayerMovementController : MonoBehaviour
             {
                 enemy.gameObject.GetComponent<LifeBossAI>().GetHit(code.MeleeAttack);
             }
-            
+            else if (enemy.gameObject.GetComponent<OrderBossAi>())
+            {
+                enemy.gameObject.GetComponent<OrderBossAi>().GetHit(code.MeleeAttack);
+            }
+
         }
     }
-    
+    private IEnumerator Arc(int d)
+    {
+        arcs[d].enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        arcs[d].enabled = false;
+    }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(currentPos + new Vector2(0, 0.2f) + quadrant[direction], attackRadius);
+        Gizmos.DrawWireSphere((Vector3)currentPos + offset + quadrant[direction], attackRadius);
     }
     //public void Dash()
     //{

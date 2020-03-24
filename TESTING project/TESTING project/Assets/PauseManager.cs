@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private bool isPaused;
 
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isPaused = !isPaused;
+        }
+    }
+
     private void Start()
     {
         variables = FixedVariables.instance;
@@ -17,11 +26,6 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start"))
-        {
-            isPaused = !isPaused;
-        }
-
         if (isPaused)
         {
             ActivateMenu();
@@ -30,6 +34,11 @@ public class PauseManager : MonoBehaviour
         {
             DeactivateMenu();
         }
+    }
+
+    public void Pause()
+    {
+        
     }
 
     public void Test()

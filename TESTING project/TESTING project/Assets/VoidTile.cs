@@ -15,15 +15,20 @@ public class VoidTile : MonoBehaviour
         if(collision.tag == "Player" && !iso.isDashing)
         {
             code.GetHit(10);
-            StartCoroutine(Alive(collision.transform.parent.gameObject));
+            
+            Warp(collision.transform.parent.gameObject);
         }
     }
-    private IEnumerator Alive(GameObject player)
+    private void Warp(GameObject player)
     {
         if (Random.Range(0, 2) == 1) player.transform.position = new Vector2(-12.25f, 3.31f);
         else player.transform.position = new Vector2(12.25f, -3.31f);
+    }
+    private IEnumerator Block()
+    {
+        
         for (int i = 0; i < boxes.Length; ++i) boxes[i].SetActive(true); 
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(5f);
         for (int i = 0; i < boxes.Length; ++i) boxes[i].SetActive(false);
     }
     // Start is called before the first frame update
@@ -32,6 +37,7 @@ public class VoidTile : MonoBehaviour
         edgeCollider2D = GetComponent<EdgeCollider2D>();
         code = GameManager.instance;
         iso = GameObject.Find("Player and Input").GetComponent<IsometricPlayerMovementController>();
+        StartCoroutine(Block());
     }
 
     // Update is called once per frame

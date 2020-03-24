@@ -1616,6 +1616,71 @@ PrefabInstance:
       propertyPath: staminaBackground
       value: 
       objectReference: {fileID: 155495884}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: 9465231d-fe16-46fc-bce3-4a326b6f1e17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: Loading/LeftText[/Keyboard/a]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[21].m_ActionId
+      value: bb7d3e3d-c436-4414-901d-864459e7003a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[21].m_ActionName
+      value: Loading/RightText[/Keyboard/d]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[22].m_ActionId
+      value: b97fddcf-f265-4e9a-b773-cbbb4620e2e7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[22].m_ActionName
+      value: Loading/Continue[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1737623656}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407397294127162027, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373227, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: orthographic size
@@ -1639,17 +1704,17 @@ PrefabInstance:
     - target: {fileID: 6155748257929373396, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 4e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373396, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 4e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373396, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3e-45
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373396, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
@@ -1739,17 +1804,17 @@ PrefabInstance:
     - target: {fileID: 6493889302072911853, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 4e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6493889302072911853, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 4e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6493889302072911853, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3e-45
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 6493889302072911853, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
@@ -8551,7 +8616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358585291}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -9367,7 +9432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1637789206
 Transform:
   m_ObjectHideFlags: 0

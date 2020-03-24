@@ -27,6 +27,10 @@ public class FireWallScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        code.GetHit(damage);
+        if(collision.gameObject.tag == "Player")
+        {
+            code.GetHit(damage);
+        }
+        
     }
 }

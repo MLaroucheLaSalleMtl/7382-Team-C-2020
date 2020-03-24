@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 20748b13f9a8a004a823679a95ad6bfc
+  - enabled: 1
+    path: Assets/Scenes/LifeScene.unity
+    guid: 1fd23e140038bc9429f1a0c5ae284be5
+  - enabled: 1
+    path: Assets/Scenes/OrderScene.unity
+    guid: f106b0f9d448e0a4896cd7bc1473e5d9
+  - enabled: 1
+    path: Assets/Scenes/FinalBoss.unity
+    guid: 30ba26e44ccb2504eae984ef56cdf136
+  - enabled: 1
+    path: Assets/Scenes/UpgradeScene.unity
+    guid: 5da71225a7ea71c44865190e65e18923
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9de61af827c460e4ab87b5f097d379db,
       type: 2}

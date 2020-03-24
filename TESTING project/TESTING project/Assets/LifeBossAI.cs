@@ -32,7 +32,7 @@ public class LifeBossAI : MonoBehaviour
     private bool invincible = true;
     private bool stun = false;
     private int stunCounter = 0;
-    public ParticleSystem windParticles;
+    
 
     #region//Line
     [Header("FireLine Attack",order =1)]
@@ -54,6 +54,8 @@ public class LifeBossAI : MonoBehaviour
     [SerializeField] private float forceX;
     [SerializeField] private float forceLength;
     [SerializeField] private float windCooldown;
+    [SerializeField] private ParticleSystem windParticles;
+    [SerializeField] private ParticleSystem windParticles2;
     private Vector2 force;
     #endregion
 
@@ -122,7 +124,7 @@ public class LifeBossAI : MonoBehaviour
     }
     private void HpCheck()
     {
-
+        if (hp <= 0) ui.Die("OrderScene");
     }
     public void Stun()
     {
@@ -194,14 +196,14 @@ public class LifeBossAI : MonoBehaviour
             yield return new WaitForSecondsRealtime(delayBetweenShards);
         }
     }
-    public float Angle(float uX, float uY, float vX, float vY)
+    public static float Angle(float uX, float uY, float vX, float vY)
     {
         float scalarProduct = uX * vX + uY * vY;
         
         float normProduct = Mathf.Sqrt(uX * uX + uY * uY) * Mathf.Sqrt(vX * vX + vY * vY);
         return Mathf.Acos(scalarProduct / normProduct) * Mathf.Rad2Deg;
     }
-    public float D(float uX, float uY, Transform lockedTarget, Transform baseTransform)
+    public static float D(float uX, float uY, Transform lockedTarget, Transform baseTransform)
     {
         float vectorX = baseTransform.position.x - uX;
         float vectorY = baseTransform.position.y - uY;
@@ -236,11 +238,19 @@ public class LifeBossAI : MonoBehaviour
     
     private IEnumerator Wind(float cooldown)
     {
-        windParticles.Play();
+        
         Invoke("AttackCooldown", cooldown);
         float n = 0;
-        if(transform.position.x < Target.position.x) { force = new Vector2(forceX, 0); }
-        else { force = new Vector2(-forceX, 0); }
+        if(transform.position.x < Target.position.x)
+        {
+            force = new Vector2(forceX, 0);
+            windParticles.Play();
+        }
+        else
+        {
+            force = new Vector2(-forceX, 0);
+            windParticles2.Play();
+        }
         do
         {
             

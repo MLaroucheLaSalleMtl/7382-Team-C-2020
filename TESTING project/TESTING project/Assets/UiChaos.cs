@@ -9,6 +9,7 @@ public class UiChaos : MonoBehaviour
     public static UiChaos instance = null;
     private AsyncOperation async;
     private FixedVariables variables;
+    private Animator anim;
     [SerializeField] private Text timer;
     private float hp;
     [SerializeField] private Image hpRed;
@@ -37,10 +38,12 @@ public class UiChaos : MonoBehaviour
     public void PlayerHp(float _hp)
     {
         if (maxhpPlayer == 0) maxhpPlayer = _hp;
+        else anim.SetTrigger("TakeDamage");
         hpPlayer = _hp;
         redPlayer.fillAmount = hpPlayer / maxhpPlayer;
-        bloodA = Mathf.Clamp(0.5f - (hpPlayer / maxhpPlayer), 0, 0.5f);
-        blood.color = new Vector4(255, 255, 255, bloodA);
+        //bloodA = Mathf.Clamp(0.5f - (hpPlayer / maxhpPlayer), 0, 0.5f);
+        //bloodA = 1;
+        //blood.color = new Vector4(255, 255, 255, bloodA);
         
     }
     public void HpUpdate(float _hp)
@@ -62,7 +65,7 @@ public class UiChaos : MonoBehaviour
     }
     private void ChangeScene(string sceneToLoad)
     {
-        panelUpgrade.SetActive(false);
+        //panelUpgrade.SetActive(false);
         if (async == null)
         {
             if (variables != null) variables.LastScene = SceneManager.GetActiveScene().name;
@@ -75,8 +78,10 @@ public class UiChaos : MonoBehaviour
     private string _sceneToLoad = "MainMenu";
     public void Die(string sceneToLoad)
     {
-        panelUpgrade.SetActive(true);
-        _sceneToLoad = sceneToLoad;
+        variables.SceneLoad = sceneToLoad;
+        ChangeScene("UpgradeScene");
+        //panelUpgrade.SetActive(true);
+        //_sceneToLoad = sceneToLoad;
         
     }
     // Start is called before the first frame update
@@ -84,6 +89,7 @@ public class UiChaos : MonoBehaviour
     {
         //Cursor.visible = false;
         variables = FixedVariables.instance;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame

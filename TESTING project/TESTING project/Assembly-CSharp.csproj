@@ -63,9 +63,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AoeMeleeScript.cs" />
+    <Compile Include="Assets\BossManager.cs" />
     <Compile Include="Assets\BossStats.cs" />
     <Compile Include="Assets\BridgeBossAi.cs" />
+    <Compile Include="Assets\Bullet.cs" />
+    <Compile Include="Assets\CameraFinal.cs" />
     <Compile Include="Assets\ChaosBossAi.cs" />
+    <Compile Include="Assets\ChaosFinal.cs" />
     <Compile Include="Assets\ChaosTile.cs" />
     <Compile Include="Assets\ChasePlayer.cs" />
     <Compile Include="Assets\DamageEffect.cs" />
@@ -75,6 +79,7 @@
     <Compile Include="Assets\FireWallScript.cs" />
     <Compile Include="Assets\FixedVariables.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\GarFire.cs" />
     <Compile Include="Assets\GreenCollision.cs" />
     <Compile Include="Assets\GreenProtection.cs" />
     <Compile Include="Assets\Gtfo.cs" />
@@ -88,6 +93,7 @@
     <Compile Include="Assets\LoadingText.cs" />
     <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\MeteorScript.cs" />
+    <Compile Include="Assets\OrderBossAi.cs" />
     <Compile Include="Assets\PauseManager.cs" />
     <Compile Include="Assets\ProximityTeleport.cs" />
     <Compile Include="Assets\Scripts\BasicCameraFollow.cs" />
@@ -112,6 +118,7 @@
     <Compile Include="Assets\UIBridge.cs" />
     <Compile Include="Assets\UIWorldSpace.cs" />
     <Compile Include="Assets\UiChaos.cs" />
+    <Compile Include="Assets\Upgrade.cs" />
     <Compile Include="Assets\VideoStream.cs" />
     <Compile Include="Assets\VoidTile.cs" />
     <None Include="Assets\Assets_DevilsWorkShop\Low_Poly_Pixel_2D_Blocks_DevilsWorkShop_v04\License.txt" />

@@ -109,7 +109,7 @@ public class ChaosBossAi : MonoBehaviour
     }
     private void HpCheck()
     {
-        if (hp <= 0) ui.Die("WinScreen");
+        if (hp <= 0) ui.Die("LifeScene");
         //We can make different things happen here
     }
     
@@ -152,7 +152,7 @@ public class ChaosBossAi : MonoBehaviour
             do
             {
                 position = new Vector2(lockedTarget.x + Random.Range(-radius, radius), lockedTarget.y + Random.Range(-radius, radius));
-            } while (Vector2.Distance(position, lockedTarget) < radius);
+            } while (Vector2.Distance(position, lockedTarget) > radius);
             
 
             GameObject meteorInstance = Instantiate(meteor, position, Quaternion.identity);

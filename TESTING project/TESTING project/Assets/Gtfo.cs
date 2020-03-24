@@ -7,15 +7,10 @@ public class Gtfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Die", 5f);   
+        Invoke("Die", 5f);
     }
     private void Die()
     {
         Destroy(gameObject);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

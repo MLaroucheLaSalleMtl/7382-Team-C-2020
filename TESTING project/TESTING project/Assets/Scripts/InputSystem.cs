@@ -10,12 +10,14 @@ public class InputSystem : MonoBehaviour
     private Vector2 move = new Vector2();
     public float h = 0;
     public float v = 0;
-    public bool inDashing = false;
+    public bool isDashing = false;
     bool attackLight = false;
     bool attackStrong = false;
     bool ranged = false;
-    bool isPaused = false;
     bool chargedRanged = false;
+
+    public PauseManager pauseManager;
+    private bool isPaused = true;
 
     private bool dash = false;
     [SerializeField]private bool attack = false;
@@ -98,9 +100,6 @@ public class InputSystem : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            isPaused = !isPaused;
-        }
+        isPaused = context.performed;
     }
 }

@@ -10,6 +10,7 @@ public class IsometricCharacterRenderer : MonoBehaviour
     public static readonly string[] runDirections = {"Run N", "Run NW", "Run W", "Run SW", "Run S", "Run SE", "Run E", "Run NE"};
     public static readonly string[] dashDirections = { "Dash N", "Dash NW", "Dash W", "Dash SW", "Dash S", "Dash SE", "Dash E", "Dash NE" };
     public static readonly string[] attackDirections = { "Attack N", "Attack NW", "Attack W", "Attack SW", "Attack S", "Attack SE", "Attack E", "Attack NE" };
+    public static readonly string[] walkDirections = { "Walk N", "Walk NW", "Walk W", "Walk SW", "Walk S", "Walk SE", "Walk E", "Walk NE" };
     
 
     Animator animator;
@@ -40,14 +41,13 @@ public class IsometricCharacterRenderer : MonoBehaviour
         //use the Run states by default
         string[] directionArray = null;
 
-
         //measure the magnitude of the input.
         if (attack)
         {
             directionArray = attackDirections;
             //lastDirection = DirectionToIndex(direction, 8);
         }
-        else if (direction.magnitude < .01f) // determine if the player is moving or not
+        else if (direction.magnitude < .00001f) // determine if the player is moving or not
         {
             //if we are basically standing still, we'll use the Static states
             //we won't be able to calculate a direction if the user isn't pressing one, anyway!
@@ -58,7 +58,14 @@ public class IsometricCharacterRenderer : MonoBehaviour
             //we can calculate which direction we are going in
             //use DirectionToIndex to get the index of the slice from the direction vector
             //save the answer to lastDirection
-            directionArray = runDirections;
+            if(direction.magnitude < 2f)
+            {
+                directionArray = walkDirections;
+            }
+            else
+            {
+                directionArray = runDirections;
+            }
             lastDirection = DirectionToIndex(direction, 8); // convert a Vector2 into a slice of a circle representing direction
         }
         else
