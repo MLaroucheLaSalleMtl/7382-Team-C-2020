@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChaosFinal : MonoBehaviour
 {
     private static ChaosFinal cf = null;
-    private bool invincible;
+    private bool invincible = true;
     private bool attackReady;
 
     public static ChaosFinal Cf { get => cf; set => cf = value; }
@@ -32,7 +32,7 @@ public class ChaosFinal : MonoBehaviour
     {
         GameObject explosion = Instantiate(prefab, target, Quaternion.identity);
     }
-    public IEnumerator FireLine(Vector2 target, GameObject prefab, int length, int wallNumber, float[] array, float interval, float cooldown)
+    public IEnumerator FireLine(Vector2 target, GameObject prefab, int length, int wallNumber, float[] array, float interval)
     {
         if (target.y < 0) interval = -interval; 
         for (int i = 0; i < wallNumber; ++i)
@@ -46,7 +46,7 @@ public class ChaosFinal : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
     }
-    public void Meteor(Vector2 target, GameObject prefab, int meteorAmount, float radius, float cooldown)
+    public void Meteor(Vector2 target, GameObject prefab, int meteorAmount, float radius)
     {
         for(int i = 0; i < meteorAmount; ++i)
         {

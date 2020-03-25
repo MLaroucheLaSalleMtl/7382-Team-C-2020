@@ -87,6 +87,7 @@
     <Compile Include="Assets\IceShardHoming.cs" />
     <Compile Include="Assets\LevelUp.cs" />
     <Compile Include="Assets\LifeBossAI.cs" />
+    <Compile Include="Assets\LifeFinal.cs" />
     <Compile Include="Assets\LifeTileGone.cs" />
     <Compile Include="Assets\LoadingInput.cs" />
     <Compile Include="Assets\LoadingScript.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\MeteorScript.cs" />
     <Compile Include="Assets\OrderBossAi.cs" />
+    <Compile Include="Assets\OrderFinal.cs" />
     <Compile Include="Assets\PauseManager.cs" />
     <Compile Include="Assets\ProximityTeleport.cs" />
     <Compile Include="Assets\Scripts\BasicCameraFollow.cs" />
