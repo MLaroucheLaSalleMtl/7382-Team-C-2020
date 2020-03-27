@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{5E2C049B-5F06-8FCF-F9B1-DC31FB2FD66B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.PixelPerfect.Samples", "Unity.2D.PixelPerfect.Samples.csproj", "{C64317D6-F89D-BD18-4D7B-963C18363FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.PixelPerfect.Samples.Editor", "Unity.2D.PixelPerfect.Samples.Editor.csproj", "{20C3F959-2C88-92BE-9916-6A07B3CC7AAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E2C049B-5F06-8FCF-F9B1-DC31FB2FD66B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2C049B-5F06-8FCF-F9B1-DC31FB2FD66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2C049B-5F06-8FCF-F9B1-DC31FB2FD66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2C049B-5F06-8FCF-F9B1-DC31FB2FD66B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64317D6-F89D-BD18-4D7B-963C18363FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64317D6-F89D-BD18-4D7B-963C18363FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64317D6-F89D-BD18-4D7B-963C18363FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64317D6-F89D-BD18-4D7B-963C18363FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C3F959-2C88-92BE-9916-6A07B3CC7AAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C3F959-2C88-92BE-9916-6A07B3CC7AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C3F959-2C88-92BE-9916-6A07B3CC7AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C3F959-2C88-92BE-9916-6A07B3CC7AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
