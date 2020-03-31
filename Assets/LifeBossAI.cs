@@ -39,8 +39,8 @@ public class LifeBossAI : MonoBehaviour
     [SerializeField] private GameObject iceShardPrefab;
     [SerializeField]private float fireLineCooldown;
 
-    private float reducedX;
-    private float reducedY;
+    //private float reducedX;
+    //private float reducedY;
     private float incrementX;
     private float incrementY;
 
@@ -190,9 +190,9 @@ public class LifeBossAI : MonoBehaviour
         {
             shard = Instantiate(homingShard, transform.position, Quaternion.identity);
             angleHoming = Angle(-3.681f, -4.236f, lockedTarget.position.x - transform.position.x, lockedTarget.position.y - transform.position.y);
-            if (D(-3.681f, -4.236f, Target, transform) < 0) { angleHoming = -angleHoming; }
+            if (D(-3.681f, -4.236f, Target.position, transform.position) < 0) { angleHoming = -angleHoming; }
             shard.transform.Rotate(0, 0, angleHoming);
-            shard.GetComponent<IceShardHoming>().Shoot(Target);
+            shard.GetComponent<IceShardHoming>().Shoot(Target.position);
             yield return new WaitForSecondsRealtime(delayBetweenShards);
         }
     }
@@ -203,26 +203,24 @@ public class LifeBossAI : MonoBehaviour
         float normProduct = Mathf.Sqrt(uX * uX + uY * uY) * Mathf.Sqrt(vX * vX + vY * vY);
         return Mathf.Acos(scalarProduct / normProduct) * Mathf.Rad2Deg;
     }
-    public static float D(float uX, float uY, Transform lockedTarget, Transform baseTransform)
+    public static float D(float uX, float uY, Vector2 lockedTarget, Vector2 baseTransform)
     {
-        float vectorX = baseTransform.position.x - uX;
-        float vectorY = baseTransform.position.y - uY;
-        return ((lockedTarget.position.x - baseTransform.position.x) * (vectorY - baseTransform.position.y)) - ((lockedTarget.position.y - baseTransform.position.y) * (vectorX - baseTransform.position.x));
+        float vectorX = baseTransform.x - uX;
+        float vectorY = baseTransform.y - uY;
+        return ((lockedTarget.x - baseTransform.x) * (vectorY - baseTransform.y)) - ((lockedTarget.y - baseTransform.y) * (vectorX - baseTransform.x));
     }
 	private IEnumerator FireLine(Transform lockedTarget, float cooldown)
 	{
         Invoke("AttackCooldown", cooldown);
-        //bunch of math equations
-		reducedX = 0.9f * (lockedTarget.position.x - transform.position.x);
-		reducedY = 0.9f * (lockedTarget.position.y - transform.position.y);
-		incrementX = reducedX * 0.1f;
-		incrementY = reducedY * 0.1f;
-		float fireballX = 0;
+		//reducedX = 0.9f * (lockedTarget.position.x - transform.position.x);
+		//reducedY = 0.9f * (lockedTarget.position.y - transform.position.y);
+		incrementX = 0.09f * (lockedTarget.position.x - transform.position.x);
+        incrementY = 0.09f * (lockedTarget.position.y - transform.position.y);
+        float fireballX = 0;
 		float fireballY = 0;
-		float n = 0;
-		
+
         angle = Angle(-3.681f, -4.236f, lockedTarget.position.x - transform.position.x, lockedTarget.position.y - transform.position.y);        
-		if(D(-3.681f, -4.236f, lockedTarget, transform) < 0) { angle = -angle; }
+		if(D(-3.681f, -4.236f, lockedTarget.position, transform.position) < 0) { angle = -angle; }
 		
 		for (int i = 0; i < 100; ++i)
 		{
@@ -232,7 +230,6 @@ public class LifeBossAI : MonoBehaviour
 			iceShard.transform.Rotate(0, 0, angle);
 			fireballX += incrementX;
 			fireballY += incrementY;
-			n += 1f;
 		}
 	}
     

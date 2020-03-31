@@ -76,6 +76,7 @@
     <Compile Include="Assets\DefenseTile.cs" />
     <Compile Include="Assets\EnemyAiTest.cs" />
     <Compile Include="Assets\FireRangeScript.cs" />
+    <Compile Include="Assets\FireWallParent.cs" />
     <Compile Include="Assets\FireWallScript.cs" />
     <Compile Include="Assets\FixedVariables.cs" />
     <Compile Include="Assets\GameManager.cs" />

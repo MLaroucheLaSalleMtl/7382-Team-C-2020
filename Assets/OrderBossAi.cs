@@ -127,7 +127,7 @@ public class OrderBossAi : MonoBehaviour
 		{
 			burstN = 0;
 			burstAngle = LifeBossAI.Angle(0, 1, target.position.x - transform.position.x, target.position.y - transform.position.y);
-			if (LifeBossAI.D(0, 1, target, transform) > 0) burstAngle = -burstAngle;
+			if (LifeBossAI.D(0, 1, target.position, transform.position) > 0) burstAngle = -burstAngle;
 			burstAngle += burstStartAngle;
 			burstTempAngle = burstAngle;
 			do
@@ -137,7 +137,7 @@ public class OrderBossAi : MonoBehaviour
 				{
 					GameObject bul = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, -burstAngle));
 					
-					bul.GetComponent<Bullet>().SetDirection(Vector3Return(burstAngle), burstSpeed);
+					bul.GetComponent<Bullet>().SetDirection(Vector3Return(burstAngle, transform.position), burstSpeed);
 					burstAngle += 20;
 				}
 				yield return new WaitForSeconds(0.1f);
@@ -159,18 +159,18 @@ public class OrderBossAi : MonoBehaviour
 			{
 				GameObject bul = Instantiate(purplePrefab, transform.position, transform.rotation);
 				if (constantN % 2 != 0) bul.GetComponent<SpriteRenderer>().color = Color.yellow;
-				bul.GetComponent<Bullet>().SetDirection(Vector3Return(constantAngle), constantSpeed);
+                bul.GetComponent<Bullet>().SetDirection(Vector3Return(constantAngle, transform.position), constantSpeed);
 				constantAngle += 60;
 			}
 			++constantN;
 			yield return new WaitForSeconds(constantDelay);
 		}
 	}
-	private Vector2 Vector3Return(float angle)
+    public static Vector2 Vector3Return(float angle, Vector3 pos)
 	{
-		float x = transform.position.x + Mathf.Sin(angle * Mathf.PI / 180f);
-		float y = transform.position.y + Mathf.Cos(angle * Mathf.PI / 180f);
-		return (new Vector3(x, y) - transform.position).normalized;
+		float x = pos.x + Mathf.Sin(angle * Mathf.PI / 180f);
+		float y = pos.y + Mathf.Cos(angle * Mathf.PI / 180f);
+		return (new Vector3(x, y) - pos).normalized;
 	}
 	public void GetHit(float damage)
 	{

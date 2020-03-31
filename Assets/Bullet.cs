@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         code = GameManager.instance;
-        Invoke("Suicide", 10f);
+        Invoke("Suicide", 20f);
     }
     private void Suicide()
     {

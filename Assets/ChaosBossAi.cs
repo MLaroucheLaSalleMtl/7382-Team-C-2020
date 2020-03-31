@@ -33,6 +33,7 @@ public class ChaosBossAi : MonoBehaviour
     [SerializeField] private int arraySize;
     [SerializeField] private float interval;
     [SerializeField] private GameObject fire;
+    [SerializeField] private GameObject parent;
     [SerializeField] private float distanceWall;
     private float[] array;
     private float firewallAB;
@@ -129,6 +130,7 @@ public class ChaosBossAi : MonoBehaviour
     }
     private IEnumerator FireWall(float cooldown, float lockedTarget, int wallNumber)
     {
+        GameObject p = Instantiate(parent, transform.position, transform.rotation);
         Invoke("AttackCooldown", cooldown);
         for (int i = 0; i < wallNumber; ++i)
         {
@@ -139,6 +141,7 @@ public class ChaosBossAi : MonoBehaviour
                 if (i2 != noSpawn)
                 {
                     GameObject test = Instantiate(fire, new Vector2(28, array[i2]), Quaternion.identity);
+                    test.transform.parent = p.transform;
                 }
             }
             yield return new WaitForSecondsRealtime(distanceWall);

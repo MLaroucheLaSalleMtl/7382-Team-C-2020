@@ -5,14 +5,13 @@ using UnityEngine;
 public class IceShardHoming : MonoBehaviour
 {
     private GameManager code;
-    private LifeBossAI life;
     //[SerializeField]private float angle;
     //[SerializeField] private Transform endVector;
     //[SerializeField] private Transform startVector;
     [SerializeField] private float speed;
     [SerializeField] private float damage;
-    private Transform target = null;
     [SerializeField]private Vector3 destination;
+    private bool enabled = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -21,22 +20,22 @@ public class IceShardHoming : MonoBehaviour
         }
     }
 
-    public void Shoot(Transform _target)
+    public void Shoot(Vector2 target)
     {
-        target = _target;
-        destination = target.position;
+        enabled = true;
+        destination = target;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        life = GameObject.Find("BossLightStage").GetComponent<LifeBossAI>();
+
         code = GameManager.instance;
     }
     
     private void Update()
     {
-        if(target != null)
+        if(enabled)
         {
             transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
             if(transform.position == destination) { Destroy(gameObject); }

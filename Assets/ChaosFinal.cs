@@ -23,27 +23,30 @@ public class ChaosFinal : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public void AoeUnder(Vector2 target,GameObject prefab)
     {
         GameObject explosion = Instantiate(prefab, target, Quaternion.identity);
     }
-    public IEnumerator FireLine(Vector2 target, GameObject prefab, int length, int wallNumber, float[] array, float interval)
+    public IEnumerator FireLine(Vector2 target, GameObject prefab, GameObject parent, int wallNumber, float startPos, float[] array, float interval)
     {
-        if (target.y < 0) interval = -interval; 
+        GameObject p = Instantiate(parent, transform.position, transform.rotation);
+        int safe;
+        if (target.y < 5) interval = -interval;//goes downward
+        if (target.y < 5 && target.y > -5) startPos = 15; //middle
         for (int i = 0; i < wallNumber; ++i)
         {
-            for(int i2 = 0; i2 < length; ++i2)
+            safe = Random.Range(9, 20);
+            for(int i2 = 0; i2 < array.Length; ++i2)
             {
-                array[i2] = 0 + (interval * i2);
-                GameObject fireBall = Instantiate(prefab, new Vector2(23, array[i2]), Quaternion.identity);
-                yield return new WaitForEndOfFrame();
+                if(i2 != safe && i2 != safe + 1)
+                {
+                    array[i2] = startPos + (interval * i2);
+                    GameObject fireBall = Instantiate(prefab, new Vector2(23, array[i2]), Quaternion.identity);
+                    fireBall.transform.parent = p.transform;
+                }
+                
             }
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
         }
     }
     public void Meteor(Vector2 target, GameObject prefab, int meteorAmount, float radius)
@@ -54,7 +57,7 @@ public class ChaosFinal : MonoBehaviour
             do
             {
                 position = new Vector2(target.x + Random.Range(-radius, radius), target.y + Random.Range(-radius, radius));
-            } while (Vector2.Distance(target, position) > 1);
+            } while (Vector2.Distance(target, position) > 5);
             GameObject meteor = Instantiate(prefab, position, Quaternion.identity);
         }
     }

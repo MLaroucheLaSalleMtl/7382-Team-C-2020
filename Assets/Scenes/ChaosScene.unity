@@ -1684,12 +1684,12 @@ PrefabInstance:
     - target: {fileID: 6155748257929373227, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: orthographic size
-      value: 9.081249
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373227, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: orthographic size
-      value: 9.081249
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373396, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
@@ -7813,6 +7813,7 @@ MonoBehaviour:
   arraySize: 20
   interval: 1
   fire: {fileID: 4386143610420016819, guid: b2f9f2c981057aa439caf29620ec45b4, type: 3}
+  parent: {fileID: 3694113892347037680, guid: f1bea949049bc27459496075fa35b8f2, type: 3}
   distanceWall: 1.5
   meteorCooldown: 5
   meteor: {fileID: 2371804305569907955, guid: a0639dc2089ff9e43957b62ec03ba4e7, type: 3}
