@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/FinalBoss.unity
+- path: Assets/Scenes/Levels/FinalBoss.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

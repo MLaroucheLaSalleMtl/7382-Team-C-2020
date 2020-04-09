@@ -138,7 +138,11 @@ public class GameManager : MonoBehaviour
     private int test = 0;
     public void GetHit(float damage)
     {
-        if (damageReady)
+        if(damage < 0)
+        {
+            currentHp = maxHp;
+        }
+        else if (damageReady)
         {
             currentHp -= damage;
             ui.PlayerHp(currentHp);

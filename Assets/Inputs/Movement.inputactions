@@ -76,6 +76,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "FinalExit",
+                    "type": "Button",
+                    "id": "55dba0f5-26eb-4ec4-9456-bd6d3e210179",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -494,6 +502,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Strong Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aed3ed63-9f9d-431d-87d2-9e4f0a967f0b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FinalExit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ef8fbe9-7050-4794-843c-c130d7edf14d",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "FinalExit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
