@@ -57,6 +57,8 @@ Menu background image - https://www.shutterstock.com/image-illustration/woman-st
 
 Splash screen image - http://pngimg.com/imgs/animals/giraffe/
 
+Particle Systems sprites by Juan Camilo Garcia
+
 SFX:
 All from https://www.zapsplat.com/ 
 
