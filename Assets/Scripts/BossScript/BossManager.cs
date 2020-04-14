@@ -10,36 +10,45 @@ public class BossManager : MonoBehaviour
     private static float maxHp = 1000;
     private float hp = maxHp;
     private float percentHp = 0.9f;
-    private int damageableBoss;
+    private int damageableBoss = -1;
+    private static float stunTime = 10f;
+    private int blockedArea = -1;
     [SerializeField] private Transform target;
     [SerializeField] private GameObject[] healthPads;
     [SerializeField] private GameObject[] stunPads;
-    [SerializeField] private GameObject attack;
+    [SerializeField] private GameObject[] blockedAreas;
+    [SerializeField] private GameObject attackHolder;//parent that will contain all the attacks
+    [SerializeField] private AudioClip[] clips;
+    private AudioSource audio;
     #region //Chaos
     private ChaosFinal cf;
     [SerializeField] private GameObject chaosPrefab1;
     [SerializeField] private GameObject chaosPrefab2;
     [SerializeField] private GameObject chaosPrefab2Parent;
     [SerializeField] private GameObject chaosPrefab3;
+    private int chaosRandom;
     #endregion
     #region //Life
     private LifeFinal lf;
     [SerializeField] private GameObject lifePrefab1;
     [SerializeField] private GameObject lifePrefab2;
-    private static float windForce = 180;
+    private static float windForce = 150;
     private static int windLength = 200;
+    private int lifeRandom;
     #endregion
     #region //Order
     private OrderFinal of;
     [SerializeField] private GameObject orderPrefab1;
     [SerializeField] private GameObject orderPrefab2;
+    [SerializeField] private GameObject orderPrefab3;
     private float burstStartAngle = -20f;
     private int burstAmount = 3;
-    private float burstDelay = 2f;
+    private float burstDelay;
+    private int orderRandom;
 
-    public static BossManager Bm { get => bm; set => bm = value; }
+
     #endregion
-
+    public static BossManager Bm { get => bm; set => bm = value; }
     private void Awake()
     {
         if (Bm == null)
@@ -60,32 +69,47 @@ public class BossManager : MonoBehaviour
         code = GameManager.instance;
         ui = UiChaos.instance;
         StartCoroutine(BlockArea());
+        StartCoroutine(ChaosClock());
+        StartCoroutine(LifeClock());
+        StartCoroutine(OrderMissile());
+        StartCoroutine(of.ConstantFiring(orderPrefab2));
+        StartCoroutine(of.GargoyleFire(orderPrefab3));
+
         ChangeBoss();
         Pad(true);
+        audio = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    
+    private IEnumerator ChaosClock()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) cf.Meteor(target.position, chaosPrefab3, 20, 10f);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) StartCoroutine(cf.FireLine(target.position, chaosPrefab2, chaosPrefab2Parent, 3, 0, new float[30], 1));
-        if (Input.GetKeyDown(KeyCode.Alpha3)) cf.AoeUnder(target.position, chaosPrefab1);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) StartCoroutine(OrderMissile());
-        if (Input.GetKeyDown(KeyCode.Alpha5)) StartCoroutine(of.ConstantFiring(orderPrefab2));
-        if (Input.GetKeyDown(KeyCode.Alpha6)) StartCoroutine(LifeHoming());
-        if (Input.GetKeyDown(KeyCode.Alpha7)) StartCoroutine(lf.FireLine(target.position, lifePrefab2));
-        if (Input.GetKeyDown(KeyCode.Alpha8)) StartCoroutine(lf.Wind(target.position, target.GetComponent<Rigidbody2D>(), windForce, windLength));
-        if (Input.GetKeyDown(KeyCode.P)) Stun();
-        
-    }
-    private IEnumerator OrderMissile()
-    {
-        while (true)
+        while(hp >= 0)
         {
-            StartCoroutine(of.Missile(target.position, orderPrefab1, burstStartAngle, burstAmount));
-            yield return new WaitForSeconds(burstDelay);
+            yield return new WaitForSeconds(Random.Range(5,10));//forces a delay before the next attack by that boss
+            if (hp >= 0)
+            {
+                chaosRandom = Random.Range(0, 100);
+                if (chaosRandom < 20) StartCoroutine(cf.FireLine(target.position, chaosPrefab2, chaosPrefab2Parent, 3, 0, 1));
+                else if (chaosRandom >= 20 && chaosRandom < 60) cf.AoeUnder(target.position, chaosPrefab1);
+                else cf.Meteor(target.position, chaosPrefab3, 20, 10f);
+            }
         }
     }
+    private IEnumerator LifeClock()
+    {
+        while (hp >= 0) 
+        {
+            yield return new WaitForSeconds(Random.Range(5, 10));
+            if (hp >= 0)
+            {
+                lifeRandom = Random.Range(0, 100);
+                if (lifeRandom < 20) StartCoroutine(lf.Wind(target.position, target.GetComponent<Rigidbody2D>(), windForce, windLength, true));
+                else if (lifeRandom >= 20 && lifeRandom < 60) StartCoroutine(LifeHoming());
+                else StartCoroutine(lf.FireLine(target.position, lifePrefab2));
+            }
+        }
+    }
+
     private IEnumerator LifeHoming()
     {
         for(int i = 0; i < 7; ++i)
@@ -93,12 +117,25 @@ public class BossManager : MonoBehaviour
             lf.IceShardTarget(target.position, lifePrefab1);
             yield return new WaitForSeconds(0.5f);
         }
+    }//I want to update the player position for those attacks
+    private IEnumerator OrderMissile()
+    {
+        while (hp >= 0)
+        {
+            StartCoroutine(of.Missile(target.position, orderPrefab1, burstStartAngle, burstAmount));
+            burstDelay = Random.Range(3, 10);
+            yield return new WaitForSeconds(burstDelay);
+        }
     }
+
+
     public void ReduceHp(float damage)
     {
+        if (damage == 0) audio.PlayOneShot(clips[1]);
+        else audio.PlayOneShot(clips[0]);
         hp -= damage;
         ui.HpUpdate(hp);
-        if(hp <= percentHp * maxHp)
+        if(hp <= percentHp * maxHp)//every 10% of the boss hp, the damageable boss changes. at every 20%, a stun pad and health pad appear to help the player
         {
             ChangeBoss();
             if(percentHp == 0.8f || percentHp == 0.6f || percentHp == 0.4f)
@@ -106,24 +143,35 @@ public class BossManager : MonoBehaviour
                 Pad(true);
                 Pad(false);
             }
+            if(percentHp == 0)//dead
+            {
+                Stun();
+            }
             percentHp -= 0.1f;
         }
-    }
-    private void ChangeBoss()
+    }//function is called from the colliders
+
+    private void ChangeBoss()//only one of the three bosses will be damageable at once
     {
         int previous = damageableBoss;
         do
         {
-            damageableBoss = Random.Range(0, 4);
+            damageableBoss = Random.Range(0, 3);
         } while (previous == damageableBoss);
-        switch (damageableBoss)
-        {
-            default:
-                cf.Invincible = false;
-
-                break;
-        }
+        cf.Switch(false);
+        lf.Switch(false);
+        of.Switch(false);
+        if (damageableBoss == 0) cf.Switch(true);
+        if (damageableBoss == 1) lf.Switch(true);
+        if (damageableBoss == 2) of.Switch(true);
+        //cf.Invincible = true;
+        //lf.Invincible = true;
+        //of.Invincible = true;
+        //if (damageableBoss == 0) cf.Invincible = false;
+        //if (damageableBoss == 1) lf.Invincible = false;
+        //if (damageableBoss == 2) of.Invincible = false;
     }
+
     private void Pad(bool isStun)
     {
         int rand;
@@ -131,54 +179,59 @@ public class BossManager : MonoBehaviour
         {
             rand = Random.Range(0, stunPads.Length);
             stunPads[rand].SetActive(true);
-            StartCoroutine(PadGone(stunPads[rand], 20));
         }
         else
         {
             rand = Random.Range(0, healthPads.Length);
             healthPads[rand].SetActive(true);
-            StartCoroutine(PadGone(healthPads[rand], 20));
         }
     }
-    private IEnumerator PadGone(GameObject pad, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        pad.SetActive(false);
-    }
+
     public void ToParent(GameObject g)
     {
-        g.transform.parent = attack.transform;
-    }
+        g.transform.parent = attackHolder.transform;
+    }//puts the attack inside of an object, this way all of the attacks can be stopped
     private void DestroyAllAttacks()
     {
-        attack.BroadcastMessage("Suicide", SendMessageOptions.DontRequireReceiver);
+        attackHolder.BroadcastMessage("Suicide", SendMessageOptions.DontRequireReceiver);
     }
+
     public void Heal()
     {
         code.GetHit(-1);//works as a heal
     }
     public void Stun()
     {
+        audio.PlayOneShot(clips[2]);
         cf.AttackReady = false;
         lf.AttackReady = false;
         of.AttackReady = false;
         DestroyAllAttacks();
-        Invoke("UnStun", 5f);
-    }
+        if (hp >= 0) Invoke("UnStun", stunTime);
+
+    }//All the boss stop attacking for a certain period of time
     private void UnStun()
     {
         cf.AttackReady = true;
         lf.AttackReady = true;
         of.AttackReady = true;
     }
+
     private IEnumerator BlockArea()
     {
-        do
+        int previous = blockedArea;
+        while(hp >= 0)
         {
-            yield return new WaitForSeconds(40);
-            //block one of the 6 area 
-        } while (hp > 0);
-        
-    }
+            do
+            {
+                blockedArea = Random.Range(0, blockedAreas.Length);
+            } while (previous == blockedArea);
+            
+            previous = blockedArea;
+            blockedAreas[blockedArea].SetActive(true);
 
+            yield return new WaitForSeconds(40);
+            blockedAreas[blockedArea].SetActive(false);
+        }
+    }
 }

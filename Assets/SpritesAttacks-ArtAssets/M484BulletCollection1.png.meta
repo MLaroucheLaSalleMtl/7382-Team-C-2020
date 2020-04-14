@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 750650581637798775
     second: M484BulletCollection1_0
+  - first:
+      213: -5560974040385867171
+    second: XParticle
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -109,7 +112,7 @@ TextureImporter:
         width: 10
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,6 +120,27 @@ TextureImporter:
       bones: []
       spriteID: 77b16f41ab8da6a00800000000000000
       internalID: 750650581637798775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: XParticle
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 337
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52b1a5d29373d2b0800000000000000
+      internalID: -5560974040385867171
       vertices: []
       indices: 
       edges: []

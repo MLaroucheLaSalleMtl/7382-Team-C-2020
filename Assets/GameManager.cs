@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(0.1f + maxStamina / (5 + variables.StaminaUpgrade));
+            yield return new WaitForSeconds(0.1f + maxStamina / (5 + variables.StaminaUpgrade));
             if(isAttacking <= 0 && currentStamina < maxStamina)
             {
                 ++currentStamina;

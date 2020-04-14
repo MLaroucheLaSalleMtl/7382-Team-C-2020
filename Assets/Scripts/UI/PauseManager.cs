@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
     private AsyncOperation async;
     private FixedVariables variables;
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject tipsUI;
     [SerializeField] private bool isPaused;
+    private EventSystem eventSystem;
+    public GameObject returnBtn;
 
     public void OnPause(InputAction.CallbackContext context)
     {
@@ -45,6 +49,7 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0;
         AudioListener.pause = true;
         pauseMenuUI.SetActive(true);
+        //tipsUI.SetActive(false);
         
         Cursor.visible = true;
     }
@@ -70,5 +75,18 @@ public class PauseManager : MonoBehaviour
             async = SceneManager.LoadSceneAsync("Loading");
             async.allowSceneActivation = true;
         }
+    }
+
+    public void TipsMenu()
+    {
+        tipsUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
+        eventSystem.SetSelectedGameObject(returnBtn);
+    }
+
+    public void Return()
+    {
+        tipsUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
     }
 }

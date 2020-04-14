@@ -9,11 +9,6 @@ public class OrderBossAi : MonoBehaviour
 	[SerializeField] private Transform target;
 	[SerializeField] private AudioClip[] clips;
 	private AudioSource audio;
-	private bool attackReady = false;
-	private float attackChance;
-	private int previousAttack = 0;
-	private int attackToDo = 0;
-	private static int nbAttack = 3;
 	private float hp;
 	private static float maxHp = 200;
 	private UiChaos ui;
@@ -52,6 +47,7 @@ public class OrderBossAi : MonoBehaviour
 	private float gargoyleClose;
 	private float gargoyleDistance;
 	private bool gargoyleBoolA;
+    public static Vector4 red = new Vector4(1, 0.337f, 0.337f, 1);
 	#endregion
 
 	// Start is called before the first frame update
@@ -90,17 +86,18 @@ public class OrderBossAi : MonoBehaviour
                     gargoyleBoolA = false;
 				} 
 			}
+            audio.PlayOneShot(clips[1]);
             if (gargoyleBoolA)
             {
                 foreach(GameObject gar in gargoyleA)
                 {
-                    gar.GetComponent<SpriteRenderer>().color = new Vector4(1, 0.337f, 0.337f, 1);
+                    gar.GetComponent<SpriteRenderer>().color = red;
                     GameObject fire = Instantiate(gargoyleFirePrefab, gar.transform.position, Quaternion.Euler(0, 0, 180));
                 }
                 yield return new WaitForSeconds(3);
                 foreach(GameObject gar in gargoyleA)
                 {
-                    gar.GetComponent<SpriteRenderer>().color = new Vector4(1, 1, 1, 1);
+                    gar.GetComponent<SpriteRenderer>().color = Color.white;
                 }
                 
             }
@@ -108,13 +105,14 @@ public class OrderBossAi : MonoBehaviour
             {
                 foreach(GameObject gar in gargoyleB)
                 {
-                    gar.GetComponent<SpriteRenderer>().color = new Vector4(1, 0.337f, 0.337f, 1);
+
+                    gar.GetComponent<SpriteRenderer>().color = red;
                     GameObject fire = Instantiate(gargoyleFirePrefab, gar.transform.position, Quaternion.Euler(0, 0, 0));
                 }
                 yield return new WaitForSeconds(3);
                 foreach (GameObject gar in gargoyleB)
                 {
-                    gar.GetComponent<SpriteRenderer>().color = new Vector4(1, 1, 1, 1);
+                    gar.GetComponent<SpriteRenderer>().color = Color.white;
                 }
             }
 		}
@@ -130,7 +128,8 @@ public class OrderBossAi : MonoBehaviour
 			if (LifeBossAI.D(0, 1, target.position, transform.position) > 0) burstAngle = -burstAngle;
 			burstAngle += burstStartAngle;
 			burstTempAngle = burstAngle;
-			do
+            audio.PlayOneShot(clips[0]);
+            do
 			{
 				burstAngle = burstTempAngle;
 				for (int i = 0; i < burstAmount; ++i)
@@ -143,8 +142,8 @@ public class OrderBossAi : MonoBehaviour
 				yield return new WaitForSeconds(0.1f);
 				burstN++;
 			} while (burstN < 3);
-			
-			yield return new WaitForSeconds(burstDelay);
+            
+            yield return new WaitForSeconds(burstDelay);
 		}
 		
 	}
@@ -177,8 +176,7 @@ public class OrderBossAi : MonoBehaviour
 		hp = hp - damage;
 		ui.HpUpdate(hp);
 		HpCheck();
-		//audio.PlayOneShot(clips[nbAttack]);
-		//audio.PlayOneShot(clips[nbAttack + 1]);
+		audio.PlayOneShot(clips[2]);
 
 	}
 	private void HpCheck()
@@ -191,9 +189,5 @@ public class OrderBossAi : MonoBehaviour
             gargoyleDelay = 7f;
 		}
 		if (hp <= 0) ui.Die("FinalBoss");
-	}
-	private void AttackCooldown()
-	{
-		attackReady = true;
 	}
 }

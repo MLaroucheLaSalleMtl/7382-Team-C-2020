@@ -8,6 +8,13 @@ public class LifeFinal : MonoBehaviour
     private bool invincible = true;
     private bool attackReady = true;
     private BossManager bm;
+    private AudioSource audio;
+    [SerializeField] private AudioClip[] clips;
+    [SerializeField]private SpriteRenderer shield;
+    [SerializeField] private ParticleSystem windParticles;
+    [SerializeField] private ParticleSystem windParticles2;
+    private static Vector3 rightPos = new Vector3(-23, 0, 0);
+    private static Vector3 leftPos = new Vector3(23, 0, 0);
 
     public static LifeFinal Lf { get => lf; set => lf = value; }
     public bool Invincible { get => invincible; set => invincible = value; }
@@ -27,6 +34,7 @@ public class LifeFinal : MonoBehaviour
     private void Start()
     {
         bm = BossManager.Bm;
+        audio = GetComponent<AudioSource>();
     }
     private float angleHoming;
     public void IceShardTarget(Vector2 target, GameObject homingShard)
@@ -48,6 +56,7 @@ public class LifeFinal : MonoBehaviour
     float fireballY;
     public IEnumerator FireLine(Vector2 target, GameObject iceShardPrefab)
     {
+        audio.PlayOneShot(clips[0]);
         incrementX = 0.09f * (target.x - transform.position.x);
         incrementY = 0.09f * (target.y - transform.position.y);
         angle = LifeBossAI.Angle(-3.681f, -4.236f, target.x - transform.position.x, target.y - transform.position.y);
@@ -67,18 +76,53 @@ public class LifeFinal : MonoBehaviour
             fireballY += incrementY;
         }
     }
-    public IEnumerator Wind(Vector2 target, Rigidbody2D rigid, float force, int length)
+    public IEnumerator Wind(Vector2 target, Rigidbody2D rigid, float force, int length, bool xPosition)
     {
-        if (transform.position.x > target.x) force = -force;
+        audio.PlayOneShot(clips[1]);
+        if (transform.position.x > target.x)
+        {
+            force = -force;
+            xPosition = false;
+        }
         Vector2 pushForce = new Vector2(force, 0);
         for(int i = 0; i < length; ++i)
         {
             if (this.AttackReady)
             {
                 rigid.AddForce(pushForce);
+                if (xPosition) windParticles2.Play();
+                else windParticles.Play();
             }
             yield return new WaitForSeconds(0.01f);
         }
         
+    }
+    private void GetHit(float damage)
+    {
+        if (!Invincible) bm.ReduceHp(damage);
+        else bm.ReduceHp(0);
+
+    }
+
+    public void Switch(bool toggle)
+    {
+        if (toggle)
+        {
+            shield.enabled = false;
+            Invincible = false;
+
+        }
+        else
+        {
+            shield.enabled = true;
+            Invincible = true;
+        }
+    }
+    public void Teleport()
+    {
+        if (transform.position == leftPos) transform.position = rightPos;
+        else transform.position = leftPos;
+        transform.Rotate(0, 0, 180);
+
     }
 }

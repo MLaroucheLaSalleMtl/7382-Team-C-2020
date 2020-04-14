@@ -19,6 +19,7 @@ public class LifeBossAI : MonoBehaviour
     [SerializeField] private int previousAttack = 0;
     [SerializeField] private int attackToDo = 0;
     [SerializeField] private AudioClip[] clips;
+    [SerializeField] private SpriteRenderer shield;
     private static int nbAttack = 3;
     private bool spawnDelay = false;
     private static float spawnLeft = -23;
@@ -82,6 +83,7 @@ public class LifeBossAI : MonoBehaviour
         audio = GetComponent<AudioSource>();
         hp = maxHp;
         ui.HpUpdate(hp);
+        audio.PlayOneShot(clips[nbAttack + 2]);
     }
 
 	// Update is called once per frame
@@ -119,8 +121,9 @@ public class LifeBossAI : MonoBehaviour
             hp = hp - damage;
             ui.HpUpdate(hp);
             HpCheck();
-            //audio.PlayOneShot(clips[nbAttack]);
+            audio.PlayOneShot(clips[nbAttack]);
         }
+        else audio.PlayOneShot(clips[nbAttack + 1]);
     }
     private void HpCheck()
     {
@@ -129,15 +132,27 @@ public class LifeBossAI : MonoBehaviour
     public void Stun()
     {
         invincible = false;
+        shield.enabled = false;
         stun = true;
         Invoke("Free", 8f);
+        Invoke("FreeWarning", 6f);
+    }
+    private void FreeWarning()
+    {
+        audio.PlayOneShot(clips[nbAttack + 2]);
     }
     private void Free()
     {
         ++stunCounter;
         invincible = true;
-        if (stunCounter >= 2) invincible = false;
+        shield.enabled = true;
+        if (stunCounter >= 2)
+        {
+            invincible = false;
+            shield.enabled = false;
+        }
         stun = false;
+        
     }
     public void Spawn()
     {

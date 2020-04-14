@@ -33,7 +33,7 @@ public static class LoadingText
     public static string[] loreTextsZ = { bridgeLoreBZ, bridgeLoreAZ, chaosLoreBZ, chaosLoreAZ, lifeLoreBZ, lifeLoreAZ, orderLoreBZ, orderLoreAZ, finalLoreBZ, finalLoreAZ };
 
     #region //bridgeTips
-    private static string bridgeTip1 = "Dashing gives great movement speed, but should not be abused.";
+    private static string bridgeTip1 = "Dashing is a great way to avoid attacks";
     private static string bridgeTipZ1 = "EICL NTLA";
     private static string bridgeTip2 = "Always keep moving, standing still is dangerous.";
     private static string bridgeTipZ2 = "LHP LHOA";
@@ -76,7 +76,7 @@ public static class LoadingText
 
     #region//orderTips
     private static string orderTip1 = "The gargoyles glow before they attack.";
-    private static string orderTip2 = "The purple and green balls always follow the same trajectory.";
+    private static string orderTip2 = "The purple and red balls always follow the same trajectory.";
     private static string orderTip3 = "The boss is more dangerous the lower his HP is.";
     private static string orderTip4 = "Control your movement carefully.";
     private static string orderTip1Z = "QN PI";
@@ -88,12 +88,17 @@ public static class LoadingText
     public static string[] orderTipsZ = { orderTip1Z, orderTip2Z, orderTip3Z, orderTip4Z };
 
     #region//finalTips
-
+    private static string finalTip1 = "The green zones will heal you.";
+    private static string finalTip2 = "The blue zones will stun the enemy temporarily.";
+    private static string finalTip3 = "It is possible.";
+    private static string finalTip1Z = "DBH I NQ";
+    private static string finalTip2Z = "A C E";
+    private static string finalTip3Z = "PBH";
     #endregion
-    public static string[] finalTips = { };
-    public static string[] finalTipsZ = { };
+    public static string[] finalTips = {finalTip1,finalTip2,finalTip3 };
+    public static string[] finalTipsZ = { finalTip1Z, finalTip2Z, finalTip3Z };
 
-    public static string congratsText = "Congratulations!\nおめでとう！";
+    public static string congratsText = "Congratulations!";
     public static string congratsTextZ = "DPH";
 
     public static string GetTime(float timeInSeconds)

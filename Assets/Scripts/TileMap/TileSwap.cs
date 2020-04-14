@@ -31,7 +31,8 @@ public class TileSwap : MonoBehaviour
     {
         tilemap.SwapTile(tileHot, tileCool);
         StartCoroutine(Warning());
-        boss.invincible = false;
+        boss.Invincible = false;
+        boss.Shield.enabled = false;
     }
     private IEnumerator Warning()
     {
@@ -57,7 +58,8 @@ public class TileSwap : MonoBehaviour
     {
         tilemap.SwapTile(tileCool, tileHot);
         ready = true;
-        boss.invincible = true;
+        boss.Invincible = true;
+        boss.Shield.enabled = true;
     }
     
 }

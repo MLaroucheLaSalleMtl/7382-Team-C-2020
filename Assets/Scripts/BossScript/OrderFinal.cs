@@ -8,6 +8,10 @@ public class OrderFinal : MonoBehaviour
 	private bool invincible = true;
     private bool attackReady = true;
     private BossManager bm;
+    private AudioSource audio;
+    [SerializeField] private AudioClip[] clips;
+    [SerializeField] private SpriteRenderer shield;
+    [SerializeField] private GameObject[] gargoyles;
 
 	public static OrderFinal Of { get => of; set => of = value; }
 	public bool Invincible { get => invincible; set => invincible = value; }
@@ -27,7 +31,9 @@ public class OrderFinal : MonoBehaviour
     private void Start()
     {
         bm = BossManager.Bm;
+        audio = GetComponent<AudioSource>();
     }
+
     private static float burstSpeed = 10;
 	public IEnumerator Missile(Vector2 target, GameObject bulletPrefab, float burstStartAngle, int burstAmount)
 	{
@@ -39,6 +45,7 @@ public class OrderFinal : MonoBehaviour
         burstAngle = LifeBossAI.Angle(0, 1, target.x - transform.position.x, target.y - transform.position.y);
         if (LifeBossAI.D(0, 1, target, transform.position) > 0) burstAngle = -burstAngle;
         burstAngle += burstStartAngle;
+        audio.PlayOneShot(clips[0]);
         burstTempAngle = burstAngle;
         do
         {
@@ -59,10 +66,11 @@ public class OrderFinal : MonoBehaviour
         } while (burstN < 3);
 
     }
+
     private static float purpleStartAngle = -75f;
     private static float redStartAngle = -45f;
     private static float constantSpeed = 5f;
-    private static float constantDelay = 0.4f;
+    private static float constantDelay = 0.8f;
     public IEnumerator ConstantFiring(GameObject purplePrefab)
     {
         int constantN = 0;
@@ -85,6 +93,49 @@ public class OrderFinal : MonoBehaviour
             }
             ++constantN;
             yield return new WaitForSeconds(constantDelay);
+        }
+    }
+    public IEnumerator GargoyleFire(GameObject firePrefab)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10);
+            audio.PlayOneShot(clips[1]);
+            for (int i = 0; i < gargoyles.Length; ++i)
+            {
+                if (this.AttackReady)
+                {
+                    gargoyles[i].GetComponent<SpriteRenderer>().color = OrderBossAi.red;
+                    GameObject fire = Instantiate(firePrefab, gargoyles[i].transform.position, Quaternion.Euler(0, 0, 90));
+                    fire.GetComponent<GarFire>().Vertical = true;
+                }
+            }
+            yield return new WaitForSeconds(3);
+            gargoyles[0].GetComponent<SpriteRenderer>().color = Color.white;
+            gargoyles[1].GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        
+    }
+
+    private void GetHit(float damage)
+    {
+        if (!Invincible) bm.ReduceHp(damage);
+        else bm.ReduceHp(0);
+
+    }
+
+    public void Switch(bool toggle)
+    {
+        if (toggle)
+        {
+            shield.enabled = false;
+            Invincible = false;
+
+        }
+        else
+        {
+            shield.enabled = true;
+            Invincible = true;
         }
     }
 }

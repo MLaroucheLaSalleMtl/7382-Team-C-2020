@@ -29,7 +29,7 @@ public class ProximityTeleport : MonoBehaviour
     {
         while (isInside)
         {
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSeconds(1f);
             ++timeSpentClose;
             if(timeSpentClose >= 10)
             {

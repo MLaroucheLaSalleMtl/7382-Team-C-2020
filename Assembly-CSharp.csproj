@@ -62,7 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BlockFinal.cs" />
+    <Compile Include="Assets\FireBossScript.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\LifeFinalClose.cs" />
     <Compile Include="Assets\Scripts\Attacks\AoeMeleeScript.cs" />
     <Compile Include="Assets\Scripts\Attacks\Bullet.cs" />
     <Compile Include="Assets\Scripts\Attacks\DamageEffect.cs" />
@@ -80,7 +83,6 @@
     <Compile Include="Assets\Scripts\BossScript\BridgeBossAi.cs" />
     <Compile Include="Assets\Scripts\BossScript\ChaosBossAi.cs" />
     <Compile Include="Assets\Scripts\BossScript\ChaosFinal.cs" />
-    <Compile Include="Assets\Scripts\BossScript\FireBossScript.cs" />
     <Compile Include="Assets\Scripts\BossScript\LifeBossAI.cs" />
     <Compile Include="Assets\Scripts\BossScript\LifeFinal.cs" />
     <Compile Include="Assets\Scripts\BossScript\OrderBossAi.cs" />

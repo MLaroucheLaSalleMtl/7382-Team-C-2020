@@ -8,6 +8,7 @@ public class GreenProtection : MonoBehaviour
     [SerializeField]private float touched = 0;
     private TileSwap tileSwap;
     [SerializeField]private GameObject[] greenPatches;
+    [SerializeField] private ParticleSystem[] particles;
     private AudioSource audio;
 
     private void Awake()
@@ -39,6 +40,7 @@ public class GreenProtection : MonoBehaviour
 
             greenPatches[i].GetComponent<BoxCollider2D>().enabled = true;
             greenPatches[i].GetComponentInChildren<SpriteRenderer>().enabled = false;
+            particles[i].Play();
         }
     }
     // Start is called before the first frame update

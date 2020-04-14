@@ -13,12 +13,16 @@ public class ChaosBossAi : MonoBehaviour
     [SerializeField] private float attackChance;
     [SerializeField]private int previousAttack = 0;
     [SerializeField]private int attackToDo = 0;
-    public bool invincible;
+    private bool invincible = true;
+    public bool Invincible { get => invincible; set => invincible = value; }
+    public SpriteRenderer Shield { get => shield; set => shield = value; }
+
     [SerializeField]private float hp;
     private static float maxHp = 200;
     private AudioSource audio;
     private static int nbAttack = 3;
     [SerializeField] private AudioClip[] clips;
+    [SerializeField] private SpriteRenderer shield;
     #endregion
     #region//Aoe variables
     [Header("Aoe Variables", order = 1)]
@@ -89,10 +93,13 @@ public class ChaosBossAi : MonoBehaviour
         }
     }
     [SerializeField] private SpriteRenderer tookDamage;
+
+    
+
     public void GetHit(float damage)
     {
 
-        if (!invincible)
+        if (!Invincible)
         {
             hp = hp - damage;
             ui.HpUpdate(hp);

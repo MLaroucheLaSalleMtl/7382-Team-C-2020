@@ -6,9 +6,12 @@ public class GreenCollision : MonoBehaviour
 {
     private GreenProtection green;
     [SerializeField] private SpriteRenderer knob;
+    [SerializeField] private ParticleSystem particles;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         knob.enabled = true;
+        particles.Clear();
+        particles.Pause();
         green.Collision();
         GetComponent<BoxCollider2D>().enabled = false;
     }

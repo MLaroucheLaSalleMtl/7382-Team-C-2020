@@ -13,6 +13,7 @@ public class LifeTileGone : MonoBehaviour
     private int swapCounter = 0;
     [SerializeField] private GameObject[] parents;
     // Start is called before the first frame update
+    private AudioSource audio;
     void Awake()
     {
         if (instance == null)
@@ -27,15 +28,14 @@ public class LifeTileGone : MonoBehaviour
     private void Start()
     {
         tilemap = GetComponent<Tilemap>();
-    }
-    private void Update()
-    {
+        audio = GetComponent<AudioSource>();
     }
     public void Swap()
     {
         tilemap.SwapTile(tileA, tileBlack);
         if (swapCounter > 0) tilemap.SwapTile(tileB, tileBlack);
         parents[swapCounter].BroadcastMessage("ActivateCollider", swapCounter);
+        audio.Play();
         ++swapCounter;
         
     }

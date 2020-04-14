@@ -13,7 +13,7 @@ public class UiChaos : MonoBehaviour
     [SerializeField] private Text timer;
     private float hp;
     [SerializeField] private Image hpRed;
-    [SerializeField] private Image BossHPSmall;
+    [SerializeField] private Image[] bossHPSmall;
     [SerializeField] private Image redPlayer;
     [SerializeField] private Image stamina;
     [SerializeField] private Image staminaSmall;
@@ -51,7 +51,10 @@ public class UiChaos : MonoBehaviour
         if (maxHp == 0) maxHp = _hp;
         hp = _hp;
         hpRed.fillAmount = hp / maxHp;
-        BossHPSmall.fillAmount = hp / maxHp;
+        for (int i = 0; i < bossHPSmall.Length; ++i)
+        {
+            bossHPSmall[i].fillAmount = hp / maxHp;
+        }
     }
     public void StaminaUpgrade()
     {
