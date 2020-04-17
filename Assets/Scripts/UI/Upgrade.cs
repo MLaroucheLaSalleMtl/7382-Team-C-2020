@@ -6,6 +6,7 @@ public class Upgrade : MonoBehaviour
 {
     private FixedVariables variables;
     private AsyncOperation async;
+    private bool once = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,13 +14,22 @@ public class Upgrade : MonoBehaviour
     }
     public void StaminaUpgrade()
     {
-        ++variables.StaminaUpgrade;
-        Invoke("Switch", 5f);
+        if (!once)
+        {
+            once = true;
+            ++variables.StaminaUpgrade;
+            Invoke("Switch", 5f);
+        }
+        
     }
     public void HealthUpgrade()
     {
-        ++variables.HealthUpgrade;
-        Invoke("Switch", 5f);
+        if (!once)
+        {
+            once = true;
+            ++variables.HealthUpgrade;
+            Invoke("Switch", 5f);
+        }
     }
     private void Switch()
     {

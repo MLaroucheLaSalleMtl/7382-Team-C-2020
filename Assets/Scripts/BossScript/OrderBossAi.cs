@@ -34,7 +34,7 @@ public class OrderBossAi : MonoBehaviour
 	private static float purpleStartAngle = -75f;
 	private static float redStartAngle = -45f;
 	private float constantAngle;
-	private static float constantDelay = 0.4f;
+	private static float constantDelay = 0.5f;
 	private int constantN = 0;
 
     #endregion
@@ -149,21 +149,24 @@ public class OrderBossAi : MonoBehaviour
 	}
 	private IEnumerator ConstantShot()
 	{
-		while (true)
-		{
-			if (constantN % 2 == 0) constantAngle = purpleStartAngle;
-			else constantAngle = redStartAngle;
+        for (int i2 = 1 ; i2 > -1; ++i2) //goes on forever
+        {
+            if (constantN % 2 == 0) constantAngle = purpleStartAngle;
+            else constantAngle = redStartAngle;
 
-			for (int i = 0; i < 3; ++i)
-			{
-				GameObject bul = Instantiate(purplePrefab, transform.position, transform.rotation);
-				if (constantN % 2 != 0) bul.GetComponent<SpriteRenderer>().color = Color.yellow;
+            for (int i = 0; i < 3; ++i)
+            {
+                GameObject bul = Instantiate(purplePrefab, transform.position, transform.rotation);
+                if (constantN % 2 != 0) bul.GetComponent<SpriteRenderer>().color = Color.yellow;
                 bul.GetComponent<Bullet>().SetDirection(Vector3Return(constantAngle, transform.position), constantSpeed);
-				constantAngle += 60;
-			}
-			++constantN;
-			yield return new WaitForSeconds(constantDelay);
-		}
+                constantAngle += 60;
+            }
+            ++constantN;
+            yield return new WaitForSeconds(constantDelay);
+            if (i2 % 10 == 0) yield return new WaitForSeconds(3);//gives a break
+        }
+			
+		
 	}
     public static Vector2 Vector3Return(float angle, Vector3 pos)
 	{

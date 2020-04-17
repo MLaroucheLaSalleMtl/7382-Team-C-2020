@@ -73,26 +73,29 @@ public class OrderFinal : MonoBehaviour
     private static float constantDelay = 0.8f;
     public IEnumerator ConstantFiring(GameObject purplePrefab)
     {
-        int constantN = 0;
-        float constantAngle;
-        while (true)
+        if (this.AttackReady)
         {
-            if (constantN % 2 == 0) constantAngle = purpleStartAngle;
-            else constantAngle = redStartAngle;
-
-            for (int i = 0; i < 3; ++i)
+            int constantN = 0;
+            float constantAngle;
+            while (true)
             {
-                if (this.AttackReady)
+                if (constantN % 2 == 0) constantAngle = purpleStartAngle;
+                else constantAngle = redStartAngle;
+
+                for (int i = 0; i < 3; ++i)
                 {
-                    GameObject bul = Instantiate(purplePrefab, transform.position, transform.rotation);
-                    if (constantN % 2 != 0) bul.GetComponent<SpriteRenderer>().color = Color.yellow;
-                    bul.GetComponent<Bullet>().SetDirection(OrderBossAi.Vector3Return(constantAngle, transform.position), constantSpeed);
-                    bm.ToParent(bul);
+                    if (this.AttackReady)
+                    {
+                        GameObject bul = Instantiate(purplePrefab, transform.position, transform.rotation);
+                        if (constantN % 2 != 0) bul.GetComponent<SpriteRenderer>().color = Color.yellow;
+                        bul.GetComponent<Bullet>().SetDirection(OrderBossAi.Vector3Return(constantAngle, transform.position), constantSpeed);
+                        bm.ToParent(bul);
+                    }
+                    constantAngle += 60;
                 }
-                constantAngle += 60;
+                ++constantN;
+                yield return new WaitForSeconds(constantDelay);
             }
-            ++constantN;
-            yield return new WaitForSeconds(constantDelay);
         }
     }
     public IEnumerator GargoyleFire(GameObject firePrefab)
@@ -100,19 +103,22 @@ public class OrderFinal : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(10);
-            audio.PlayOneShot(clips[1]);
-            for (int i = 0; i < gargoyles.Length; ++i)
+            if (this.AttackReady)
             {
-                if (this.AttackReady)
+                audio.PlayOneShot(clips[1]);
+                for (int i = 0; i < gargoyles.Length; ++i)
                 {
-                    gargoyles[i].GetComponent<SpriteRenderer>().color = OrderBossAi.red;
-                    GameObject fire = Instantiate(firePrefab, gargoyles[i].transform.position, Quaternion.Euler(0, 0, 90));
-                    fire.GetComponent<GarFire>().Vertical = true;
+                    if (this.AttackReady)
+                    {
+                        gargoyles[i].GetComponent<SpriteRenderer>().color = OrderBossAi.red;
+                        GameObject fire = Instantiate(firePrefab, gargoyles[i].transform.position, Quaternion.Euler(0, 0, 90));
+                        fire.GetComponent<GarFire>().Vertical = true;
+                    }
                 }
+                yield return new WaitForSeconds(3);
+                gargoyles[0].GetComponent<SpriteRenderer>().color = Color.white;
+                gargoyles[1].GetComponent<SpriteRenderer>().color = Color.white;
             }
-            yield return new WaitForSeconds(3);
-            gargoyles[0].GetComponent<SpriteRenderer>().color = Color.white;
-            gargoyles[1].GetComponent<SpriteRenderer>().color = Color.white;
         }
         
     }

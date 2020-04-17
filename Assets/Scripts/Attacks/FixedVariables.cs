@@ -8,11 +8,13 @@ public class FixedVariables : MonoBehaviour
     private float timer;
     private string lastScene;
     private string sceneLoad;
+    private bool warp = false;
     public string LastScene { get => lastScene; set => lastScene = value; }
     public float Timer { get => timer; set => timer = value; }
     public float StaminaUpgrade { get => staminaUpgrade; set => staminaUpgrade = value; }
     public float HealthUpgrade { get => healthUpgrade; set => healthUpgrade = value; }
     public string SceneLoad { get => sceneLoad; set => sceneLoad = value; }
+    public bool Warp { get => warp; set => warp = value; }
 
     private float staminaUpgrade = 0;
     private float healthUpgrade = 0;

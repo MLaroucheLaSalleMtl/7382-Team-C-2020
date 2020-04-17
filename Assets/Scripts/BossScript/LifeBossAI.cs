@@ -208,7 +208,7 @@ public class LifeBossAI : MonoBehaviour
             if (D(-3.681f, -4.236f, Target.position, transform.position) < 0) { angleHoming = -angleHoming; }
             shard.transform.Rotate(0, 0, angleHoming);
             shard.GetComponent<IceShardHoming>().Shoot(Target.position);
-            yield return new WaitForSecondsRealtime(delayBetweenShards);
+            yield return new WaitForSeconds(delayBetweenShards);
         }
     }
     public static float Angle(float uX, float uY, float vX, float vY)
@@ -239,7 +239,7 @@ public class LifeBossAI : MonoBehaviour
 		
 		for (int i = 0; i < 100; ++i)
 		{
-			yield return new WaitForSecondsRealtime(0.04f);
+			yield return new WaitForSeconds(0.04f);
 
 			GameObject iceShard = Instantiate(iceShardPrefab, new Vector2(transform.position.x + fireballX, transform.position.y + fireballY), Quaternion.identity);
 			iceShard.transform.Rotate(0, 0, angle);
@@ -267,7 +267,7 @@ public class LifeBossAI : MonoBehaviour
         {
             
             targetR.AddForce(force);
-            yield return new WaitForSecondsRealtime(yieldValue);
+            yield return new WaitForSeconds(yieldValue);
             ++n;
         } while (n < forceLength);
         

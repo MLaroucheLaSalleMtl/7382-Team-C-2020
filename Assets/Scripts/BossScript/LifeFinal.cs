@@ -56,46 +56,52 @@ public class LifeFinal : MonoBehaviour
     float fireballY;
     public IEnumerator FireLine(Vector2 target, GameObject iceShardPrefab)
     {
-        audio.PlayOneShot(clips[0]);
-        incrementX = 0.09f * (target.x - transform.position.x);
-        incrementY = 0.09f * (target.y - transform.position.y);
-        angle = LifeBossAI.Angle(-3.681f, -4.236f, target.x - transform.position.x, target.y - transform.position.y);
-        if (LifeBossAI.D(-3.681f, -4.236f, target, transform.position) < 0) { angle = -angle; }
+        if (this.AttackReady) {
+            audio.PlayOneShot(clips[0]);
+            fireballX = 0;
+            fireballY = 0;
+            incrementX = 0.09f * (target.x - transform.position.x);
+            incrementY = 0.09f * (target.y - transform.position.y);
+            angle = LifeBossAI.Angle(-3.681f, -4.236f, target.x - transform.position.x, target.y - transform.position.y);
+            if (LifeBossAI.D(-3.681f, -4.236f, target, transform.position) < 0) { angle = -angle; }
 
-        for (int i = 0; i < 100; ++i)
-        {
-            yield return new WaitForSecondsRealtime(0.04f);
-            if (this.AttackReady)
+            for (int i = 0; i < 100; ++i)
             {
-                GameObject iceShard = Instantiate(iceShardPrefab, new Vector2(transform.position.x + fireballX, transform.position.y + fireballY), Quaternion.identity);
-                iceShard.transform.Rotate(0, 0, angle);
-                bm.ToParent(iceShard);
+                if (this.AttackReady)
+                {
+                    yield return new WaitForSeconds(0.04f);
+                    GameObject iceShard = Instantiate(iceShardPrefab, new Vector2(transform.position.x + fireballX, transform.position.y + fireballY), Quaternion.identity);
+                    iceShard.transform.Rotate(0, 0, angle);
+                    bm.ToParent(iceShard);
+
+                    fireballX += incrementX;
+                    fireballY += incrementY;
+                }
             }
-            
-            fireballX += incrementX;
-            fireballY += incrementY;
         }
+        
     }
     public IEnumerator Wind(Vector2 target, Rigidbody2D rigid, float force, int length, bool xPosition)
     {
-        audio.PlayOneShot(clips[1]);
-        if (transform.position.x > target.x)
+        if (this.AttackReady)
         {
-            force = -force;
-            xPosition = false;
-        }
-        Vector2 pushForce = new Vector2(force, 0);
-        for(int i = 0; i < length; ++i)
-        {
-            if (this.AttackReady)
+            audio.PlayOneShot(clips[1]);
+            if (transform.position.x > target.x)
             {
-                rigid.AddForce(pushForce);
-                if (xPosition) windParticles2.Play();
-                else windParticles.Play();
+                force = -force;
+                xPosition = false;
             }
-            yield return new WaitForSeconds(0.01f);
+            Vector2 pushForce = new Vector2(force, 0);
+            for (int i = 0; i < length; ++i)
+            {
+                if (this.AttackReady) { 
+                    rigid.AddForce(pushForce);
+                    if (xPosition) windParticles2.Play();
+                    else windParticles.Play();
+                }
+                yield return new WaitForSeconds(0.01f);
+            }
         }
-        
     }
     private void GetHit(float damage)
     {

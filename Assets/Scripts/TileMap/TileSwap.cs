@@ -36,12 +36,12 @@ public class TileSwap : MonoBehaviour
     }
     private IEnumerator Warning()
     {
-        yield return new WaitForSecondsRealtime(coolDelay);
+        yield return new WaitForSeconds(coolDelay);
         Invoke("TileHeat", coolWarning);
         do
         {
             Swap();
-            yield return new WaitForSecondsRealtime(tickRate);
+            yield return new WaitForSeconds(tickRate);
             
         } while (!ready);
         ready = false;

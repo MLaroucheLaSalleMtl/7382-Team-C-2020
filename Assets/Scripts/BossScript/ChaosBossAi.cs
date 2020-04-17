@@ -151,7 +151,7 @@ public class ChaosBossAi : MonoBehaviour
                     test.transform.parent = p.transform;
                 }
             }
-            yield return new WaitForSecondsRealtime(distanceWall);
+            yield return new WaitForSeconds(distanceWall);
         }
     }
     private void Meteor(float cooldown, Vector2 lockedTarget)

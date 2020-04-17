@@ -93,7 +93,7 @@ public class FireBossScript : MonoBehaviour
         float ffff = 2000;
         while (n < 20)
         {
-            yield return new WaitForSecondsRealtime(0.03f);
+            yield return new WaitForSeconds(0.03f);
             
             GameObject fuckkkkkkkkkkkkkkkk = Instantiate(fireBall, new Vector2(transformX + (testX /ffff), transformY + (testY/ffff)), transform.rotation);
             ffff -= 2;

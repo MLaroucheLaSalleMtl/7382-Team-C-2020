@@ -145,11 +145,12 @@ public class GameManager : MonoBehaviour
         else if (damageReady)
         {
             currentHp -= damage;
-            ui.PlayerHp(currentHp);
+            
             damageReady = false;
             Invoke("DamageReady", damageDelay);
         }
-        
+        ui.PlayerHp(currentHp);
+
         //++test;
         ////anim.SetInteger("takingDamage", test);
         //Invoke("DisableEffect", 1f);

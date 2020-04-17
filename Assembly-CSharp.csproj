@@ -63,9 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BlockFinal.cs" />
+    <Compile Include="Assets\ClickSound.cs" />
     <Compile Include="Assets\FireBossScript.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\LifeFinalClose.cs" />
+    <Compile Include="Assets\MusicSliders.cs" />
     <Compile Include="Assets\Scripts\Attacks\AoeMeleeScript.cs" />
     <Compile Include="Assets\Scripts\Attacks\Bullet.cs" />
     <Compile Include="Assets\Scripts\Attacks\DamageEffect.cs" />
@@ -126,6 +128,8 @@
     <Compile Include="Assets\Scripts\UI\UiChaos.cs" />
     <Compile Include="Assets\Scripts\UI\Upgrade.cs" />
     <Compile Include="Assets\Scripts\UI\VideoStream.cs" />
+    <Compile Include="Assets\SliderValue.cs" />
+    <Compile Include="Assets\WinScreenReturn.cs" />
     <None Include="Assets\Assets_DevilsWorkShop\Low_Poly_Pixel_2D_Blocks_DevilsWorkShop_v04\License.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

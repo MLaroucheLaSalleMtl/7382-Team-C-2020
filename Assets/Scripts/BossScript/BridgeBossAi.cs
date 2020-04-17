@@ -109,7 +109,7 @@ public class BridgeBossAi : MonoBehaviour
         float n = 0;
         for(int i = 0; i < 500; ++i)
         {
-            yield return new WaitForSecondsRealtime(0.04f);
+            yield return new WaitForSeconds(0.04f);
 
             GameObject fuckkkkkkkkkkkkkkkk = Instantiate(fireBall, new Vector2(transform.position.x + fireballX, transform.position.y + fireballY), transform.rotation);
             fuckkkkkkkkkkkkkkkk.transform.Rotate(new Vector3(0, 0, 215));

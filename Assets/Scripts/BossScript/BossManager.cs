@@ -9,7 +9,7 @@ public class BossManager : MonoBehaviour
     private UiChaos ui;
     private static float maxHp = 1000;
     private float hp = maxHp;
-    private float percentHp = 0.9f;
+    private int percentHp = 9;
     private int damageableBoss = -1;
     private static float stunTime = 10f;
     private int blockedArea = -1;
@@ -79,18 +79,17 @@ public class BossManager : MonoBehaviour
         Pad(true);
         audio = GetComponent<AudioSource>();
     }
-    
-    
+
     private IEnumerator ChaosClock()
     {
         while(hp >= 0)
         {
-            yield return new WaitForSeconds(Random.Range(5,10));//forces a delay before the next attack by that boss
+            yield return new WaitForSeconds(Random.Range(5, 8));//forces a delay before the next attack by that boss
             if (hp >= 0)
             {
                 chaosRandom = Random.Range(0, 100);
-                if (chaosRandom < 20) StartCoroutine(cf.FireLine(target.position, chaosPrefab2, chaosPrefab2Parent, 3, 0, 1));
-                else if (chaosRandom >= 20 && chaosRandom < 60) cf.AoeUnder(target.position, chaosPrefab1);
+                if (chaosRandom < 15) StartCoroutine(cf.FireLine(target.position, chaosPrefab2, chaosPrefab2Parent, 3, 0, 1));
+                else if (chaosRandom >= 15 && chaosRandom < 55) cf.AoeUnder(target.position, chaosPrefab1);
                 else cf.Meteor(target.position, chaosPrefab3, 20, 10f);
             }
         }
@@ -99,7 +98,7 @@ public class BossManager : MonoBehaviour
     {
         while (hp >= 0) 
         {
-            yield return new WaitForSeconds(Random.Range(5, 10));
+            yield return new WaitForSeconds(Random.Range(5, 8));
             if (hp >= 0)
             {
                 lifeRandom = Random.Range(0, 100);
@@ -123,11 +122,14 @@ public class BossManager : MonoBehaviour
         while (hp >= 0)
         {
             StartCoroutine(of.Missile(target.position, orderPrefab1, burstStartAngle, burstAmount));
-            burstDelay = Random.Range(3, 10);
+            burstDelay = Random.Range(7, 10);
             yield return new WaitForSeconds(burstDelay);
         }
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) ReduceHp(0.1f * maxHp);
+    }
 
     public void ReduceHp(float damage)
     {
@@ -135,22 +137,29 @@ public class BossManager : MonoBehaviour
         else audio.PlayOneShot(clips[0]);
         hp -= damage;
         ui.HpUpdate(hp);
-        if(hp <= percentHp * maxHp)//every 10% of the boss hp, the damageable boss changes. at every 20%, a stun pad and health pad appear to help the player
+        if(hp <= Mathf.Round(((float)percentHp/10) * maxHp))//every 10% of the boss hp, the damageable boss changes. at every 20%, a stun pad and health pad appear to help the player
+            //I had percent hp as a float but they are retarded and had hidden decimals 
         {
             ChangeBoss();
-            if(percentHp == 0.8f || percentHp == 0.6f || percentHp == 0.4f)
+            if(percentHp == 8 || (percentHp) == 6 || (percentHp) == 4)
             {
+                Debug.Log("test");
                 Pad(true);
                 Pad(false);
             }
-            if(percentHp == 0)//dead
+            if(hp <= 0)//dead
             {
                 Stun();
+                audio.PlayOneShot(clips[3]);
+                Invoke("DeadWait", 5f);//gives time for the death sfx to play
             }
-            percentHp -= 0.1f;
+            percentHp = percentHp - 1;
         }
     }//function is called from the colliders
-
+    private void DeadWait()
+    {
+        ui.Die("WinScreen");
+    }
     private void ChangeBoss()//only one of the three bosses will be damageable at once
     {
         int previous = damageableBoss;

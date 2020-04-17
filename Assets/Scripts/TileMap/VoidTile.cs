@@ -28,7 +28,7 @@ public class VoidTile : MonoBehaviour
     {
         
         for (int i = 0; i < boxes.Length; ++i) boxes[i].SetActive(true); 
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSeconds(5f);
         for (int i = 0; i < boxes.Length; ++i) boxes[i].SetActive(false);
     }
     // Start is called before the first frame update

@@ -38866,9 +38866,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7253002895822659803, guid: 8b7eaa8a1b5820948ba2d5a93d6fb1fe,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: aefb97a5402eebf4aa1e84f5091d6fb5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5b3f822429a31864da81233e5d35015a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -68898,6 +68898,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Return
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941527046915906902, guid: 1f43149dd47c3f14c99016cb1ed4bb83,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 51.271973
       objectReference: {fileID: 0}
     - target: {fileID: 6836565449381217322, guid: 1f43149dd47c3f14c99016cb1ed4bb83,
         type: 3}

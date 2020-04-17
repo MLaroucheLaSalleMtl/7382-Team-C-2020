@@ -9,13 +9,15 @@ public class LifeFinalClose : MonoBehaviour
     private float timeSpentClose;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isInside = true;
-        if (collision.tag == "Player") StartCoroutine(Tick());
+        if (collision.tag == "Player") {
+            isInside = true;
+            StartCoroutine(Tick());
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         isInside = false;
-        timeSpentClose *= 0.5f;
+        timeSpentClose = timeSpentClose * 0.5f;
     }
     private IEnumerator Tick()
     {
@@ -32,11 +34,5 @@ public class LifeFinalClose : MonoBehaviour
     void Start()
     {
         lf = transform.parent.GetComponent<LifeFinal>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

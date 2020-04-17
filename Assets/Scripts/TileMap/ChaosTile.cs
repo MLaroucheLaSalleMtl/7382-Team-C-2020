@@ -30,7 +30,7 @@ public class ChaosTile : MonoBehaviour
             while (boss.Invincible && isTouching)
             {
                 code.GetHit(damageValue);
-                yield return new WaitForSecondsRealtime(damageTick);
+                yield return new WaitForSeconds(damageTick);
 
             }
         }
@@ -39,7 +39,7 @@ public class ChaosTile : MonoBehaviour
             while (isTouching)
             {
                 code.GetHit(damageValue);
-                yield return new WaitForSecondsRealtime(damageTick);
+                yield return new WaitForSeconds(damageTick);
 
             }
         }

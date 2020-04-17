@@ -56,22 +56,29 @@ public class UiChaos : MonoBehaviour
             bossHPSmall[i].fillAmount = hp / maxHp;
         }
     }
-    public void StaminaUpgrade()
-    {
-        ++variables.StaminaUpgrade;
-        ChangeScene(_sceneToLoad);
-    }
-    public void HpUpgrade()
-    {
-        ++variables.HealthUpgrade;
-        ChangeScene(_sceneToLoad);
-    }
+    //public void StaminaUpgrade()
+    //public void StaminaUpgrade()
+    //{
+    //    ++variables.StaminaUpgrade;
+    //    ChangeScene(_sceneToLoad);
+    //}
+    //public void HpUpgrade()
+    //{
+    //    ++variables.HealthUpgrade;
+    //    ChangeScene(_sceneToLoad);
+    //}
     private void ChangeScene(string sceneToLoad)
     {
         //panelUpgrade.SetActive(false);
         if (async == null)
         {
-            if (variables != null) variables.LastScene = SceneManager.GetActiveScene().name;
+            if (variables != null)
+            {
+                variables.LastScene = SceneManager.GetActiveScene().name;
+                if (variables.LastScene == "FinalBoss") sceneToLoad = "WinScreen";//these two overrides the upgrade scene
+                if (variables.Warp) sceneToLoad = "MainMenu";
+            }
+            Debug.Log(sceneToLoad);
             PlayerPrefs.SetString("SceneToLoad", sceneToLoad);
 
             async = SceneManager.LoadSceneAsync("Loading");

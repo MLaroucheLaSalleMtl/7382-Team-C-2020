@@ -46,47 +46,52 @@ public class ChaosFinal : MonoBehaviour
     private float[] fireLineArray = new float[32];
     public IEnumerator FireLine(Vector2 target, GameObject prefab, GameObject parent, int wallNumber, float startPos, float interval)
     {
-        GameObject p = Instantiate(parent, transform.position, transform.rotation);
-        int safe;
-        if (target.y < 5) interval = -interval;//goes downward
-        if (target.y < 5 && target.y > -5) startPos = 15; //middle
-        audio.PlayOneShot(clips[1]);
-        for (int i = 0; i < wallNumber; ++i)
+        if (this.AttackReady)
         {
-            safe = Random.Range(9, 21);
-            for(int i2 = 0; i2 < fireLineArray.Length; ++i2)
+            GameObject p = Instantiate(parent, transform.position, transform.rotation);
+            int safe;
+            if (target.y < 5) interval = -interval;//goes downward
+            if (target.y < 5 && target.y > -5) startPos = 15; //middle
+            audio.PlayOneShot(clips[1]);
+            for (int i = 0; i < wallNumber; ++i)
             {
-                if(i2 != safe && i2 != safe + 1)
+                safe = Random.Range(9, 21);
+                for (int i2 = 0; i2 < fireLineArray.Length; ++i2)
                 {
-                    fireLineArray[i2] = startPos + (interval * i2);
-                    if (this.AttackReady)
+                    if (i2 != safe && i2 != safe + 1)
                     {
-                        GameObject fireBall = Instantiate(prefab, new Vector2(23, fireLineArray[i2]), Quaternion.identity);
-                        fireBall.transform.parent = p.transform;
-                        bm.ToParent(p);
+                        fireLineArray[i2] = startPos + (interval * i2);
+                        if (this.AttackReady)
+                        {
+                            GameObject fireBall = Instantiate(prefab, new Vector2(23, fireLineArray[i2]), Quaternion.identity);
+                            fireBall.transform.parent = p.transform;
+                            bm.ToParent(p);
+                        }
                     }
+
                 }
-                
+                yield return new WaitForSeconds(2f);
             }
-            yield return new WaitForSeconds(2f);
         }
     }
     public void Meteor(Vector2 target, GameObject prefab, int meteorAmount, float radius)
     {
-        audio.PlayOneShot(clips[2]);
-        for (int i = 0; i < meteorAmount; ++i)
+        if (this.AttackReady)
         {
-            Vector2 position;
-            do
+            audio.PlayOneShot(clips[2]);
+            for (int i = 0; i < meteorAmount; ++i)
             {
-                position = new Vector2(target.x + Random.Range(-radius, radius), target.y + Random.Range(-radius, radius));
-            } while (Vector2.Distance(target, position) > 5);
-            if (this.AttackReady)
-            {
-                GameObject meteor = Instantiate(prefab, position, Quaternion.identity);
-                bm.ToParent(meteor);
+                Vector2 position;
+                do
+                {
+                    position = new Vector2(target.x + Random.Range(-radius, radius), target.y + Random.Range(-radius, radius));
+                } while (Vector2.Distance(target, position) > 5);
+                if (this.AttackReady)
+                {
+                    GameObject meteor = Instantiate(prefab, position, Quaternion.identity);
+                    bm.ToParent(meteor);
+                }
             }
-            
         }
     }
     

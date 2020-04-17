@@ -21,6 +21,7 @@ public class BlockFinal : MonoBehaviour
     }
     private IEnumerator TakeDamage()
     {
+        yield return new WaitForSeconds(2);
         while (isTouching)
         {
             code.GetHit(Mathf.Floor(damage));

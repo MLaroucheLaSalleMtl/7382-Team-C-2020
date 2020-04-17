@@ -6,7 +6,7 @@ public static class LoadingText
 {
     #region //Lore
     private static string bridgeLoreB = "Ah, Ziae’l. Come, you need to fight." + "\nI know, you are not ready. Soon." + "\nYou must be.";
-    private static string bridgeLoreA = "Ah, Ziae'l. I suppose, yes." + "You need practice." + "For now, we will have to make do" + "With you, as you are" + "A weak, little light";
+    private static string bridgeLoreA = "Ah, Ziae'l. I suppose, yes." + "\nYou need practice." + "\nFor now, we will have to make do" + "\nWith you, as you are" + "\nA weak, little light";
     private static string chaosLoreB = "Ah, Ziae’l. Look, chaos." + "\nQuench the flames, weaken it." + "\nThere, those green patches. Stand on them." + "\nBe careful, it is only temporary.";
     private static string chaosLoreA = "Ah, Ziae’l…" + "\nNo, everything is alright." + "\nLook, that light. We must go." + "\nQuick, before…" + "\nNo, pay me no mind.";
     private static string lifeLoreB = "Ah, Ziae’l. Life.. is afraid?" + "\nIt will run away from you." + "\nOverwhelm it, wait in the light." + "\nBe careful, lest you fall. For eternity";
