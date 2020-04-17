@@ -22,15 +22,19 @@ You are Ziae'l, your job is to fight the entities that are challinging the balan
                                                               SOURCES
                                                               
 Music :
-Main menu - Oceiros The Consumed King by Yuka Kitamura (DARK SOULS III) TO BE CHANGED
+Main menu - Valian By Evan King
 
-Win Screen - https://www.youtube.com/watch?v=hf1DkBQRQj4 - ending from neon genesis evangelion TO BE CHANGED
+Win Screen - Memo by Evan King
 
-Loss Screen - Secret Betreyal by Yuka Kitamura (DARK SOULS III) TO BE CHANGED
+Bridge Boss - Original Soundtrack
 
-Bridge Boss - Nameless King by  Yuka Kitamura (DARK SOULS III) TO BE CHANGED
+Chaos Boss - Original Soundtrack
 
-Chaos Boss - Slave Knight Gael  Yuka Kitamura (DARK SOULS III) TO BE CHANGED
+Life Boss - Original Soundtrack
+
+Order Boss - Original Soundtrack
+
+Final Boss - Original Soundtrack
 
 Art:
 Player - https://opengameart.org/content/fumiko-complete-charset
@@ -53,7 +57,9 @@ Boss health bar - https://opengameart.org/content/enemy-health-bars
 
 Projectiles - https://opengameart.org/content/bullet-collection-1-m484
 
-Menu background image - https://www.shutterstock.com/image-illustration/woman-standing-on-sea-looking-burning-1095632744 (we did not pay for it we are just using it as a place holder while we make our own image)
+Shield - https://opengameart.org/content/shield-aura-effect
+
+Menu background image - Made by Juan Camilo Garcia
 
 Splash screen image - http://pngimg.com/imgs/animals/giraffe/
 
@@ -62,6 +68,4 @@ Particle Systems sprites by Juan Camilo Garcia
 SFX:
 All from https://www.zapsplat.com/ 
 
-
-
-
+Dragon Roar - https://freesound.org/people/benjaminharveydesign/packs/17696/?page=1
