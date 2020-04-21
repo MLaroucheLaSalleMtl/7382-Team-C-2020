@@ -78,7 +78,7 @@ public class UiChaos : MonoBehaviour
                 if (variables.LastScene == "FinalBoss") sceneToLoad = "WinScreen";//these two overrides the upgrade scene
                 if (variables.Warp) sceneToLoad = "MainMenu";
             }
-            Debug.Log(sceneToLoad);
+
             PlayerPrefs.SetString("SceneToLoad", sceneToLoad);
 
             async = SceneManager.LoadSceneAsync("Loading");
@@ -97,7 +97,7 @@ public class UiChaos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Cursor.visible = false;
+        Cursor.visible = false;
         variables = FixedVariables.instance;
         anim = GetComponent<Animator>();
     }

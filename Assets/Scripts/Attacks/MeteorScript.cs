@@ -6,8 +6,8 @@ public class MeteorScript : MonoBehaviour
 {
     private GameManager code;
     private Vector2 direction;
-    private float speed = 3;
-    [SerializeField]private float damage;
+    private static float speed = 3;
+    private static float damage = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class MeteorScript : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, direction, Time.deltaTime * speed);
-        if(direction.y - transform.position.y <= 0.1f)
+        if(transform.position.y - direction.y <= 0.1f)
         {
             GetComponent<CircleCollider2D>().enabled = true;
         }

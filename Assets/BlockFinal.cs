@@ -40,7 +40,7 @@ public class BlockFinal : MonoBehaviour
     {
         if (isTouching)
         {
-            damage += damage * 0.002f;
+            damage += damage * 0.003f;
         }
     }
 }

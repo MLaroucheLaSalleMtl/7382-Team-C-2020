@@ -89,7 +89,7 @@ public static class LoadingText
 
     #region//finalTips
     private static string finalTip1 = "The green zones will heal you.";
-    private static string finalTip2 = "The blue zones will stun the enemy temporarily.";
+    private static string finalTip2 = "The purple zones will stun the enemy temporarily.";
     private static string finalTip3 = "It is possible.";
     private static string finalTip1Z = "DBH I NQ";
     private static string finalTip2Z = "A C E";

@@ -49,19 +49,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         variables = FixedVariables.instance;
-        maxHp = 100 * Mathf.Pow(1.25f, variables.HealthUpgrade);
+        maxHp = 100 * Mathf.Pow(Mathf.Sqrt(Mathf.Sqrt(2)), variables.HealthUpgrade);
         maxStamina = 5 + variables.StaminaUpgrade;
         ui = UiChaos.instance;
         currentHp = maxHp;
         ui.PlayerHp(currentHp);
         currentLives = maxLives;
-        
         currentStamina = maxStamina;
         ui.Stamina(currentStamina);
         StartCoroutine(StaminaRegen());
     }
     [SerializeField]private int isAttacking = 0;
-
+    
     public float MeleeAttack { get => meleeAttack; set => meleeAttack = value; }
 
     private IEnumerator StaminaRegen()
@@ -74,9 +73,7 @@ public class GameManager : MonoBehaviour
                 ++currentStamina;
                 ui.Stamina(currentStamina);
             }
-
         }
-        
     }
     public void Attack()
     {
@@ -87,26 +84,12 @@ public class GameManager : MonoBehaviour
             Invoke("ResetAttack", 1f);
         }
         ui.Stamina(currentStamina);
-        
-        
     }
     private void ResetAttack()
     {
         --isAttacking;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        //Attack(); // this is not necessary with the input system now implemented
-        HpCheck();
-        //if(currentStamina <= maxStamina && !isAttacking)
-        //{
-        //    currentStamina += Time.deltaTime * staminaRegen;
-        //}
-        //ui.Stamina(currentStamina);
-        //if (test == 0) effect.enabled = false;
-        //else effect.enabled = true;
-    }
+    
     
     private void HpCheck()
     {
@@ -150,6 +133,7 @@ public class GameManager : MonoBehaviour
             Invoke("DamageReady", damageDelay);
         }
         ui.PlayerHp(currentHp);
+        HpCheck();
 
         //++test;
         ////anim.SetInteger("takingDamage", test);

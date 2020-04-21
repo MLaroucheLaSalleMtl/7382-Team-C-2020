@@ -27098,7 +27098,9 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 565850956}
   tipsUI: {fileID: 2042098329}
   isPaused: 0
+  eventSystem: {fileID: 803097729}
   returnBtn: {fileID: 1882786443}
+  resumeBtn: {fileID: 966739756}
 --- !u!95 &1719662481
 Animator:
   serializedVersion: 3
@@ -28023,10 +28025,15 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4445259134617084654, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373227, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: orthographic size
-      value: 14.606249
+      value: 15.231249
       objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373227, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
@@ -28076,7 +28083,7 @@ PrefabInstance:
     - target: {fileID: 6155748257929373396, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.684999
+      value: 10.184999
       objectReference: {fileID: 0}
     - target: {fileID: 6155748257929373396, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
@@ -28156,7 +28163,7 @@ PrefabInstance:
     - target: {fileID: 6493889302072911853, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.684999
+      value: 10.184999
       objectReference: {fileID: 0}
     - target: {fileID: 6493889302072911853, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
@@ -28181,7 +28188,7 @@ PrefabInstance:
     - target: {fileID: 6493889302512949670, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.684999
+      value: 10.184999
       objectReference: {fileID: 0}
     - target: {fileID: 6493889302512949670, guid: 38703c0101c75ff4aa4cbcdbe06f45a9,
         type: 3}

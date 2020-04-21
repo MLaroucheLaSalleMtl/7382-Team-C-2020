@@ -12,8 +12,9 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject tipsUI;
     [SerializeField] private bool isPaused;
-    private EventSystem eventSystem;
+    [SerializeField] private EventSystem eventSystem;
     public GameObject returnBtn;
+    public GameObject resumeBtn;
 
     public void OnPause(InputAction.CallbackContext context)
     {
@@ -60,7 +61,7 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         pauseMenuUI.SetActive(false);
         isPaused = false;
-        //Cursor.visible = false;
+        Cursor.visible = false;
     }
 
     public void Menu(string sceneToLoad)
@@ -88,5 +89,6 @@ public class PauseManager : MonoBehaviour
     {
         tipsUI.SetActive(false);
         pauseMenuUI.SetActive(true);
+        eventSystem.SetSelectedGameObject(resumeBtn);
     }
 }

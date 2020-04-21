@@ -58,19 +58,26 @@ public class BridgeBossAi : MonoBehaviour
             audio.PlayOneShot(clips[attackToDo]);
         }
     }
-
+    private int tookDamageCounter = 0;
     public void GetHit(float damage)
     {
         hp = hp - damage;
         ui.HpUpdate(hp);
         HpCheck();
+        tookDamageCounter++;
         tookDamage.enabled = true;
-        Invoke("RemoveDamage", 0.5f);
+        Invoke("Temp", 0.5f);
         audio.PlayOneShot(clips[nbAttack]);
     }
-    private void RemoveDamage()
+    private void Temp()
     {
-        tookDamage.enabled = false;
+        tookDamageCounter = RemoveDamage(tookDamageCounter, tookDamage);
+    }
+    public static int RemoveDamage(int counter, SpriteRenderer s)
+    {
+        counter--;
+        if (counter == 0) s.enabled = false;
+        return counter;
     }
     private void HpCheck()
     {

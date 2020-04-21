@@ -10,7 +10,7 @@ public class FireWallParent : MonoBehaviour
     void Start()
     {
         direction = new Vector2(-1000, transform.position.y);
-        Invoke("Suicide", 50f);
+        Invoke("Suicide", 30f);
     }
 
     // Update is called once per frame

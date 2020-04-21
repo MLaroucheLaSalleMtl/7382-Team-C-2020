@@ -12,6 +12,7 @@ public class LifeBossAI : MonoBehaviour
     [SerializeField] private Transform target;
     public Transform Target { get => target; set => target = value; }
     public bool AttackReady { get => attackReady; set => attackReady = value; }
+    public bool Stun1 { get => stun; set => stun = value; }
 
     [SerializeField] private Rigidbody2D targetR;
     [SerializeField] private bool attackReady = true;
@@ -20,6 +21,7 @@ public class LifeBossAI : MonoBehaviour
     [SerializeField] private int attackToDo = 0;
     [SerializeField] private AudioClip[] clips;
     [SerializeField] private SpriteRenderer shield;
+    [SerializeField] private SpriteRenderer tookDamage;
     private static int nbAttack = 3;
     private bool spawnDelay = false;
     private static float spawnLeft = -23;
@@ -89,7 +91,7 @@ public class LifeBossAI : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(AttackReady && spawnDelay && !stun && Random.Range(0,100) > attackChance)
+		if(AttackReady && spawnDelay && !Stun1 && Random.Range(0,100) > attackChance)
         {
             do
             {
@@ -113,7 +115,7 @@ public class LifeBossAI : MonoBehaviour
             AttackReady = false;
         }
 	}
-    
+    private int tookDamageCounter = 0;
     public void GetHit(float damage)
     {
         if (!invincible)
@@ -121,9 +123,16 @@ public class LifeBossAI : MonoBehaviour
             hp = hp - damage;
             ui.HpUpdate(hp);
             HpCheck();
+            tookDamage.enabled = true;
+            tookDamageCounter++;
+            Invoke("RemoveDamage", 0.5f);
             audio.PlayOneShot(clips[nbAttack]);
         }
         else audio.PlayOneShot(clips[nbAttack + 1]);
+    }
+    private void RemoveDamage()
+    {
+        tookDamageCounter = BridgeBossAi.RemoveDamage(tookDamageCounter, tookDamage);
     }
     private void HpCheck()
     {
@@ -133,7 +142,7 @@ public class LifeBossAI : MonoBehaviour
     {
         invincible = false;
         shield.enabled = false;
-        stun = true;
+        Stun1 = true;
         Invoke("Free", 8f);
         Invoke("FreeWarning", 6f);
     }
@@ -151,7 +160,7 @@ public class LifeBossAI : MonoBehaviour
             invincible = false;
             shield.enabled = false;
         }
-        stun = false;
+        Stun1 = false;
         
     }
     public void Spawn()
@@ -179,16 +188,17 @@ public class LifeBossAI : MonoBehaviour
             {
                 initialPos = spawnRight;
                 initialRot = rotationRight;
+                previousPos = spawnRight;
             }
             else
             {
                 initialPos = spawnLeft;
                 initialRot = rotationLeft;
+                previousPos = spawnLeft;
             }
         }
         
         spawnDelay = true;
-        while (stun) { }
         Teleport(initialPos, initialRot);
 
     }

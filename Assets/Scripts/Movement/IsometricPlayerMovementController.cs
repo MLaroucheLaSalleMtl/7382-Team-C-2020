@@ -126,9 +126,13 @@ public class IsometricPlayerMovementController : MonoBehaviour
     }
     private IEnumerator Arc(int d)
     {
-        arcs[d].enabled = true;
-        yield return new WaitForSeconds(0.2f);
-        arcs[d].enabled = false;
+        if(Time.timeScale != 0)
+        {
+
+            arcs[d].enabled = true;
+            yield return new WaitForSeconds(0.2f);
+            arcs[d].enabled = false;
+        }
     }
     private void OnDrawGizmosSelected()
     {

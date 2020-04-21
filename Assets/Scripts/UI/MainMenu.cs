@@ -23,6 +23,8 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         variables = FixedVariables.instance;
+        variables.HealthUpgrade = 0;
+        variables.StaminaUpgrade = 0;//resets upgrades
         controls.SetActive(false);
         Cursor.visible = true;
     }

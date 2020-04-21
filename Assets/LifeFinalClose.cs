@@ -24,7 +24,11 @@ public class LifeFinalClose : MonoBehaviour
         while (isInside)
         {
             timeSpentClose++;
-            if (lf.AttackReady && timeSpentClose > 10) lf.Teleport(); ;
+            if (lf.AttackReady && timeSpentClose > 8) {
+                timeSpentClose = 0;
+                lf.Teleport();
+            }
+            
             yield return new WaitForSeconds(1f);
         }
         

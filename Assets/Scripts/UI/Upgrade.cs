@@ -11,6 +11,7 @@ public class Upgrade : MonoBehaviour
     void Start()
     {
         variables = FixedVariables.instance;
+        Cursor.visible = true;
     }
     public void StaminaUpgrade()
     {

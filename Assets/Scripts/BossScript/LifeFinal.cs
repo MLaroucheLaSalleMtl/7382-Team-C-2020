@@ -13,6 +13,7 @@ public class LifeFinal : MonoBehaviour
     [SerializeField]private SpriteRenderer shield;
     [SerializeField] private ParticleSystem windParticles;
     [SerializeField] private ParticleSystem windParticles2;
+    [SerializeField] private SpriteRenderer tookDamage;
     private static Vector3 rightPos = new Vector3(-23, 0, 0);
     private static Vector3 leftPos = new Vector3(23, 0, 0);
 
@@ -103,9 +104,13 @@ public class LifeFinal : MonoBehaviour
             }
         }
     }
+    private int tookDamageCounter = 0;
     private void GetHit(float damage)
     {
-        if (!Invincible) bm.ReduceHp(damage);
+        if (!Invincible) {
+            StartCoroutine(bm.HitEffect(tookDamage, tookDamageCounter));
+            bm.ReduceHp(damage);
+        } 
         else bm.ReduceHp(0);
 
     }

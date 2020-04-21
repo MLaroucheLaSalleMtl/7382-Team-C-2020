@@ -94,17 +94,17 @@ public class ChaosBossAi : MonoBehaviour
     }
     [SerializeField] private SpriteRenderer tookDamage;
 
-    
 
+    private int tookDamageCounter = 0;
     public void GetHit(float damage)
     {
-
         if (!Invincible)
         {
             hp = hp - damage;
             ui.HpUpdate(hp);
             HpCheck();
             tookDamage.enabled = true;
+            tookDamageCounter++;
             Invoke("RemoveDamage", 0.5f);
             audio.PlayOneShot(clips[nbAttack]);
         }
@@ -113,7 +113,7 @@ public class ChaosBossAi : MonoBehaviour
     }
     private void RemoveDamage()
     {
-        tookDamage.enabled = false;
+        tookDamageCounter = BridgeBossAi.RemoveDamage(tookDamageCounter, tookDamage);
     }
     private void HpCheck()
     {

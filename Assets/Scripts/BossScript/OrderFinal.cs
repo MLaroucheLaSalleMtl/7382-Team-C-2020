@@ -12,6 +12,7 @@ public class OrderFinal : MonoBehaviour
     [SerializeField] private AudioClip[] clips;
     [SerializeField] private SpriteRenderer shield;
     [SerializeField] private GameObject[] gargoyles;
+    [SerializeField] private SpriteRenderer tookDamage;
 
 	public static OrderFinal Of { get => of; set => of = value; }
 	public bool Invincible { get => invincible; set => invincible = value; }
@@ -37,33 +38,37 @@ public class OrderFinal : MonoBehaviour
     private static float burstSpeed = 10;
 	public IEnumerator Missile(Vector2 target, GameObject bulletPrefab, float burstStartAngle, int burstAmount)
 	{
-        int burstN;
-        float burstTempAngle;
-        float burstAngle;
-
-        burstN = 0;
-        burstAngle = LifeBossAI.Angle(0, 1, target.x - transform.position.x, target.y - transform.position.y);
-        if (LifeBossAI.D(0, 1, target, transform.position) > 0) burstAngle = -burstAngle;
-        burstAngle += burstStartAngle;
-        audio.PlayOneShot(clips[0]);
-        burstTempAngle = burstAngle;
-        do
+        if (this.AttackReady)
         {
-            burstAngle = burstTempAngle;
-            for (int i = 0; i < burstAmount; ++i)
+            int burstN;
+            float burstTempAngle;
+            float burstAngle;
+
+            burstN = 0;
+            burstAngle = LifeBossAI.Angle(0, 1, target.x - transform.position.x, target.y - transform.position.y);
+            if (LifeBossAI.D(0, 1, target, transform.position) > 0) burstAngle = -burstAngle;
+            burstAngle += burstStartAngle;
+            audio.PlayOneShot(clips[0]);
+            burstTempAngle = burstAngle;
+            do
             {
-                if (this.AttackReady)
+                burstAngle = burstTempAngle;
+                for (int i = 0; i < burstAmount; ++i)
                 {
-                    GameObject bul = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, -burstAngle));
-                    bul.GetComponent<Bullet>().SetDirection(OrderBossAi.Vector3Return(burstAngle, transform.position), burstSpeed);
-                    bm.ToParent(bul);
+                    if (this.AttackReady)
+                    {
+                        GameObject bul = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, -burstAngle));
+                        bul.GetComponent<Bullet>().SetDirection(OrderBossAi.Vector3Return(burstAngle, transform.position), burstSpeed);
+                        bm.ToParent(bul);
+                    }
+
+                    burstAngle += 20;
                 }
-                
-                burstAngle += 20;
-            }
-            yield return new WaitForSeconds(0.1f);
-            burstN++;
-        } while (burstN < 3);
+                yield return new WaitForSeconds(0.1f);
+                burstN++;
+            } while (burstN < 3);
+        }
+        
 
     }
 
@@ -102,30 +107,39 @@ public class OrderFinal : MonoBehaviour
     {
         while (true)
         {
+            while (bm.AttackAmount >= 4) yield return new WaitForEndOfFrame();
             yield return new WaitForSeconds(10);
             if (this.AttackReady)
             {
+                bm.AttackAmount++;
                 audio.PlayOneShot(clips[1]);
                 for (int i = 0; i < gargoyles.Length; ++i)
                 {
                     if (this.AttackReady)
                     {
+                        
                         gargoyles[i].GetComponent<SpriteRenderer>().color = OrderBossAi.red;
                         GameObject fire = Instantiate(firePrefab, gargoyles[i].transform.position, Quaternion.Euler(0, 0, 90));
                         fire.GetComponent<GarFire>().Vertical = true;
                     }
                 }
+
                 yield return new WaitForSeconds(3);
+                bm.AttackAmount--;
                 gargoyles[0].GetComponent<SpriteRenderer>().color = Color.white;
                 gargoyles[1].GetComponent<SpriteRenderer>().color = Color.white;
             }
         }
         
     }
-
+    private int tookDamageCounter = 0;
     private void GetHit(float damage)
     {
-        if (!Invincible) bm.ReduceHp(damage);
+        if (!Invincible)
+        {
+            StartCoroutine(bm.HitEffect(tookDamage, tookDamageCounter));
+            bm.ReduceHp(damage);
+        }
         else bm.ReduceHp(0);
 
     }

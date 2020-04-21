@@ -13,6 +13,7 @@ public class BossManager : MonoBehaviour
     private int damageableBoss = -1;
     private static float stunTime = 10f;
     private int blockedArea = -1;
+    private int attackAmount = 0;
     [SerializeField] private Transform target;
     [SerializeField] private GameObject[] healthPads;
     [SerializeField] private GameObject[] stunPads;
@@ -49,6 +50,8 @@ public class BossManager : MonoBehaviour
 
     #endregion
     public static BossManager Bm { get => bm; set => bm = value; }
+    public int AttackAmount { get => attackAmount; set => attackAmount = value; }
+
     private void Awake()
     {
         if (Bm == null)
@@ -79,18 +82,36 @@ public class BossManager : MonoBehaviour
         Pad(true);
         audio = GetComponent<AudioSource>();
     }
-
     private IEnumerator ChaosClock()
     {
         while(hp >= 0)
         {
             yield return new WaitForSeconds(Random.Range(5, 8));//forces a delay before the next attack by that boss
-            if (hp >= 0)
+            if (hp >= 0 )
             {
+                while (AttackAmount >= 4)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+                AttackAmount++;
                 chaosRandom = Random.Range(0, 100);
-                if (chaosRandom < 15) StartCoroutine(cf.FireLine(target.position, chaosPrefab2, chaosPrefab2Parent, 3, 0, 1));
-                else if (chaosRandom >= 15 && chaosRandom < 55) cf.AoeUnder(target.position, chaosPrefab1);
-                else cf.Meteor(target.position, chaosPrefab3, 20, 10f);
+                if (chaosRandom < 20)
+                {
+                    AttackAmount++;
+                    StartCoroutine(cf.FireLine(target.position, chaosPrefab2, chaosPrefab2Parent, 3, 0, 1));
+                    Invoke("AttackDecrease", 20f);
+                    Invoke("AttackDecrease", 10f);
+                }
+                else if (chaosRandom >= 20 && chaosRandom < 55)
+                {
+                    cf.AoeUnder(target.position, chaosPrefab1);
+                    Invoke("AttackDecrease", 1.5f);
+                }
+                else {
+                    cf.Meteor(target.position, chaosPrefab3, 20, 10f);
+                    Invoke("AttackDecrease", 8f);
+                }
+                
             }
         }
     }
@@ -101,14 +122,35 @@ public class BossManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(5, 8));
             if (hp >= 0)
             {
+                while (AttackAmount >= 4)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+                AttackAmount++;
                 lifeRandom = Random.Range(0, 100);
-                if (lifeRandom < 20) StartCoroutine(lf.Wind(target.position, target.GetComponent<Rigidbody2D>(), windForce, windLength, true));
-                else if (lifeRandom >= 20 && lifeRandom < 60) StartCoroutine(LifeHoming());
-                else StartCoroutine(lf.FireLine(target.position, lifePrefab2));
+
+                if (lifeRandom < 20)
+                {
+                    StartCoroutine(lf.Wind(target.position, target.GetComponent<Rigidbody2D>(), windForce, windLength, true));
+                    Invoke("AttackDecrease", 2);
+                }
+                else if (lifeRandom >= 20 && lifeRandom < 60)
+                {
+                    StartCoroutine(LifeHoming());
+                    Invoke("AttackDecrease", 4f);
+                }
+                else {
+                    StartCoroutine(lf.FireLine(target.position, lifePrefab2));
+                    Invoke("AttackDecrease", 2f);
+                } 
+
             }
         }
     }
-
+    private void AttackDecrease()
+    {
+        AttackAmount--;
+    }
     private IEnumerator LifeHoming()
     {
         for(int i = 0; i < 7; ++i)
@@ -121,20 +163,21 @@ public class BossManager : MonoBehaviour
     {
         while (hp >= 0)
         {
+            while (attackAmount >= 4) yield return new WaitForEndOfFrame();
             StartCoroutine(of.Missile(target.position, orderPrefab1, burstStartAngle, burstAmount));
+            AttackAmount++;
+            Invoke("AttackDecrease", 5f);
             burstDelay = Random.Range(7, 10);
             yield return new WaitForSeconds(burstDelay);
         }
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) ReduceHp(0.1f * maxHp);
-    }
+    
 
     public void ReduceHp(float damage)
     {
         if (damage == 0) audio.PlayOneShot(clips[1]);
         else audio.PlayOneShot(clips[0]);
+
         hp -= damage;
         ui.HpUpdate(hp);
         if(hp <= Mathf.Round(((float)percentHp/10) * maxHp))//every 10% of the boss hp, the damageable boss changes. at every 20%, a stun pad and health pad appear to help the player
@@ -143,19 +186,28 @@ public class BossManager : MonoBehaviour
             ChangeBoss();
             if(percentHp == 8 || (percentHp) == 6 || (percentHp) == 4)
             {
-                Debug.Log("test");
+
                 Pad(true);
                 Pad(false);
             }
-            if(hp <= 0)//dead
+            if(Mathf.FloorToInt(hp) <= 0)//dead
             {
                 Stun();
                 audio.PlayOneShot(clips[3]);
-                Invoke("DeadWait", 5f);//gives time for the death sfx to play
+                Invoke("DeadWait", 8f);//gives time for the death sfx to play
+                for (int i = 0; i < blockedAreas.Length; i++) blockedAreas[i].SetActive(false);
             }
             percentHp = percentHp - 1;
         }
     }//function is called from the colliders
+    public IEnumerator HitEffect(SpriteRenderer s, int counter)
+    {
+        s.enabled = true;
+        counter++;
+        yield return new WaitForSeconds(0.5f);
+        counter = BridgeBossAi.RemoveDamage(counter, s);
+        if (counter == 0) s.enabled = false;
+    }
     private void DeadWait()
     {
         ui.Die("WinScreen");
@@ -203,6 +255,8 @@ public class BossManager : MonoBehaviour
     private void DestroyAllAttacks()
     {
         attackHolder.BroadcastMessage("Suicide", SendMessageOptions.DontRequireReceiver);
+        AttackAmount = 0;
+        CancelInvoke("AttackDecrease");
     }
 
     public void Heal()
@@ -216,7 +270,7 @@ public class BossManager : MonoBehaviour
         lf.AttackReady = false;
         of.AttackReady = false;
         DestroyAllAttacks();
-        if (hp >= 0) Invoke("UnStun", stunTime);
+        if (Mathf.Round(hp) >= 0) Invoke("UnStun", stunTime);
 
     }//All the boss stop attacking for a certain period of time
     private void UnStun()
@@ -239,7 +293,7 @@ public class BossManager : MonoBehaviour
             previous = blockedArea;
             blockedAreas[blockedArea].SetActive(true);
 
-            yield return new WaitForSeconds(40);
+            yield return new WaitForSeconds(30);
             blockedAreas[blockedArea].SetActive(false);
         }
     }

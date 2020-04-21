@@ -33,7 +33,7 @@ public class LoadingScript : MonoBehaviour
         loreZ.text = "";    
         
         ChooseText();
-        Invoke("Test", 0f);
+        Invoke("Test", 3f);
     }
     private bool test = false;
     private void Test()
@@ -122,8 +122,8 @@ public class LoadingScript : MonoBehaviour
         {
             if (sceneToLoad == "OrderScene")
             {
-                lore.text = LoadingText.chaosTips[Random.Range(0, LoadingText.orderTips.Length)];
-                loreZ.text = LoadingText.chaosTipsZ[Random.Range(0, LoadingText.orderTipsZ.Length)];//order tips
+                lore.text = LoadingText.orderTips[Random.Range(0, LoadingText.orderTips.Length)];
+                loreZ.text = LoadingText.orderTipsZ[Random.Range(0, LoadingText.orderTipsZ.Length)];//order tips
             }
             else if(sceneToLoad != "FinalBoss")
             {

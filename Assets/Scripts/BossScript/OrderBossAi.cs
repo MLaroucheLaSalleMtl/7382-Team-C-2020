@@ -8,6 +8,7 @@ public class OrderBossAi : MonoBehaviour
 	[Header("General", order = 0)]
 	[SerializeField] private Transform target;
 	[SerializeField] private AudioClip[] clips;
+    [SerializeField] private SpriteRenderer tookDamage;
 	private AudioSource audio;
 	private float hp;
 	private static float maxHp = 200;
@@ -174,14 +175,21 @@ public class OrderBossAi : MonoBehaviour
 		float y = pos.y + Mathf.Cos(angle * Mathf.PI / 180f);
 		return (new Vector3(x, y) - pos).normalized;
 	}
+    private int tookDamageCounter = 0;
 	public void GetHit(float damage)
 	{
 		hp = hp - damage;
 		ui.HpUpdate(hp);
 		HpCheck();
 		audio.PlayOneShot(clips[2]);
-
+        tookDamage.enabled = true;
+        tookDamageCounter++;
+        Invoke("RemoveDamage", 0.5f);
 	}
+    private void RemoveDamage()
+    {
+        tookDamageCounter = BridgeBossAi.RemoveDamage(tookDamageCounter, tookDamage);
+    }
 	private void HpCheck()
 	{
 		if(hp <= maxHp * 0.5f)

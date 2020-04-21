@@ -9,7 +9,7 @@ public class ProximityTeleport : MonoBehaviour
     private LifeBossAI boss;
     private void Start()
     {
-        boss = gameObject.transform.parent.gameObject.GetComponent<LifeBossAI>();
+        boss = transform.parent.GetComponent<LifeBossAI>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,9 +31,11 @@ public class ProximityTeleport : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             ++timeSpentClose;
-            if(timeSpentClose >= 10)
+            if(timeSpentClose >= 8 && !boss.AttackReady)
             {
-                if (!boss.AttackReady) boss.Spawn();
+                while (boss.Stun1) yield return new WaitForEndOfFrame();
+                timeSpentClose = 0;
+                boss.Spawn();
             }
         }
     }

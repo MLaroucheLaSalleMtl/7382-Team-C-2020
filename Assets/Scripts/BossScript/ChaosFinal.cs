@@ -11,6 +11,7 @@ public class ChaosFinal : MonoBehaviour
     private AudioSource audio;
     [SerializeField] private AudioClip[] clips;
     [SerializeField] private SpriteRenderer shield;
+    [SerializeField] private SpriteRenderer tookDamage;
 
     public static ChaosFinal Cf { get => cf; set => cf = value; }
     public bool Invincible { get => invincible; set => invincible = value; }
@@ -39,6 +40,7 @@ public class ChaosFinal : MonoBehaviour
         {
             audio.PlayOneShot(clips[0]);
             GameObject explosion = Instantiate(prefab, target, Quaternion.identity);
+            explosion.transform.localScale *= 2;
             bm.ToParent(explosion);
         }
         
@@ -63,7 +65,7 @@ public class ChaosFinal : MonoBehaviour
                         fireLineArray[i2] = startPos + (interval * i2);
                         if (this.AttackReady)
                         {
-                            GameObject fireBall = Instantiate(prefab, new Vector2(23, fireLineArray[i2]), Quaternion.identity);
+                            GameObject fireBall = Instantiate(prefab, new Vector2(25, fireLineArray[i2]), Quaternion.identity);
                             fireBall.transform.parent = p.transform;
                             bm.ToParent(p);
                         }
@@ -94,14 +96,16 @@ public class ChaosFinal : MonoBehaviour
             }
         }
     }
-    
+    private int tookDamageCounter = 0;
     private void GetHit(float damage)
     {
-        if (!Invincible) bm.ReduceHp(damage);
+        if (!Invincible)
+        {
+            StartCoroutine(bm.HitEffect(tookDamage, tookDamageCounter));
+            bm.ReduceHp(damage);
+        }
         else bm.ReduceHp(0);
-
     }
-
     public void Switch(bool toggle)
     {
         if (toggle)
